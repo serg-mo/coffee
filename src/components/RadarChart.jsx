@@ -10,6 +10,8 @@ import {
 import React from "react";
 import { Radar } from "react-chartjs-2";
 
+ChartJS.defaults.font.family = "Trebuchet MS";
+
 ChartJS.register(
   RadialLinearScale,
   PointElement,
@@ -27,6 +29,14 @@ export default function RadarChart({ data, max }) {
         max,
         ticks: {
           stepSize: 1,
+          font: {
+            size: 12,
+          },
+        },
+        pointLabels: {
+          font: {
+            size: 12,
+          },
         },
       },
     },
@@ -34,9 +44,7 @@ export default function RadarChart({ data, max }) {
       legend: {
         display: false,
       },
-      tooltip: {
-        // enabled: false
-      },
+      tooltip: {},
     },
   };
 
