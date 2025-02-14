@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import BeanCard from "./components/BeanCard";
 import ComparisonsMatrix from "./components/ComparisonsMatrix";
 
 const urls = [
@@ -9,6 +10,7 @@ const urls = [
 
 export default function Comparisons() {
   const [datasets, setDatasets] = useState(null);
+  const [beans, setBeans] = useState(null);
 
   useEffect(() => {
     Promise.all(
@@ -32,14 +34,18 @@ export default function Comparisons() {
   }
 
   return (
-    <div className="flex justify-center">
-      {datasets.map(({ data, name }) => (
-        <ComparisonsMatrix
-          name={name.replace("-", " ")}
-          data={data}
-          key={name}
-        />
-      ))}
-    </div>
+    <>
+      <div className="flex justify-center items-center">
+        {datasets.map(({ data, name }) => (
+          <ComparisonsMatrix
+            name={name.replace("-", " ")}
+            data={data}
+            key={name}
+            setBeans={setBeans}
+          />
+        ))}
+      </div>
+      {beans && <BeanCard name={beans} />}
+    </>
   );
 }

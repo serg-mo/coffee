@@ -1,27 +1,7 @@
-import React, { useEffect, useState } from "react";
-// import Tooltip from "./Tooltip";
+import React from "react";
 
-export default function ComparisonsMatrix({ name, data }) {
-  const [beanData, setBeanData] = useState({});
+export default function ComparisonsMatrix({ name, data, setBeans }) {
   const names = Object.keys(data.names);
-
-  useEffect(() => {
-    Promise.all(
-      Object.values(data.names).map((name) =>
-        fetch(`/data/beans/${name}.json`)
-          .then((res) => res.json())
-          .catch(() => null),
-      ),
-    ).then((results) => {
-      const beanInfo = {};
-      Object.values(data.names).forEach((name, index) => {
-        if (results[index]) {
-          beanInfo[name] = results[index];
-        }
-      });
-      setBeanData(beanInfo);
-    });
-  }, [data.names]);
 
   const getDiagonalCell = (name) =>
     Object.values(data.comparisons)
@@ -38,7 +18,8 @@ export default function ComparisonsMatrix({ name, data }) {
               {["", ...names].map((name) => (
                 <th
                   key={name}
-                  className="border border-gray-300 w-10 h-10 bg-gray-100"
+                  className="border border-gray-300 w-10 h-10 bg-gray-100 cursor-pointer"
+                  onClick={() => setBeans(data.names[name])}
                 >
                   {name.toUpperCase()}
                 </th>
@@ -46,22 +27,22 @@ export default function ComparisonsMatrix({ name, data }) {
             </tr>
           </thead>
           <tbody>
-            {names.map((a) => (
-              <tr key={a}>
-                <td className="border border-gray-300 p-2 font-bold bg-gray-100 text-center group relative">
-                  {a.toUpperCase()}
-                  {/* {beanData[data.names[a]] && (
-                    <Tooltip bean={beanData[data.names[a]]} />
-                  )} */}
+            {names.map((row) => (
+              <tr key={row}>
+                <td
+                  className="border border-gray-300 p-2 font-bold bg-gray-100 text-center group relative cursor-pointer"
+                  onClick={() => setBeans(data.names[row])}
+                >
+                  {row.toUpperCase()}
                 </td>
-                {names.map((b) => (
+                {names.map((col) => (
                   <td
-                    key={b}
-                    className={`border border-gray-300 w-10 h-10 text-center ${a === b ? "bg-gray-200" : ""}`}
+                    key={col}
+                    className={`border border-gray-300 w-10 h-10 text-center ${row === col ? "bg-gray-200" : ""}`}
                   >
-                    {a === b
-                      ? getDiagonalCell(a)
-                      : data.comparisons[a][b].toUpperCase()}
+                    {row === col
+                      ? getDiagonalCell(row)
+                      : data.comparisons[row][col].toUpperCase()}
                   </td>
                 ))}
               </tr>
