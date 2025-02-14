@@ -1,0 +1,33 @@
+{
+  "attributes": {
+    "Brightness": 6,
+    "Body": 5,
+    "Aroma": 4,
+    "Complexity": 5,
+    "Balance": 6,
+    "Sweetness": 6
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 1,
+    "Nutty": 1,
+    "Buttery": 1,
+    "Fruity": 3,
+    "Flowery": 1,
+    "Winey": 1,
+    "Earthy": 1
+  },
+  "specifications": {
+    "Country": "Rwanda",
+    "Local Region": "Gakenke District, Rushashi",
+    "Process": "Washed",
+    "Variety": "Bourbon",
+    "Altitude (meters)": "1,700-1,900",
+    "Harvest": "March - June",
+    "Organic Certification": "Yes",
+    "Fair Trade": "Yes",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "Rwanda coffee flavor profiles have a very clean, crisp and balanced cup, with medium to lightly-heavy acidity (not as much as Kenya or Ethiopia). The cup is very clean and pleasant with bright acidity and notes of sweet, raisin, dried tropical fruit. We are proud to introduce you to the women of Hingakawa Women’s Coffee Cooperative. The Hingakawa Association is one half of the Abakundakawa-Rushashi Cooperative which was formed in 2004, becoming the first women’s coffee farmer association of its kind in Rwanda. The other half of Abakundakawa Rushashi is the Dakundakawa (“We love Coffee”) Association, also 100% run by women. Both coffee growing associations are located in the northern, mountainous regions of the Gakenke district, situated at high altitudes (1700-1900 meters elevation) and with coffee farms spread across five distinct zones. This Rwandan coffee bean is a bourbon varietal, washed and sun-dried. Try before you stock up with a 1/2 pound sample!"
+}

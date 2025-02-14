@@ -2,32 +2,33 @@
   "attributes": {
     "Brightness": 4,
     "Body": 4,
-    "Aroma": 5,
+    "Aroma": 4,
     "Complexity": 5,
-    "Balance": 5,
+    "Balance": 6,
     "Sweetness": 5
   },
   "flavors": {
     "Spicy": 1,
-    "Chocolaty": 2,
-    "Nutty": 4,
-    "Buttery": 4,
-    "Fruity": 1,
-    "Flowery": 3,
+    "Chocolaty": 4,
+    "Nutty": 1,
+    "Buttery": 3,
+    "Fruity": 3,
+    "Flowery": 1,
     "Winey": 1,
     "Earthy": 1
   },
   "specifications": {
-    "Category": "Conventional",
+    "Category": "Organic",
     "Country": "Brazil",
-    "Local Region": "South America",
-    "Process": "Semi Washed",
-    "Variety": "Mundo Nuovo, Catuai, Bourbon",
-    "Altitude (meters)": "1,150 masl",
-    "Organic Certification": "No",
+    "Local Region": "Matas de Minas",
+    "Process": "Natural",
+    "Certifications": "Organic",
+    "Variety": "Red and yellow Catuai, Mundo Novo, Bourbon, Catucai, yellow Pacamara, Icatu, Geisha, Catiguá MG3, Aramosa, Kent",
+    "Altitude (meters)": "650 - 1,400 masl",
+    "Organic Certification": "Yes",
     "Fair Trade": "No",
-    "Rainforest Alliance Certified": "Yes",
+    "Rainforest Alliance Certified": "No",
     "Decaffeinated": "No"
   },
-  "description": "Daterra’s Sweet Yellow has a delightful nutty sweetness expected from a semi-washed bean. Daterra Farms, the bean’s origin, was not only the very first Brazilian farm to achieve Rainforest Alliance certification but the first farm in the world to reach “Level A,” the RFA’s highest possible grading. For decades, Daterra has been protecting flora and fauna, saving and recycling water, and preserving the forests around them. When it comes to sustainability, Daterra Farms is king. Cupping Notes: Medium body, good acidity, and intense sweetness with notes of nut and butter. Try before you stock up with a 1/2 pound sample!"
+  "description": "Brazil Organic Dutra Natural 14/16 comes from a family-owned coffee farm in Sao Joao do Manjuacu inland from the east coast of Brazil. This coffee has a delicate but citric acidity and a smooth body with notes of cherry, cocoa, and raisin\nCupping Notes: Sweet, medium brightness and body with notes of cherry, cocoa, and raisin."
 }

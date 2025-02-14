@@ -36,12 +36,19 @@ async function fetchPage(url) {
   }
 }
 
-const url = process.argv[2]; // first argument
-const name = process.argv[3];
-const path = `public/data/beans/${name}.json`;
-// console.log({ url, name, path })
 
+
+const url = process.argv[2]; // first argument
+
+const match = url.match(/__(.+)\.aspx$/); // url will have the key in it
+const name = match ? match[1] : null;
+
+if (!name) {
+  throw new Error("URL must have the key in the path!");
+}
+
+const path = `public/data/beans/${name}.json`;
 const data = await fetchPage(url);
-// console.log(data);
+// console.log({ url, name, path, data })
 
 await fs.writeFile(path, JSON.stringify(data, null, 2));

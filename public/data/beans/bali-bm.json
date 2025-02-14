@@ -1,0 +1,35 @@
+{
+  "attributes": {
+    "Brightness": 4,
+    "Body": 5,
+    "Aroma": 3,
+    "Complexity": 5,
+    "Balance": 4,
+    "Sweetness": 6
+  },
+  "flavors": {
+    "Spicy": 3,
+    "Chocolaty": 4,
+    "Nutty": 1,
+    "Buttery": 1,
+    "Fruity": 2,
+    "Flowery": 2,
+    "Winey": 1,
+    "Earthy": 1
+  },
+  "specifications": {
+    "Category": "Organic",
+    "Country": "Bali",
+    "Local Region": "Bali North",
+    "Process": "Wet Hulled",
+    "Certifications": "Organic",
+    "Variety": "Blue Bourbon, Typica",
+    "Altitude (meters)": "1,100 - 1,500 masl",
+    "Harvest": "April - June",
+    "Organic Certification": "Yes",
+    "Fair Trade": "No",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "A home roaster’s secret and a hidden jewel, our Bali Blue Moon’s birthplace has been heavily regulated by the Indonesian island’s government since the 1970s, which is a bittersweet situation––on the one hand, farmers may have less individual control over their crop. However, it also means the quality, handling, and processing are consistently excellent. Moreover, Bali experiences significant social, economic, agricultural, and technological enhancement because of this regulation. No matter what viewpoint you have, it can’t be denied that this complex bean is of high quality. Cupping Notes: Smooth and syrupy body with  Smooth and syrupy body with notes of baker's chocolate, cedar, molasses, and vanilla. Try before you stock up with a 1/2 pound sample!"
+}
