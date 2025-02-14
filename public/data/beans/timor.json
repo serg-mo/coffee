@@ -1,0 +1,35 @@
+{
+  "attributes": {
+    "Brightness": 6,
+    "Body": 6,
+    "Aroma": 3,
+    "Complexity": 4,
+    "Balance": 4,
+    "Sweetness": 5
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 3,
+    "Nutty": 1,
+    "Buttery": 2,
+    "Fruity": 1,
+    "Flowery": 1,
+    "Winey": 1,
+    "Earthy": 1
+  },
+  "specifications": {
+    "Category": "Organic",
+    "Country": "Indonesia",
+    "Local Region": "East Timor",
+    "Process": "Washed",
+    "Certifications": "OrganicFair Trade",
+    "Variety": "Hibrido de Timor",
+    "Altitude (meters)": "1000 to 1400 masl",
+    "Harvest": "May - October",
+    "Organic Certification": "Yes",
+    "Fair Trade": "Yes",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "Introducing our Timor Heritage Reserve FTO coffee, a product of the cooperative efforts of 2,172 dedicated farmers from Aileu, Ermera, and Liquica in Timor. This coffee, grown on small farms averaging slightly over a hectare each, flourishes at altitudes ranging from 1,000 to 1,400 meters above sea level.\n\nThe creation of Cooperativa Haburas Kafe Organiku was made possible through a Technical Assistance project supported by the Asia Development Bank. Over a span of three years, these farmers received comprehensive training in various aspects, including pre- and post-harvest practices, nursery management, financial literacy, and gender sensitivity. This cooperative aims to ensure sustainable practices while improving both the quantity and quality of their coffee.\n\nTimor Heritage Reserve FTO presents a delightful cupping experience. It showcases a pleasant acidity, providing a subtle tang, along with a full body for a robust mouthfeel. Elevated sweetness with distinct notes of dark chocolate and graham cracker, forming a comforting and indulgent experience.\n\nWith every sip of Timor Heritage Reserve FTO, you not only enjoy a quality cup of coffee but also support the hard work and dedication of these enterprising farmers. It's a testament to their commitment to their craft and the rejuvenation of their community. Cupping Notes: Pleasant, tangy acidity, a full body with a robust mouthfeel, and elevated sweetness with distinct notes of dark chocolate and graham cracker."
+}

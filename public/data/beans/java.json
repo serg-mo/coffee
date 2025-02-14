@@ -1,0 +1,34 @@
+{
+  "attributes": {
+    "Brightness": 2,
+    "Body": 4,
+    "Aroma": 4,
+    "Complexity": 4,
+    "Balance": 5,
+    "Sweetness": 4
+  },
+  "flavors": {
+    "Spicy": 2,
+    "Chocolaty": 3,
+    "Nutty": 1,
+    "Buttery": 1,
+    "Fruity": 3,
+    "Flowery": 3,
+    "Winey": 1,
+    "Earthy": 4
+  },
+  "specifications": {
+    "Category": "Organic",
+    "Country": "Indonesia",
+    "Local Region": "Kayumas",
+    "Process": "Wet Hulled",
+    "Variety": "Typica",
+    "Altitude (meters)": "800 - 1,600 masl",
+    "Harvest": "May - September",
+    "Organic Certification": "Yes",
+    "Fair Trade": "No",
+    "Rainforest Alliance Certified": "Yes",
+    "Decaffeinated": "No"
+  },
+  "description": "Sourced from small, family-owned farms in the Surya Abadi Kayumas cooperative, this coffee is given its hallmark Indonesian profile through a unique process known as wet-hulling––the coffee parchment is removed before drying is completed. On the island of Java, Indonesia, coffee production is regularly dominated by government-run estates, a hierarchy first established in the 18th century. Be that as it may, this particular bean was refined by only 66 producers with an average farm size of 5 acres. Cupping notes: Cupping notes include black pepper, cedar, dark chocolate. Try before you stock up with a 1/2 pound sample!"
+}

@@ -1,0 +1,35 @@
+{
+  "attributes": {
+    "Brightness": 2,
+    "Body": 4,
+    "Aroma": 5,
+    "Complexity": 4,
+    "Balance": 6,
+    "Sweetness": 4
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 3,
+    "Nutty": 2,
+    "Buttery": 1,
+    "Fruity": 2,
+    "Flowery": 2,
+    "Winey": 1,
+    "Earthy": 2
+  },
+  "specifications": {
+    "Category": "Organic",
+    "Country": "Uganda",
+    "Local Region": "Kapchorwa District",
+    "Process": "Washed",
+    "Certifications": "Organic",
+    "Variety": "Bourbon, Kenya SL14, Kenya SL28",
+    "Altitude (meters)": "1,300 - 2,000 masl",
+    "Harvest": "October - February",
+    "Organic Certification": "Yes",
+    "Fair Trade": "No",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "A coffee bean like no other grows on the verdant slopes of Africa’s oldest volcano, Mount Elgon––the Ugandan Organic Bugisu. Family farms source this bean, and it’s named after the people native to the area: the Bugisu. The Sipi Falls Coffee Project has been regulating this bean and providing support since 1999 and has evolved to protect over 2,000 hectares of production. Agronomic practices have constantly improved over the years in order to yield more coffee at its best quality through intercropping, which allows the beans to have the vital nutrients they need. Cupping Notes: A complex cup with notes of dark chocolate , molasses, and vanilla. Minimal brightness, and pleasing medium body. Try before you stock up with a 1/2 pound sample!"
+}
