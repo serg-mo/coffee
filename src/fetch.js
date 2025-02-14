@@ -36,8 +36,6 @@ async function fetchPage(url) {
   }
 }
 
-
-
 const url = process.argv[2]; // first argument
 
 const match = url.match(/__(.+)\.aspx$/); // url will have the key in it

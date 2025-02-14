@@ -34,8 +34,8 @@ export default function Comparisons() {
   }
 
   return (
-    <>
-      <div className="flex justify-center items-center">
+    <div className="">
+      <div className="m-auto flex justify-center items-center">
         {datasets.map(({ data, name }) => (
           <ComparisonsMatrix
             name={name.replace("-", " ")}
@@ -46,6 +46,6 @@ export default function Comparisons() {
         ))}
       </div>
       {beans && <BeanCard name={beans} />}
-    </>
+    </div>
   );
 }
