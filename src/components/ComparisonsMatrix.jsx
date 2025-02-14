@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ComparisonsMatrix({ name, data, setBeans }) {
+export default function ComparisonsMatrix({ name, data, onBeansClick }) {
   const names = Object.keys(data.names);
 
   const getDiagonalCell = (name) =>
@@ -18,8 +18,8 @@ export default function ComparisonsMatrix({ name, data, setBeans }) {
               {["", ...names].map((name) => (
                 <th
                   key={name}
-                  className="border border-gray-300 w-10 h-10 bg-gray-100 cursor-pointer"
-                  onClick={() => setBeans(data.names[name])}
+                  className="border border-gray-300 w-6 bg-gray-100 cursor-pointer"
+                  onClick={() => onBeansClick(data.names[name])}
                 >
                   {name.toUpperCase()}
                 </th>
@@ -30,15 +30,20 @@ export default function ComparisonsMatrix({ name, data, setBeans }) {
             {names.map((row) => (
               <tr key={row}>
                 <td
-                  className="border border-gray-300 p-2 font-bold bg-gray-100 text-center group relative cursor-pointer"
-                  onClick={() => setBeans(data.names[row])}
+                  className="border border-gray-300 font-bold bg-gray-100 text-center group relative cursor-pointer"
+                  onClick={() => onBeansClick(data.names[row])}
                 >
                   {row.toUpperCase()}
                 </td>
                 {names.map((col) => (
                   <td
                     key={col}
-                    className={`border border-gray-300 w-10 h-10 text-center ${row === col ? "bg-gray-200" : ""}`}
+                    className={`border border-gray-300 w-6 text-center ${row === col ? "bg-gray-200 cursor-pointer" : ""}`}
+                    onClick={
+                      row === col
+                        ? () => onBeansClick(data.names[row])
+                        : () => {}
+                    }
                   >
                     {row === col
                       ? getDiagonalCell(row)
