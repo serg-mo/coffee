@@ -8,7 +8,7 @@
     "@babel/preset-env": "^7.24.7",
     "@babel/preset-react": "^7.24.7",
     "autoprefixer": "^10.4.19",
-    "axios": "^1.7.2",
+    "axios": "^1.7.9",
     "babel": "^6.23.0",
     "babel-loader": "^9.1.3",
     "cheerio": "^1.0.0-rc.12",
@@ -30,7 +30,8 @@
   },
   "scripts": {
     "start": "webpack serve --mode development",
-    "lint": "prettier . --write"
+    "lint": "prettier . --write",
+    "fetch": "node ./src/fetch.js"
   },
   "author": "",
   "license": "ISC",
