@@ -6,6 +6,8 @@ async function fetchPage(url) {
   const { data } = await axios.get(url);
   const $ = cheerio.load(data);
 
+  const sku = $('[itemprop="sku"]').first().text().trim().toLowerCase();
+
   const attributes = {};
   $(".spd-matrix-attributes .d-flex").each((_, el) => {
     const label = $(el).find("label").text().trim();
@@ -29,20 +31,18 @@ async function fetchPage(url) {
 
   const description = $('[itemprop="description"]').first().text().trim();
 
-  return { attributes, flavors, specifications, description };
+  return { sku, attributes, flavors, specifications, description };
 }
 
 const url = process.argv[2]; // first argument
+const data = await fetchPage(url);
+// console.log({ url, data })
 
-const match = url.match(/__(.+)\.aspx$/); // url will have the key in it
-const name = match ? match[1] : null;
-
-if (!name) {
+if (!data.sku) {
   throw new Error("URL must have the key in the path!");
 }
 
-const path = `public/data/beans/${name}.json`;
-const data = await fetchPage(url);
-// console.log({ url, name, path, data })
+const path = `public/data/beans/${data.sku}.json`;
+console.log(data.sku.toLowerCase());
 
 await fs.writeFile(path, JSON.stringify(data, null, 2));

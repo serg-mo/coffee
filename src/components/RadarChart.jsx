@@ -28,16 +28,18 @@ export default function RadarChart({ data, max }) {
         min: 0,
         max,
         ticks: {
-          stepSize: 1,
-          font: {
-            size: 12,
-          },
+          display: false, // Hide labels on scale
         },
         pointLabels: {
           font: {
-            size: 12,
+            size: 14,
           },
         },
+      },
+    },
+    elements: {
+      line: {
+        tension: 0,
       },
     },
     plugins: {

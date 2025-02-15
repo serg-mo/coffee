@@ -1,14 +1,9 @@
 import React from "react";
 
-export default function ComparisonsMatrix({
-  name,
-  data,
-  onBeansClick,
-  onDatasetClick,
-}) {
+export default function Dataset({ name, data, onBeansClick, onDatasetClick }) {
   const names = Object.keys(data.names);
 
-  const getDiagonalCell = (name) =>
+  const getWinCount = (name) =>
     Object.values(data.comparisons)
       .flatMap((comparisons) => Object.values(comparisons))
       .filter((winner) => winner === name).length;
@@ -29,7 +24,9 @@ export default function ComparisonsMatrix({
                 <th
                   key={name}
                   className="border border-gray-300 w-6 bg-gray-100 cursor-pointer"
-                  onClick={() => onBeansClick(data.names[name])}
+                  onClick={() =>
+                    onBeansClick(data.names[name], getWinCount(name))
+                  }
                 >
                   {name.toUpperCase()}
                 </th>
@@ -41,7 +38,9 @@ export default function ComparisonsMatrix({
               <tr key={row}>
                 <td
                   className="border border-gray-300 font-bold bg-gray-100 text-center group relative cursor-pointer"
-                  onClick={() => onBeansClick(data.names[row])}
+                  onClick={() =>
+                    onBeansClick(data.names[row], getWinCount(row))
+                  }
                 >
                   {row.toUpperCase()}
                 </td>
@@ -51,12 +50,12 @@ export default function ComparisonsMatrix({
                     className={`border border-gray-300 w-6 text-center ${row === col ? "bg-gray-200 cursor-pointer" : ""}`}
                     onClick={
                       row === col
-                        ? () => onBeansClick(data.names[row])
+                        ? () => onBeansClick(data.names[row], getWinCount(row))
                         : () => {}
                     }
                   >
                     {row === col
-                      ? getDiagonalCell(row)
+                      ? getWinCount(row)
                       : data.comparisons[row][col].toUpperCase()}
                   </td>
                 ))}

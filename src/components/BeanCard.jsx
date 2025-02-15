@@ -1,21 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-export default function BeanCard({ name }) {
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch(`/data/beans/${name}.json`)
-      .then((res) => res.json())
-      .then(setData)
-      .catch(() => null);
-  }, [name]);
-
-  if (!data) {
-    return null;
-  }
-
-  const { specifications, attributes, flavors, description } = data;
-
+export default function BeanCard({ specifications, description }) {
   return (
     <div className="text-sm w-full space-y-6">
       <div className="flex flex-row">
