@@ -1,6 +1,11 @@
 import React from "react";
 
-export default function ComparisonsMatrix({ name, data, onBeansClick }) {
+export default function ComparisonsMatrix({
+  name,
+  data,
+  onBeansClick,
+  onDatasetClick,
+}) {
   const names = Object.keys(data.names);
 
   const getDiagonalCell = (name) =>
@@ -10,7 +15,12 @@ export default function ComparisonsMatrix({ name, data, onBeansClick }) {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4 text-center capitalize">{name}</h2>
+      <h2
+        className="text-2xl font-bold mb-4 text-center capitalize cursor-pointer"
+        onClick={() => onDatasetClick(Object.values(data.names))}
+      >
+        {name}
+      </h2>
       <div className="overflow-x-auto">
         <table className="m-auto border-collapse border border-gray-300">
           <thead>
