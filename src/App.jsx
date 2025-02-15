@@ -81,8 +81,7 @@ export default function Comparisons() {
       borderWidth: 0,
     })),
   };
-
-  console.log({ attributesData, flavorsData });
+  // console.log({ attributesData, flavorsData });
 
   return (
     <div className="m-auto w-3/5">
@@ -93,6 +92,7 @@ export default function Comparisons() {
             data={data}
             key={name}
             onBeansClick={toggleBean}
+            onDatasetClick={setBeans}
           />
         ))}
       </div>
