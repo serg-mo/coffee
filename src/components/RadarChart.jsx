@@ -37,9 +37,10 @@ export default function RadarChart({ data, max }) {
         },
       },
     },
+    animation: false,
     elements: {
       line: {
-        tension: 0,
+        tension: 0.2,
       },
     },
     plugins: {
