@@ -9,8 +9,8 @@ export default {
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "docs"),
-    publicPath: "auto",
-    // publicPath: "https://serg-mo.github.io/coffee/",
+    // publicPath: "auto",
+    publicPath: "https://serg-mo.github.io/coffee/",
     filename: "bundle.js",
     clean: true,
   },
