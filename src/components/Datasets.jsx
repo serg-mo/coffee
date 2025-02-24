@@ -4,10 +4,11 @@ import Dataset from "./Dataset";
 export default function Datasets({ onBeansClick, onDatasetClick }) {
   const [datasets, setDatasets] = useState(null);
 
+  // must be relative path because the production is on /coffee/
   const urls = [
-    "/data/africa.json",
-    "/data/indonesia.json",
-    "/data/south-america.json",
+    "./data/africa.json",
+    "./data/indonesia.json",
+    "./data/south-america.json",
   ];
 
   useEffect(() => {
