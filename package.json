@@ -32,6 +32,7 @@
   },
   "scripts": {
     "start": "webpack serve --mode development",
+    "build": "webpack --mode production",
     "lint": "prettier . --write",
     "fetch": "node ./src/fetch.js"
   },

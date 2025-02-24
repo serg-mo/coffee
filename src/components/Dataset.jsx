@@ -2,11 +2,16 @@ import React from "react";
 
 export default function Dataset({ name, data, onBeansClick, onDatasetClick }) {
   const names = Object.keys(data.names);
+  const comparisons = Object.values(data.comparisons).flatMap((comparisons) =>
+    Object.values(comparisons),
+  );
+
+  if (comparisons.length !== 20) {
+    console.error(`Invalid dataset: total comparisons should be 20`);
+  }
 
   const getWinCount = (name) =>
-    Object.values(data.comparisons)
-      .flatMap((comparisons) => Object.values(comparisons))
-      .filter((winner) => winner === name).length;
+    comparisons.filter((winner) => winner === name).length;
 
   return (
     <div className="p-6">
