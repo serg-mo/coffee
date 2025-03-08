@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Dataset from "./Dataset";
 
-export default function Datasets({ onBeansClick, onDatasetClick }) {
+export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
   const [datasets, setDatasets] = useState(null);
 
   // must be relative path because the production is on /coffee/
@@ -43,6 +43,7 @@ export default function Datasets({ onBeansClick, onDatasetClick }) {
           name={name}
           data={data}
           key={name}
+          beanNames={beanNames}
           onBeansClick={onBeansClick}
           onDatasetClick={onDatasetClick}
         />
