@@ -9,6 +9,7 @@ export default function Datasets({ onBeansClick, onDatasetClick }) {
     "./data/africa.json",
     "./data/indonesia.json",
     "./data/south-america.json",
+    "./data/central-america.json",
   ];
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export default function Datasets({ onBeansClick, onDatasetClick }) {
   }
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-end">
       {datasets.map(({ data, name }) => (
         <Dataset
           name={name}
