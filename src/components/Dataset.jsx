@@ -1,4 +1,6 @@
 import React from "react";
+import { FiCheckCircle, FiXCircle } from "react-icons/fi";
+import { isTransitivelyComplete } from "../library";
 
 export default function Dataset({ name, data, onBeansClick, onDatasetClick }) {
   const names = Object.keys(data.names);
@@ -14,12 +16,13 @@ export default function Dataset({ name, data, onBeansClick, onDatasetClick }) {
     comparisons.filter((winner) => winner === name).length;
 
   return (
-    <div className="p-6">
+    <div className="p-6 w-64">
       <h2
-        className="text-2xl font-bold mb-4 text-center capitalize cursor-pointer"
+        className="text-xl font-bold mb-4 text-center capitalize cursor-pointer flex items-center gap-2 justify-center"
         onClick={() => onDatasetClick(Object.values(data.names))}
       >
-        {name}
+        {isTransitivelyComplete(comparisons) ? <FiCheckCircle /> : <FiXCircle />}
+        <span>{name}</span>
       </h2>
       <div className="overflow-x-auto">
         <table className="m-auto border-collapse border border-gray-300">
@@ -56,7 +59,7 @@ export default function Dataset({ name, data, onBeansClick, onDatasetClick }) {
                     onClick={
                       row === col
                         ? () => onBeansClick(data.names[row], getWinCount(row))
-                        : () => {}
+                        : () => { }
                     }
                   >
                     {row === col

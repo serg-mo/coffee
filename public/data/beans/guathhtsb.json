@@ -1,0 +1,34 @@
+{
+  "sku": "guathhtsb",
+  "attributes": {
+    "Brightness": 4,
+    "Body": 4,
+    "Aroma": 5,
+    "Complexity": 4,
+    "Balance": 5,
+    "Sweetness": 4
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 4,
+    "Nutty": 4,
+    "Buttery": 1,
+    "Fruity": 1,
+    "Flowery": 4,
+    "Winey": 1,
+    "Earthy": 1
+  },
+  "specifications": {
+    "Category": "Conventional",
+    "Country": "Guatemala",
+    "Local Region": "Huehuetenango",
+    "Process": "Washed",
+    "Variety": "Typica, Bourbon, Caturra and Catuai",
+    "Altitude (meters)": "1,350+ masl",
+    "Organic Certification": "No",
+    "Fair Trade": "No",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "Huehuetenango sits in the western highlands of Guatemala, bordering Mexico. It was one of the most ethnically diverse regions in Guatemala, and coffee growing has a rich, deep history and ties to the land. This variety is a proven, popular coffee you shouldn't miss! Cupping Notes: Maple, orange, milk chocolate and fruit notes; syrupy body, juicy acidity; sweet and complex.Try before you stock up with a 1/2 pound sample!"
+}
