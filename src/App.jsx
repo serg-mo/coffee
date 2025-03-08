@@ -53,7 +53,7 @@ export default function Comparisons() {
   };
 
   return (
-    <div className="m-auto w-3/5">
+    <div className="flex flex-col m-auto w-3/5">
       <Datasets onBeansClick={onBeansClick} onDatasetClick={setBeanNames} />
       <div className="w-full flex flex-col">
         {Object.values(beanData).length > 0 && (

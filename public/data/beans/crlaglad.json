@@ -1,0 +1,35 @@
+{
+  "sku": "crlaglad",
+  "attributes": {
+    "Brightness": 4,
+    "Body": 6,
+    "Aroma": 5,
+    "Complexity": 4,
+    "Balance": 6,
+    "Sweetness": 4
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 3,
+    "Nutty": 1,
+    "Buttery": 2,
+    "Fruity": 4,
+    "Flowery": 1,
+    "Winey": 1,
+    "Earthy": 1
+  },
+  "specifications": {
+    "Category": "Conventional",
+    "Country": "Costa Rica",
+    "Local Region": "Tarrazu",
+    "Process": "Washed",
+    "Variety": "Caturra, Catuai",
+    "Altitude (meters)": "1,300 - 1,800 masl",
+    "Harvest": "November - February",
+    "Organic Certification": "No",
+    "Fair Trade": "No",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "If you like La Magnolia, you will fall in love with La Gladiola! The fruit that comprises La Gladiola comes from the Western portion of the Tarrazu valley. The fruit is purchased from specific farmers, process it at La Minita's mill, Beneficio del Rio Tarrazu and kept separate from their other trademark coffee beans. Cupping Notes: Wonderful acidity, good body with some citrus and cocoa notes.Try before you stock up with a 1/2 pound sample!"
+}

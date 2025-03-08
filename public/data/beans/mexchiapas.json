@@ -1,0 +1,35 @@
+{
+  "sku": "mexchiapas",
+  "attributes": {
+    "Brightness": 4,
+    "Body": 4,
+    "Aroma": 4,
+    "Complexity": 5,
+    "Balance": 6,
+    "Sweetness": 3
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 4,
+    "Nutty": 4,
+    "Buttery": 4,
+    "Fruity": 1,
+    "Flowery": 3,
+    "Winey": 1,
+    "Earthy": 1
+  },
+  "specifications": {
+    "Category": "Conventional",
+    "Country": "Mexico",
+    "Local Region": "Chiapas",
+    "Process": "Washed",
+    "Variety": "Bourbon, Caturra, Typica and Catuaí",
+    "Altitude (meters)": "900 - 1,100 masl",
+    "Harvest": "December - March",
+    "Organic Certification": "No",
+    "Fair Trade": "No",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "This lot comes from a group of smallholder producers in Northern Chiapas. The coffee is brought to the San Cristobal de las Casas and Yajalón buying stations in Northern Chiapas. These producers plant, harvest, and prepare the coffee by hand. Generally, each produces between 10 to 15 bags. To help ensure the producers receive a fair price, InterAmerican works closely with the exporters that support these communities with social projects. The exporters also use their own transportation infrastructure to bring the producers’ coffees to market. The harvest season is December through March. All the coffee is received in parchment, quality controlled, and transported to a high-tech dry mill in Veracruz. After a second quality check, the coffee is cleaned, milled and sorted to be prepared for export. This coffee has a quality-control standard that allows for only 15 imperfections per 300 grams. Cupping notes: Milk chocolate, nutty, grape, citrus; medium body, cools sweet. Try before you stock up with a 1/2lb sample."
+}
