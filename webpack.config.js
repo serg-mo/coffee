@@ -5,12 +5,13 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export default {
+export default (env, argv) => ({
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "docs"),
-    // publicPath: "auto",
-    publicPath: "https://serg-mo.github.io/coffee/",
+    publicPath: argv.mode === 'production'
+      ? 'https://serg-mo.github.io/coffee/'
+      : 'auto',
     filename: "bundle.js",
     clean: true,
   },
@@ -45,4 +46,4 @@ export default {
     open: true,
     hot: true,
   },
-};
+});
