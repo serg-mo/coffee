@@ -2,7 +2,7 @@ import React from "react";
 import { FiCheckCircle, FiXCircle } from "react-icons/fi";
 import { isTransitivelyComplete } from "../library";
 
-export default function Dataset({ name, data, onBeansClick, onDatasetClick }) {
+export default function Dataset({ name, data, beanNames, onBeansClick, onDatasetClick }) {
   const names = Object.keys(data.names);
   const comparisons = Object.values(data.comparisons).flatMap((comparisons) =>
     Object.values(comparisons),
@@ -32,8 +32,7 @@ export default function Dataset({ name, data, onBeansClick, onDatasetClick }) {
                 <th
                   key={name}
                   className="border border-gray-300 w-6 bg-gray-100 cursor-pointer"
-                  onClick={() =>
-                    onBeansClick(data.names[name], getWinCount(name))
+                  onClick={() => onBeansClick(data.names[name])
                   }
                 >
                   {name.toUpperCase()}
@@ -46,8 +45,7 @@ export default function Dataset({ name, data, onBeansClick, onDatasetClick }) {
               <tr key={row}>
                 <td
                   className="border border-gray-300 font-bold bg-gray-100 text-center group relative cursor-pointer"
-                  onClick={() =>
-                    onBeansClick(data.names[row], getWinCount(row))
+                  onClick={() => onBeansClick(data.names[row])
                   }
                 >
                   {row.toUpperCase()}
@@ -55,10 +53,10 @@ export default function Dataset({ name, data, onBeansClick, onDatasetClick }) {
                 {names.map((col) => (
                   <td
                     key={col}
-                    className={`border border-gray-300 w-6 text-center ${row === col ? "bg-gray-200 cursor-pointer" : ""}`}
+                    className={`border border-gray-300 w-6 text-center ${row === col && beanNames.includes(data.names[row]) ? "font-bold" : ""} ${row === col ? "bg-gray-200 cursor-pointer" : ""}`}
                     onClick={
                       row === col
-                        ? () => onBeansClick(data.names[row], getWinCount(row))
+                        ? () => onBeansClick(data.names[row])
                         : () => { }
                     }
                   >

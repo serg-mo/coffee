@@ -42,10 +42,7 @@ export default function Comparisons() {
     });
   }, [beanNames]);
 
-  const onBeansClick = (name, winCount) => {
-    // TODO; winCount should affect transparency
-    // console.log({ name, winCount })
-
+  const onBeansClick = (name) => {
     // toggle
     setBeanNames((prev) =>
       prev.includes(name) ? prev.filter((v) => v !== name) : [...prev, name],
@@ -54,7 +51,7 @@ export default function Comparisons() {
 
   return (
     <div className="flex flex-col m-auto w-3/5">
-      <Datasets onBeansClick={onBeansClick} onDatasetClick={setBeanNames} />
+      <Datasets beanNames={beanNames} onBeansClick={onBeansClick} onDatasetClick={setBeanNames} />
       <div className="w-full flex flex-col">
         {Object.values(beanData).length > 0 && (
           <div className="w-full flex flex-row justify-between items-center m-auto">
