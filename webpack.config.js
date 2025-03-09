@@ -9,9 +9,8 @@ export default (env, argv) => ({
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "docs"),
-    publicPath: argv.mode === 'production'
-      ? 'https://serg-mo.github.io/coffee/'
-      : 'auto',
+    publicPath:
+      argv.mode === "production" ? "https://serg-mo.github.io/coffee/" : "auto",
     filename: "bundle.js",
     clean: true,
   },
