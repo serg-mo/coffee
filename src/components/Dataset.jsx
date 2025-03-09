@@ -2,7 +2,13 @@ import React from "react";
 import { FiCheckCircle, FiXCircle } from "react-icons/fi";
 import { isTransitivelyComplete } from "../library";
 
-export default function Dataset({ name, data, beanNames, onBeansClick, onDatasetClick }) {
+export default function Dataset({
+  name,
+  data,
+  beanNames,
+  onBeansClick,
+  onDatasetClick,
+}) {
   const names = Object.keys(data.names);
   const comparisons = Object.values(data.comparisons).flatMap((comparisons) =>
     Object.values(comparisons),
@@ -21,7 +27,11 @@ export default function Dataset({ name, data, beanNames, onBeansClick, onDataset
         className="text-xl font-bold mb-4 text-center capitalize cursor-pointer flex items-center gap-2 justify-center"
         onClick={() => onDatasetClick(Object.values(data.names))}
       >
-        {isTransitivelyComplete(comparisons) ? <FiCheckCircle /> : <FiXCircle />}
+        {isTransitivelyComplete(comparisons) ? (
+          <FiCheckCircle />
+        ) : (
+          <FiXCircle />
+        )}
         <span>{name}</span>
       </h2>
       <div className="overflow-x-auto">
@@ -32,8 +42,7 @@ export default function Dataset({ name, data, beanNames, onBeansClick, onDataset
                 <th
                   key={name}
                   className="border border-gray-300 w-6 bg-gray-100 cursor-pointer"
-                  onClick={() => onBeansClick(data.names[name])
-                  }
+                  onClick={() => onBeansClick(data.names[name])}
                 >
                   {name.toUpperCase()}
                 </th>
@@ -45,8 +54,7 @@ export default function Dataset({ name, data, beanNames, onBeansClick, onDataset
               <tr key={row}>
                 <td
                   className="border border-gray-300 font-bold bg-gray-100 text-center group relative cursor-pointer"
-                  onClick={() => onBeansClick(data.names[row])
-                  }
+                  onClick={() => onBeansClick(data.names[row])}
                 >
                   {row.toUpperCase()}
                 </td>
@@ -57,7 +65,7 @@ export default function Dataset({ name, data, beanNames, onBeansClick, onDataset
                     onClick={
                       row === col
                         ? () => onBeansClick(data.names[row])
-                        : () => { }
+                        : () => {}
                     }
                   >
                     {row === col

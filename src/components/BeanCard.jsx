@@ -18,9 +18,7 @@ export default function BeanCard({ sku, specifications, description }) {
           ))}
         </div>
 
-        <p className="w-1/2 text-sm leading-relaxed">
-          {description}
-        </p>
+        <p className="w-1/2 text-sm leading-relaxed">{description}</p>
       </div>
     </div>
   );
