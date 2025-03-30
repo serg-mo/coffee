@@ -3,9 +3,9 @@ export function isTransitivelyComplete(comparisons) {
 
   // convert comparisons into an adjacency matrix
   const preferenceMap = {};
-  coffees.forEach(a => {
+  coffees.forEach((a) => {
     preferenceMap[a] = {};
-    coffees.forEach(b => {
+    coffees.forEach((b) => {
       if (a !== b) {
         preferenceMap[a][b] = comparisons[a][b] === a; // true if a is preferred over b
       } else {
@@ -18,7 +18,11 @@ export function isTransitivelyComplete(comparisons) {
   for (let k of coffees) {
     for (let i of coffees) {
       for (let j of coffees) {
-        if (preferenceMap[i][k] && preferenceMap[k][j] && !preferenceMap[i][j]) {
+        if (
+          preferenceMap[i][k] &&
+          preferenceMap[k][j] &&
+          !preferenceMap[i][j]
+        ) {
           return false; // missing transitive preference
         }
       }
