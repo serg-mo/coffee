@@ -1,5 +1,5 @@
 export type DataShape = {
-  // sku for each bean
+  // sku from coffeebeancorral.com
   names: {
     a: string;
     b: string;
@@ -41,4 +41,3 @@ export type DataShape = {
     };
   };
 };
-

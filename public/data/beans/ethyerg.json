@@ -1,0 +1,35 @@
+{
+  "sku": "ethyerg",
+  "attributes": {
+    "Brightness": 5,
+    "Body": 4,
+    "Aroma": 4,
+    "Complexity": 5,
+    "Balance": 6,
+    "Sweetness": 4
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 4,
+    "Nutty": 1,
+    "Buttery": 1,
+    "Fruity": 4,
+    "Flowery": 4,
+    "Winey": 1,
+    "Earthy": 4
+  },
+  "specifications": {
+    "Category": "Conventional",
+    "Country": "Ethiopia",
+    "Local Region": "Yirgacheffe",
+    "Process": "Washed",
+    "Variety": "Indigenous Heirloom varietals",
+    "Altitude (meters)": "1,850 - 1,950 masl",
+    "Harvest": "October - February",
+    "Organic Certification": "No",
+    "Fair Trade": "Yes",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "The Konga Cooperative, one of many in the area, belongs to a much larger group known as the Yirgacheffe Coffee Farmers Union (YCFCU). Ethiopian heirloom coffee bean varietals are chosen from the forest and then transplanted to small gardens, adding to the incredible complex flavor profiles available among wild coffee plants. Konga is an area within Yirgacheffe known for producing particularly fine coffees. We think this lot is no exception. As part of the cooperative's mission to give back to its community, it recently renovated buildings at a primary school and outfitted it with new supplies. Cupping Notes: Apricot, Floral, Raspberry."
+}
