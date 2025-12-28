@@ -34,7 +34,8 @@ async function fetchPage(url) {
   return { sku, attributes, flavors, specifications, description };
 }
 
-const url = process.argv[2]; // first argument
+// url to the bean page is the only argument
+const url = process.argv[2];
 const data = await fetchPage(url);
 // console.log({ url, data })
 
@@ -43,6 +44,4 @@ if (!data.sku) {
 }
 
 const path = `public/data/beans/${data.sku}.json`;
-console.log(data.sku.toLowerCase());
-
 await fs.writeFile(path, JSON.stringify(data, null, 2));

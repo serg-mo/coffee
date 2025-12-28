@@ -1,0 +1,41 @@
+{
+  "names": {
+    "a": "TANZPB",
+    "b": "RWANRULI",
+    "c": "ETHORGLIMU",
+    "d": "UGANDAROBUSTA",
+    "e": "ETHYERG"
+  },
+  "comparisons": {
+    "a": {
+      "b": "a",
+      "c": "c",
+      "d": "a",
+      "e": "a"
+    },
+    "b": {
+      "a": "a",
+      "c": "c",
+      "d": "d",
+      "e": "e"
+    },
+    "c": {
+      "a": "c",
+      "b": "c",
+      "d": "c",
+      "e": "c"
+    },
+    "d": {
+      "a": "a",
+      "b": "b",
+      "c": "d",
+      "e": "d"
+    },
+    "e": {
+      "a": "a",
+      "b": "e",
+      "c": "e",
+      "d": "d"
+    }
+  }
+}

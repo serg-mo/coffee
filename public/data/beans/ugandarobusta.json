@@ -1,0 +1,34 @@
+{
+  "sku": "ugandarobusta",
+  "attributes": {
+    "Brightness": 4,
+    "Body": 2,
+    "Aroma": 3,
+    "Complexity": 3,
+    "Balance": 3,
+    "Sweetness": 1
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 1,
+    "Nutty": 4,
+    "Buttery": 1,
+    "Fruity": 2,
+    "Flowery": 2,
+    "Winey": 1,
+    "Earthy": 1
+  },
+  "specifications": {
+    "Category": "Conventional",
+    "Country": "Uganda",
+    "Local Region": "Mubende district",
+    "Process": "Washed",
+    "Variety": "Robusta",
+    "Altitude (meters)": "1,300 masl",
+    "Organic Certification": "No",
+    "Fair Trade": "No",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "This premium Ugandan robusta is grown on the Kaweri farm, which cultivates 1,626 hectares of selected Ugandan coffee under indigenous shade trees. The farm produces high-quality, dense, hard beans comparable to high-grown Arabica and is pioneering the washed process for Robusta in Uganda. Their meticulous harvesting and processing methods include selective cherry picking and a thorough post-harvest process involving pulping, soaking, sun pre-drying, and final drum drying.\n\n\nCupping Notes: Peanut, popcorn, salted caramel, vanilla, slightly floral, pear, malty, quick finish, light body."
+}
