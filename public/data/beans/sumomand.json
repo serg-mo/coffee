@@ -1,0 +1,35 @@
+{
+  "sku": "sumomand",
+  "attributes": {
+    "Brightness": 5,
+    "Body": 4,
+    "Aroma": 3,
+    "Complexity": 6,
+    "Balance": 3,
+    "Sweetness": 2
+  },
+  "flavors": {
+    "Spicy": 2,
+    "Chocolaty": 1,
+    "Nutty": 1,
+    "Buttery": 2,
+    "Fruity": 3,
+    "Flowery": 3,
+    "Winey": 1,
+    "Earthy": 4
+  },
+  "specifications": {
+    "Category": "Organic",
+    "Country": "Indonesia",
+    "Local Region": "Aceh",
+    "Process": "Wet Hulled",
+    "Variety": "Catimor, Typica",
+    "Altitude (meters)": "900 - 1,600 masl",
+    "Harvest": "June - December",
+    "Organic Certification": "Yes",
+    "Fair Trade": "Yes",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "Sumatra is Indonesia's second-largest island, and it’s filled with mineral-rich soil and diverse plant life. Grown in the shady slopes of Mount Leuser––near Pandang in the Batak area of Aceh––the Sumatra Mandheling coffee bean is born in the most mineral-rich land available in the world––volcanic soil. In addition to coming from an ideal coffee-growing environment, this bean cultivates in one of the world’s most ancient ecosystems. In fact, its namesake is the result of a language barrier in the culturally-diverse climate. Cupping Notes: A medium bodied cup with bright acidity and the typical \"clay\" earthiness that marks the region. Complexity is refined with notes of orchid and orange and barest grapefruit. Pleasingly light in the mouth but not insubstantial, with very light aftertaste.Try before you stock up with a 1/2 pound sample!"
+}

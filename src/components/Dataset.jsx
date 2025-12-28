@@ -28,9 +28,9 @@ export default function Dataset({
         onClick={() => onDatasetClick(Object.values(data.names))}
       >
         {isTransitivelyComplete(comparisons) ? (
-          <FiCheckCircle />
+          <FiCheckCircle title="Transitively Complete" />
         ) : (
-          <FiXCircle />
+          <FiXCircle title="Not Transitively Complete" />
         )}
         <span>{name}</span>
       </h2>

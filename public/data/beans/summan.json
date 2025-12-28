@@ -1,0 +1,35 @@
+{
+  "sku": "summan",
+  "attributes": {
+    "Brightness": 5,
+    "Body": 5,
+    "Aroma": 4,
+    "Complexity": 5,
+    "Balance": 4,
+    "Sweetness": 5
+  },
+  "flavors": {
+    "Spicy": 4,
+    "Chocolaty": 1,
+    "Nutty": 1,
+    "Buttery": 1,
+    "Fruity": 4,
+    "Flowery": 4,
+    "Winey": 1,
+    "Earthy": 4
+  },
+  "specifications": {
+    "Category": "Conventional",
+    "Country": "Indonesia",
+    "Local Region": "Batak Region of West-Central Sumatra, Aceh",
+    "Process": "Wet Hulled",
+    "Variety": "Catimor, Typica",
+    "Altitude (meters)": "1,100 - 1,500 masl",
+    "Harvest": "June - December",
+    "Organic Certification": "No",
+    "Fair Trade": "No",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "This shade-grown Sumatran coffee is a classic, so steeped in the history of this Indonesian island that the name itself is not of a region, but rather the result of a language barrier. Sumatra Mandheling is grown on the slopes of Mount Leuser, a volcano near the port of Pandang, in the Batak area of Aceh. It is home to one of the most ancient ecosystems in the world! The flavor profile is vibrant and spicy, a heavy coffee reminiscent of the atmosphere on this tropical paradise. If you're looking for a Sumatran coffee that won't let you down, this is a go-to. Cupping Notes: Chocolate, cedar, sweet tobacco, and spice, along with a mild acidity and creamy body. Try before you stock up with a 1/2 pound sample!"
+}
