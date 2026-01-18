@@ -10,8 +10,8 @@ export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
     const urls = [
       `./data/${year}/africa.json`,
       `./data/${year}/indonesia.json`,
-      `./data/${year}/south-america.json`,
       `./data/${year}/central-america.json`,
+      `./data/${year}/south-america.json`,
     ];
 
     const formatFileName = (url) =>

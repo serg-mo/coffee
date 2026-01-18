@@ -1,33 +1,37 @@
-export function isTransitivelyComplete(comparisons) {
-  const coffees = Object.keys(comparisons);
 
-  // convert comparisons into an adjacency matrix
-  const preferenceMap = {};
-  coffees.forEach((a) => {
-    preferenceMap[a] = {};
-    coffees.forEach((b) => {
-      if (a !== b) {
-        preferenceMap[a][b] = comparisons[a][b] === a; // true if a is preferred over b
-      } else {
-        preferenceMap[a][b] = false; // no self-preference
-      }
-    });
-  });
+// NOTE: it is possible 
+export function isTransitivelyComplete(comparisons, names) {
+  const messages = [];
 
-  // apply Warshall's Algorithm for transitive closure
-  for (let k of coffees) {
-    for (let i of coffees) {
-      for (let j of coffees) {
+  for (let a of names) {
+    for (let b of names) {
+      for (let c of names) {
         if (
-          preferenceMap[i][k] &&
-          preferenceMap[k][j] &&
-          !preferenceMap[i][j]
+          comparisons[a][b] === a && comparisons[b][a] === a && // a > b AND b < a
+          comparisons[b][c] === b && comparisons[c][b] === b && // b > c AND c < b
+          comparisons[a][c] !== a && comparisons[c][a] !== a    // BUT NOT a > c AND c < a
         ) {
-          return false; // missing transitive preference
+          // NOTE: two answers for each pair must agree or be ignored (ab vs ba)
+          messages.push(`${a} > ${b} and ${b} > ${c} BUT NOT ${a} > ${c}`);
         }
       }
     }
   }
 
-  return true; // transitively complete
+  return {
+    result: messages.length === 0,
+    messages,
+  };
+}
+
+export function isPair(comparisons) { 
+  // 5 * 4 pairs, opposite sides of the diagonal, a vs b and b vs a
+  return comparisons.length == 20
+}
+
+export function isQuad(comparisons) {
+  // 5 quads, with 3 direct comparisons for each unique pair
+  // abcd, abce, abde, acde, bcde (exclude one bean on every tasting)
+
+  return comparisons.length == 10
 }
