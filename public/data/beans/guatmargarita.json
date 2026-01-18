@@ -1,0 +1,35 @@
+{
+  "sku": "guatmargarita",
+  "attributes": {
+    "Brightness": 6,
+    "Body": 4,
+    "Aroma": 4,
+    "Complexity": 3,
+    "Balance": 4,
+    "Sweetness": 6
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 4,
+    "Nutty": 1,
+    "Buttery": 1,
+    "Fruity": 4,
+    "Flowery": 2,
+    "Winey": 1,
+    "Earthy": 1
+  },
+  "specifications": {
+    "Category": "Conventional",
+    "Country": "Guatemala",
+    "Local Region": "Chimaltenango, Acatenango",
+    "Process": "Washed",
+    "Variety": "Caturra, Sarchimor, Catimor, Geisha",
+    "Altitude (meters)": "1,640 masl",
+    "Harvest": "September - April",
+    "Organic Certification": "No",
+    "Fair Trade": "No",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "Finca Santa Margarita is the family farm of Camila Topke, one of our trading partners and a member of the International Women’s Coffee Alliance. In May, I visited Guatemala and learned firsthand the challenges Guatemalan producers are experiencing. Founded in 1838 by Camila’s great grandfather, Thomas Wyld, Santa Margarita is now 2,320 hectares––812 of which are coffee farms with Caturra, Sarchimor, Catimor, and Geisha varieties. Santa Margarita is committed to serving the community and environmental sustainability––the surrounding natural forest and wildlife are preserved. The farm houses an elementary school for children, a church, and a health clinic on-site. The majority of the farm’s operators are women––from coffee pickers to those running the grafting program, school, and health clinic. Cupping notes: Smooth body, jasmine, floral, cocoa powder, milk chocolate, almonds, caramel, delicate finish. Try before you stock up with a 1/2lb sample!!"
+}

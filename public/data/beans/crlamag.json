@@ -1,0 +1,35 @@
+{
+  "sku": "crlamag",
+  "attributes": {
+    "Brightness": 6,
+    "Body": 1,
+    "Aroma": 1,
+    "Complexity": 1,
+    "Balance": 1,
+    "Sweetness": 1
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 1,
+    "Nutty": 1,
+    "Buttery": 1,
+    "Fruity": 1,
+    "Flowery": 1,
+    "Winey": 1,
+    "Earthy": 1
+  },
+  "specifications": {
+    "Category": "Conventional",
+    "Country": "Costa Rica",
+    "Local Region": "Tres Rios",
+    "Process": "Washed",
+    "Variety": "Caturra, Catuai",
+    "Altitude (meters)": "1,200 - 1,650 masl",
+    "Harvest": "December - February",
+    "Organic Certification": "No",
+    "Fair Trade": "No",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "What a fitting name for this wonderfully sweet and aromatic coffee! The La Magnolia is one of the finest Tres Rios coffees we've ever offered, brought to you by the same people who bring you the La Minita Terrazu.The La Magnolia is a beautifully prepped, remarkably well-rounded, exceptionally well-balanced, complex coffee. If you're in search of a special Costa Rican coffee (and even if you're not), this may be the one."
+}
