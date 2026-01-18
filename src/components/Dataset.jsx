@@ -45,7 +45,11 @@ export default function Dataset({
                 </div>
               </th>
               {names.map((name) => (
-                <th key={name} className={cellClassName} onClick={() => onBeansClick(data.names[name])}>
+                <th
+                  key={name}
+                  className={cellClassName}
+                  onClick={() => onBeansClick(data.names[name])}
+                >
                   {name.toUpperCase()}
                 </th>
               ))}
@@ -54,7 +58,10 @@ export default function Dataset({
           <tbody>
             {names.map((row) => (
               <tr key={row}>
-                <th lassName={cellClassName} onClick={() => onBeansClick(data.names[row])}>
+                <th
+                  className={cellClassName}
+                  onClick={() => onBeansClick(data.names[row])}
+                >
                   {row.toUpperCase()}
                 </th>
                 {names.map((col) => (
