@@ -21,29 +21,31 @@ export default function Dataset({
   const getWinCount = (name) =>
     comparisons.filter((winner) => winner === name).length;
 
+  const cellClassName = "border border-gray-300 h-8 w-8 bg-gray-100 cursor-pointer"
+
   return (
     <div className="p-6 w-64">
       <h2
-        className="text-xl font-bold mb-4 text-center capitalize cursor-pointer flex items-center gap-2 justify-center"
+        className="text-xl font-bold text-center capitalize cursor-pointer flex items-center gap-2 justify-center"
         onClick={() => onDatasetClick(Object.values(data.names))}
       >
-        {isTransitivelyComplete(comparisons) ? (
-          <FiCheckCircle title="Transitively Complete" />
-        ) : (
-          <FiXCircle title="Not Transitively Complete" />
-        )}
         <span>{name}</span>
       </h2>
       <div className="overflow-x-auto">
-        <table className="m-auto border-collapse border border-gray-300">
+        <table className="m-auto border-collapse text-center">
           <thead>
             <tr>
-              {["", ...names].map((name) => (
-                <th
-                  key={name}
-                  className="border border-gray-300 w-6 bg-gray-100 cursor-pointer"
-                  onClick={() => onBeansClick(data.names[name])}
-                >
+              <th key="transitively-complete" className={cellClassName}>
+                <div className="flex items-center justify-center h-full">
+                  {isTransitivelyComplete(data.comparisons) ? (
+                    <FiCheckCircle title="Transitively Complete" />
+                  ) : (
+                    <FiXCircle title="Not Transitively Complete" />
+                  )}
+                </div>
+              </th>
+              {names.map((name) => (
+                <th key={name} className={cellClassName} onClick={() => onBeansClick(data.names[name])}>
                   {name.toUpperCase()}
                 </th>
               ))}
@@ -52,20 +54,17 @@ export default function Dataset({
           <tbody>
             {names.map((row) => (
               <tr key={row}>
-                <td
-                  className="border border-gray-300 font-bold bg-gray-100 text-center group relative cursor-pointer"
-                  onClick={() => onBeansClick(data.names[row])}
-                >
+                <th lassName={cellClassName} onClick={() => onBeansClick(data.names[row])}>
                   {row.toUpperCase()}
-                </td>
+                </th>
                 {names.map((col) => (
                   <td
                     key={col}
-                    className={`border border-gray-300 w-6 text-center ${row === col && beanNames.includes(data.names[row]) ? "font-bold" : ""} ${row === col ? "bg-gray-200 cursor-pointer" : ""}`}
+                    className={`border border-gray-300 h-8 w-8 ${row === col && beanNames.includes(data.names[row]) ? "font-bold" : ""} ${row === col ? "bg-gray-200 cursor-pointer" : "bg-white select-none"}`}
                     onClick={
                       row === col
                         ? () => onBeansClick(data.names[row])
-                        : () => {}
+                        : () => { }
                     }
                   >
                     {row === col
