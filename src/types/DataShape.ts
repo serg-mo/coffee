@@ -7,7 +7,7 @@ export type DataShape = {
     d: string;
     e: string;
   };
-  // 2 sets of 10 possible pairwise comparisons
+  // 2 sets of 10 unique pairwise comparisons, e.g., ab / ba
   comparisons: {
     a: {
       b: "a" | "b";
