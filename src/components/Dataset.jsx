@@ -23,6 +23,8 @@ export default function Dataset({
 
   const cellClassName = "border border-gray-300 h-8 w-8 bg-gray-100 cursor-pointer"
 
+  const { result, messages } = isTransitivelyComplete(data);
+
   return (
     <div className="p-6 w-64">
       <h2
@@ -37,11 +39,13 @@ export default function Dataset({
             <tr>
               <th key="transitively-complete" className={cellClassName}>
                 <div className="flex items-center justify-center h-full">
-                  {isTransitivelyComplete(data.comparisons) ? (
-                    <FiCheckCircle title="Transitively Complete" />
-                  ) : (
-                    <FiXCircle title="Not Transitively Complete" />
-                  )}
+                  <div className="cursor-pointer" onClick={() => console.log(messages)}>
+                    {result ? (
+                      <FiCheckCircle title="Transitively Complete" />
+                    ) : (
+                      <FiXCircle title={`Not Transitively Complete`} />
+                    )}
+                  </div>
                 </div>
               </th>
               {names.map((name) => (

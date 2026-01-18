@@ -1,33 +1,26 @@
-export function isTransitivelyComplete(comparisons) {
-  const coffees = Object.keys(comparisons);
+export function isTransitivelyComplete(data) {
+  const { comparisons, names } = data;
+  const keys = Object.keys(names);
+  const messages = [];
 
-  // convert comparisons into an adjacency matrix
-  const preferenceMap = {};
-  coffees.forEach((a) => {
-    preferenceMap[a] = {};
-    coffees.forEach((b) => {
-      if (a !== b) {
-        preferenceMap[a][b] = comparisons[a][b] === a; // true if a is preferred over b
-      } else {
-        preferenceMap[a][b] = false; // no self-preference
-      }
-    });
-  });
-
-  // apply Warshall's Algorithm for transitive closure
-  for (let k of coffees) {
-    for (let i of coffees) {
-      for (let j of coffees) {
+  // Warshall's Algorithm for transitive closure
+  for (let a of keys) {
+    for (let b of keys) {
+      for (let c of keys) {
         if (
-          preferenceMap[i][k] &&
-          preferenceMap[k][j] &&
-          !preferenceMap[i][j]
+          comparisons[a][b] === a && comparisons[b][a] === a && // a > b AND b < a
+          comparisons[b][c] === b && comparisons[c][b] === b && // b > c AND c < b
+          comparisons[a][c] !== a && comparisons[c][a] !== a    // BUT NOT a > c AND c < a
         ) {
-          return false; // missing transitive preference
+          // NOTE: two answers for each pair must agreed or be ignored (ab vs ba)
+          messages.push(`${a} > ${b} and ${b} > ${c} BUT NOT ${a} > ${c}`);
         }
       }
     }
   }
 
-  return true; // transitively complete
+  return {
+    result: messages.length === 0,
+    messages,
+  };
 }
