@@ -23,7 +23,7 @@ export default function Dataset({
 
   const cellClassName = "border border-gray-300 h-8 w-8 bg-gray-100 cursor-pointer"
 
-  const { result, messages } = isTransitivelyComplete(data);
+  const { result, messages } = isTransitivelyComplete(names, comparisons);
 
   return (
     <div className="p-6 w-64">

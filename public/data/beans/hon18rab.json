@@ -1,0 +1,34 @@
+{
+  "sku": "hon18rab",
+  "attributes": {
+    "Brightness": 7,
+    "Body": 5,
+    "Aroma": 6,
+    "Complexity": 3,
+    "Balance": 5,
+    "Sweetness": 6
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 4,
+    "Nutty": 1,
+    "Buttery": 3,
+    "Fruity": 3,
+    "Flowery": 2,
+    "Winey": 1,
+    "Earthy": 1
+  },
+  "specifications": {
+    "Category": "Organic",
+    "Country": "Honduras",
+    "Local Region": "Marcala",
+    "Process": "Washed",
+    "Variety": "Red and Yellow Catuai",
+    "Altitude (meters)": "1,400 masl",
+    "Organic Certification": "Yes",
+    "Fair Trade": "No",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "18 Rabbit––part of Honduras’ Cup of Excellence––is a collection of farms owned by Señora Flhor, her mother, and eleven members of their family. As pioneers of organic and biodynamic coffee-farming techniques, the soil they use is always naturally regenerated. 18 Rabbit Washed coffees are grown in the Marcala region and wash-processed, which gives the roast a sweet flavor.  Cupping Notes: Chocolate and caramel aromas with chocolate flavors and a mild green apple-like acidity with a heavy body and very sweet.Try before you stock up with a 1/2 pound sample!"
+}
