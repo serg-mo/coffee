@@ -1,20 +1,20 @@
 {
   "sku": "perulaflor",
   "attributes": {
-    "Brightness": 4,
+    "Brightness": 3,
     "Body": 6,
     "Aroma": 5,
     "Complexity": 4,
     "Balance": 6,
-    "Sweetness": 5
+    "Sweetness": 3
   },
   "flavors": {
     "Spicy": 1,
-    "Chocolaty": 2,
-    "Nutty": 1,
-    "Buttery": 1,
-    "Fruity": 3,
-    "Flowery": 2,
+    "Chocolaty": 4,
+    "Nutty": 3,
+    "Buttery": 2,
+    "Fruity": 1,
+    "Flowery": 1,
     "Winey": 1,
     "Earthy": 2
   },
@@ -23,13 +23,14 @@
     "Country": "Peru",
     "Local Region": "Selva Central",
     "Process": "Washed",
-    "Variety": "Caturra, Typica, Bourbon",
-    "Altitude (meters)": "1,200 - 1,400 masl",
-    "Harvest": "April - September",
+    "Certifications": "OrganicFair Trade",
+    "Variety": "Caturra, Typica, Bourbon, Catimor",
+    "Altitude (meters)": "915 masl",
+    "Harvest": "June - July",
     "Organic Certification": "Yes",
     "Fair Trade": "Yes",
     "Rainforest Alliance Certified": "No",
     "Decaffeinated": "No"
   },
-  "description": "The La Florida Cooperative was established in 1965 by a group of small-scale farmers from the Chanchamayo region––since then, the organization has been committed to improving its coffee beans. For the past 13 years, La Florida has not only been dedicated to producing the highest quality beans but also strives to improve their quality of life––both for their people and the environment. The organization’s Fair Trade revenue brings education, healthcare, and infrastructure to an otherwise rural area––in fact, the Occupational Learning Center for Sustainable Agriculture was created due to their efforts. Cupping Notes: Sweet, chocolatey, and floral with a full, creamy body, and medium, citrus acidity. Try before you stock up with a 1/2 pound sample!"
+  "description": "The La Florida Cooperative was established in 1965 by a group of small-scale farmers from the Chanchamayo region–since then, the organization has been committed to improving its coffee beans. For the past 13 years, La Florida has not only been dedicated to producing the highest quality beans but also strives to improve their quality of life – both for their people and the environment. The organization’s Fair Trade revenue brings education, healthcare, and infrastructure to an otherwise rural area – in fact, the Occupational Learning Center for Sustainable Agriculture was created due to their efforts.\n \n\nCupping Notes: Milk Chocolate, Pear, Toffee, with a full, creamy body, and mild acidity.? \nTry before you stock up with a 1/2 pound sample!"
 }
