@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Chart as ChartJS,
   Filler,
@@ -20,7 +21,7 @@ ChartJS.register(
   Legend,
 );
 
-export default function RadarChart({ data, max }) {
+export default function RadarChart({ data, max }: { data: any, max: number }) {
   const options = {
     scales: {
       r: {

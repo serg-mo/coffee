@@ -1,6 +1,5 @@
 import React from "react";
-import { FiCheckCircle, FiXCircle } from "react-icons/fi";
-import { isTransitivelyComplete } from "../library";
+import DatasetCheck from "./DatasetCheck";
 
 export default function Dataset({
   name,
@@ -22,14 +21,11 @@ export default function Dataset({
 
   const cellClassName = "border border-gray-300 h-8 w-8 bg-gray-100 cursor-pointer"
 
-  // NOTE: this has to work for pairwise and quad comparisons, i.e., convert quad to pair
-  const { result, messages } = isTransitivelyComplete(dataset);
-
   return (
     <div className="p-6 w-64">
       <h2
         className="text-xl font-bold text-center capitalize cursor-pointer flex items-center gap-2 justify-center"
-        onClick={() => onDatasetClick(Object.values(dataset.names)) /* every bean in the dataset */ }
+        onClick={() => onDatasetClick(Object.values(dataset.names)) /* every bean in the dataset */}
       >
         <span>{name}</span>
       </h2>
@@ -38,23 +34,15 @@ export default function Dataset({
           <thead>
             <tr>
               <th key="transitively-complete" className={cellClassName}>
-                <div className="flex items-center justify-center h-full">
-                  <div className="cursor-pointer" onClick={() => console.log(messages)}>
-                    {result ? (
-                      <FiCheckCircle title="Transitively Complete" />
-                    ) : (
-                      <FiXCircle title={`Not Transitively Complete`} />
-                    )}
-                  </div>
-                </div>
+                <DatasetCheck {...dataset} />
               </th>
-              {names.map((name) => (
+              {names.map((col) => (
                 <th
-                  key={name}
+                  key={col}
                   className={cellClassName}
-                  onClick={() => onBeansClick(dataset.names[name])}
+                  onClick={() => onBeansClick(dataset.names[col])}
                 >
-                  {name.toUpperCase()}
+                  {col.toUpperCase()}
                 </th>
               ))}
             </tr>
