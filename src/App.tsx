@@ -58,18 +58,16 @@ export default function Comparisons() {
       />
       {beanNames.length > 0 ? (
         <div className="w-full flex flex-col">
+          <div className="w-full flex flex-row justify-between items-center m-auto">
+            <div className="w-1/2">
+              <RadarChart data={getChartData("attributes")} max={7} />
+            </div>
+            <div className="w-1/2">
+              <RadarChart data={getChartData("flavors")} max={4} />
+            </div>
+          </div>
           {beanNames.length === 1 && beanData[beanNames[0]] && (
             <BeanCard {...beanData[beanNames[0]]} />
-          )}
-          {beanNames.length > 1 && (
-            <div className="w-full flex flex-row justify-between items-center m-auto">
-              <div className="w-1/2">
-                <RadarChart data={getChartData("attributes")} max={7} />
-              </div>
-              <div className="w-1/2">
-                <RadarChart data={getChartData("flavors")} max={4} />
-              </div>
-            </div>
           )}
         </div>
       ) : (
