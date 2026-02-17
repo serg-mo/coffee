@@ -83,11 +83,14 @@ export default function Dataset({
     typeof Object.values(dataset.comparisons)[0] === "string"
       ? convertQuadToPairwise(dataset.comparisons)
       : dataset.comparisons;
+
   const comparisonsFlat = Object.values(comparisons).flatMap(Object.values);
+
   const getTotalWins = (name: string) =>
     comparisonsFlat.filter((winner: string) => winner === name).length;
+
   const cellClassName =
-    "border border-gray-300 h-8 w-8 bg-gray-100 cursor-pointer";
+    "border border-gray-300 h-8 w-8 bg-gray-100 text-xl cursor-pointer";
 
   // TODO: bring back DatasetCheck
   // TODO: clicking on a dataset should flip the table and show bean SKUs sorted by the number of wins
@@ -104,53 +107,58 @@ export default function Dataset({
       >
         <span>{name}</span>
       </h2>
-      <div className="overflow-x-auto">
-        <table className="m-auto border-collapse text-center">
-          <thead>
-            <tr>
-              <th key="transitively-complete" className={cellClassName}>
-                {/* <DatasetCheck {...dataset} /> */}
+      <table className="m-auto border-collapse text-center">
+        <thead>
+          <tr>
+            <th key="transitively-complete" className={cellClassName}>
+              {/* <DatasetCheck {...dataset} /> */}
+            </th>
+            {names.map((col) => (
+              <th
+                key={col}
+                className={cellClassName}
+                onClick={() => onBeansClick(dataset.names[col])}
+                title={dataset.names[col]}
+              >
+                {col.toUpperCase()}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {names.map((row) => (
+            <tr key={row}>
+              <th
+                className={cellClassName}
+                onClick={() => onBeansClick(dataset.names[row])}
+                title={dataset.names[row]}
+              >
+                {row.toUpperCase()}
               </th>
               {names.map((col) => (
-                <th
+                <td
                   key={col}
-                  className={cellClassName}
-                  onClick={() => onBeansClick(dataset.names[col])}
+                  className={`border border-gray-300 h-8 w-8 select-none ${row === col && beanNames.includes(dataset.names[row]) ? "font-bold text-xl" : ""} ${row === col ? "bg-gray-200 cursor-pointer" : "bg-white"}`}
+                  onClick={
+                    row === col
+                      ? () => onBeansClick(dataset.names[row])
+                      : () => {}
+                  }
+                  title={
+                    row === col
+                      ? dataset.names[row]
+                      : dataset.names[comparisons[row][col]]
+                  }
                 >
-                  {col.toUpperCase()}
-                </th>
+                  {row === col
+                    ? getTotalWins(row)
+                    : comparisons[row][col].toUpperCase()}
+                </td>
               ))}
             </tr>
-          </thead>
-          <tbody>
-            {names.map((row) => (
-              <tr key={row}>
-                <th
-                  className={cellClassName}
-                  onClick={() => onBeansClick(dataset.names[row])}
-                >
-                  {row.toUpperCase()}
-                </th>
-                {names.map((col) => (
-                  <td
-                    key={col}
-                    className={`border border-gray-300 h-8 w-8 ${row === col && beanNames.includes(dataset.names[row]) ? "font-bold" : ""} ${row === col ? "bg-gray-200 cursor-pointer" : "bg-white select-none"}`}
-                    onClick={
-                      row === col
-                        ? () => onBeansClick(dataset.names[row])
-                        : () => {}
-                    }
-                  >
-                    {row === col
-                      ? getTotalWins(row)
-                      : comparisons[row][col].toUpperCase()}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

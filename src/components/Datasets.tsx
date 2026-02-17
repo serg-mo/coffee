@@ -1,32 +1,28 @@
 import React, { useEffect, useState } from "react";
 import Dataset from "./Dataset";
 
-const years = [
-  2025,
-  2024
-];
+const years = [2025, 2024];
 
-const regions = [
-  "africa",
-  "indonesia",
-  "central-america",
-  "south-america"
-]
+const regions = ["africa", "indonesia", "central-america", "south-america"];
 
 export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
-  const [datasets, setDatasets] = useState<{ dataset: any; name: string }[]>([]);
+  const [datasets, setDatasets] = useState<{ dataset: any; name: string }[]>(
+    [],
+  );
 
   useEffect(() => {
     // must be relative, see webpack.config.js::publicPath
-    const urls = years.flatMap((year) => regions.map((region) => `./data/${year}/${region}.json`))
+    const urls = years.flatMap((year) =>
+      regions.map((region) => `./data/${year}/${region}.json`),
+    );
 
     const getDatasetName = (url: string) => {
-      const parts = url.split("/")
+      const parts = url.split("/");
       const region = parts[parts.length - 1].split(".")[0].replace("-", " ");
-      const year = parts[parts.length - 2]
+      const year = parts[parts.length - 2];
 
-      return `${year} ${region}`
-    }
+      return `${year} ${region}`;
+    };
 
     Promise.all(
       urls.map((url: string) =>
