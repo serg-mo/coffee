@@ -1,0 +1,36 @@
+{
+  "sku": "bololapaz",
+  "attributes": {
+    "Brightness": 5,
+    "Body": 5,
+    "Aroma": 4,
+    "Complexity": 5,
+    "Balance": 6,
+    "Sweetness": 7
+  },
+  "flavors": {
+    "Spicy": 1,
+    "Chocolaty": 3,
+    "Nutty": 2,
+    "Buttery": 1,
+    "Fruity": 3,
+    "Flowery": 2,
+    "Winey": 1,
+    "Earthy": 1
+  },
+  "specifications": {
+    "Category": "Organic",
+    "Country": "Bolivia",
+    "Local Region": "Caranavi & Apolo Province\nLa Paz municipality",
+    "Process": "Washed",
+    "Certifications": "OrganicFair Trade",
+    "Variety": "Typica",
+    "Altitude (meters)": "1200 - 1600 masl",
+    "Harvest": "April - September",
+    "Organic Certification": "Yes",
+    "Fair Trade": "Yes",
+    "Rainforest Alliance Certified": "No",
+    "Decaffeinated": "No"
+  },
+  "description": "The Caranavi is a specialty Bolivian coffee grown by a small group of native coffee farmers known as colonials, on land that is at high elevations rising to 8,500 feet above sea level. These coffee beans are cultivated in the tropical growing regions of Bolivia below a magnificent forest, coming from 41 small farms averaging about three acres each. This cooperative is comprised of all indigenous people, that are native to the land on the edge of the Andes mountains and bordering the rain forest and jungle of the Amazon. The land next to their farms is government-protected land, and the indigenous groups have decided to treat their land as if it were protected as well. Most of which have already been certified Smithsonian Bird Friendly, and all of which have been certified Organic. Cupping Notes: Super sweet caramel, milk chocolate, rounded but heavy body with mild orange acidity in the undertones makes this an extremely balanced cup that is versatile and can be used for drip, cold brew, or a single origin espresso. Probably best roasted to a nice medium."
+}
