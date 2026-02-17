@@ -1,6 +1,11 @@
 import React from "react";
+import BeanShape from "types/BeanShape";
 
-export default function BeanCard({ sku, specifications, description }) {
+export default function BeanCard({
+  sku,
+  specifications,
+  description,
+}: BeanShape) {
   return (
     <div className="text-sm w-full space-y-6">
       <div className="flex flex-row text-gray-600">

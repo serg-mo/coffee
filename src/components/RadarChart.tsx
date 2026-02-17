@@ -21,7 +21,7 @@ ChartJS.register(
   Legend,
 );
 
-export default function RadarChart({ data, max }: { data: any, max: number }) {
+export default function RadarChart({ data, max }: { data: any; max: number }) {
   const options = {
     scales: {
       r: {

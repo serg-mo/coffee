@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import Dataset from "./Dataset";
 
 export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
-  const [datasets, setDatasets] = useState<{ dataset: any; name: string }[]>([]);
+  const [datasets, setDatasets] = useState<{ dataset: any; name: string }[]>(
+    [],
+  );
   const [year, setYear] = useState(2025);
 
   const years = [2025, 2024];
@@ -25,7 +27,7 @@ export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
           .then((response) => response.json())
           .then((dataset) => ({
             dataset,
-            name: formatFileName(url)
+            name: formatFileName(url),
           })),
       ),
     ).then(setDatasets);
@@ -40,11 +42,15 @@ export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
       <div className="flex justify-center items-end">
         <select
           value={year}
-          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setYear(parseInt(e.target.value))}
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+            setYear(parseInt(e.target.value))
+          }
           className="font-bold text-xl"
         >
           {years.map((year: number) => (
-            <option key={year} value={year}>{year}</option>
+            <option key={year} value={year}>
+              {year}
+            </option>
           ))}
         </select>
       </div>
