@@ -29,7 +29,7 @@ export default function Comparisons() {
     // must be relative because production is on /coffee/
     Promise.all(
       beanNames.map((name) =>
-        fetch(`./data/beans/${name}.json`)
+        fetch(`./data/beans/${name.toLocaleLowerCase()}.json`)
           .then((res) => res.json())
           .catch(() => null),
       ),
