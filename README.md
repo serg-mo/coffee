@@ -1,5 +1,4 @@
 # Coffee
 
-![Beans Demo](beans.gif)
-
-![Datasets Demo](dataset.gif)
+<!-- 830px wide -->
+![Demo](demo.gif)
