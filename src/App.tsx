@@ -4,7 +4,7 @@ import Datasets from "./components/Datasets";
 import RadarChart from "./components/RadarChart";
 
 export default function Comparisons() {
-  const [beanNames, setBeanNames] = useState([]);
+  const [beanNames, setBeanNames] = useState([]); // 1 - show card, 2+ - show radar charts
   const [beanData, setBeanData] = useState({});
 
   // this breaks if I try to make local variables
@@ -67,7 +67,7 @@ export default function Comparisons() {
             </div>
           </div>
         )}
-        {beanNames.length === 1 && !!beanData[beanNames[0]] && (
+        {Object.values(beanData).length === 1 && !!beanData[beanNames[0]] && (
           <BeanCard {...beanData[beanNames[0]]} />
         )}
       </div>
