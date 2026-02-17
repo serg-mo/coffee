@@ -4,32 +4,32 @@ import { isTransitivelyComplete } from "../library";
 
 export default function Dataset({
   name,
-  data,
+  dataset,
   beanNames,
   onBeansClick,
   onDatasetClick,
 }) {
-  const names = Object.keys(data.names);
-  const comparisons = Object.values(data.comparisons).flatMap((comparisons) =>
+  const names = Object.keys(dataset.names); // a, b, c, d, e
+  const comparisonsFlat = Object.values(dataset.comparisons).flatMap((comparisons) =>
     Object.values(comparisons),
   );
 
-  if (comparisons.length !== 20) {
+  if (comparisonsFlat.length !== 20) {
     console.error(`Invalid dataset: total comparisons should be 20`);
   }
 
-  const getWinCount = (name) =>
-    comparisons.filter((winner) => winner === name).length;
+  const getWinCount = (name: string) => comparisonsFlat.filter((winner: string) => winner === name).length;
 
   const cellClassName = "border border-gray-300 h-8 w-8 bg-gray-100 cursor-pointer"
 
-  const { result, messages } = isTransitivelyComplete(names, comparisons);
+  // NOTE: this has to work for pairwise and quad comparisons, i.e., convert quad to pair
+  const { result, messages } = isTransitivelyComplete(dataset);
 
   return (
     <div className="p-6 w-64">
       <h2
         className="text-xl font-bold text-center capitalize cursor-pointer flex items-center gap-2 justify-center"
-        onClick={() => onDatasetClick(Object.values(data.names))}
+        onClick={() => onDatasetClick(Object.values(dataset.names)) /* every bean in the dataset */ }
       >
         <span>{name}</span>
       </h2>
@@ -52,7 +52,7 @@ export default function Dataset({
                 <th
                   key={name}
                   className={cellClassName}
-                  onClick={() => onBeansClick(data.names[name])}
+                  onClick={() => onBeansClick(dataset.names[name])}
                 >
                   {name.toUpperCase()}
                 </th>
@@ -64,23 +64,23 @@ export default function Dataset({
               <tr key={row}>
                 <th
                   className={cellClassName}
-                  onClick={() => onBeansClick(data.names[row])}
+                  onClick={() => onBeansClick(dataset.names[row])}
                 >
                   {row.toUpperCase()}
                 </th>
                 {names.map((col) => (
                   <td
                     key={col}
-                    className={`border border-gray-300 h-8 w-8 ${row === col && beanNames.includes(data.names[row]) ? "font-bold" : ""} ${row === col ? "bg-gray-200 cursor-pointer" : "bg-white select-none"}`}
+                    className={`border border-gray-300 h-8 w-8 ${row === col && beanNames.includes(dataset.names[row]) ? "font-bold" : ""} ${row === col ? "bg-gray-200 cursor-pointer" : "bg-white select-none"}`}
                     onClick={
                       row === col
-                        ? () => onBeansClick(data.names[row])
+                        ? () => onBeansClick(dataset.names[row])
                         : () => { }
                     }
                   >
                     {row === col
                       ? getWinCount(row)
-                      : data.comparisons[row][col].toUpperCase()}
+                      : dataset.comparisons[row][col].toUpperCase()}
                   </td>
                 ))}
               </tr>

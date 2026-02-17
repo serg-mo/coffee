@@ -7,6 +7,7 @@
     "@babel/core": "^7.24.7",
     "@babel/preset-env": "^7.24.7",
     "@babel/preset-react": "^7.24.7",
+    "@babel/preset-typescript": "^7.24.7",
     "autoprefixer": "^10.4.19",
     "axios": "^1.7.9",
     "babel": "^6.23.0",
@@ -35,11 +36,16 @@
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "lint": "prettier . --write",
-    "fetch": "node ./src/fetch.js"
+    "fetch": "node ./src/fetch.js",
+    "typecheck": "tsc"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "typescript": "^5.7.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
   }

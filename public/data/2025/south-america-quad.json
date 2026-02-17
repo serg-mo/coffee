@@ -1,0 +1,16 @@
+{
+  "names": {
+    "a": "BRAORGDUTRA",
+    "b": "BRAOBERON",
+    "c": "PERULAFLOR",
+    "d": "BOLOLAPAZ",
+    "e": "BRAVISTAWASH"
+  },
+  "comparisons": {
+    "exclude-a": "dbce",
+    "exclude-b": "acde",
+    "exclude-c": "bade",
+    "exclude-d": "acbe",
+    "exclude-e": "dcab"
+  }
+}

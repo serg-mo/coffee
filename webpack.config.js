@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default (env, argv) => ({
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "docs"),
     publicPath:
@@ -17,12 +17,16 @@ export default (env, argv) => ({
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: [
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-typescript",
+            ],
           },
         },
       },
@@ -38,7 +42,7 @@ export default (env, argv) => ({
     }),
   ],
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
   },
   devServer: {
     static: "./public",

@@ -7,7 +7,6 @@ import {
   RadialLinearScale,
   Tooltip,
 } from "chart.js";
-import React from "react";
 import { Radar } from "react-chartjs-2";
 
 ChartJS.defaults.font.family = "Trebuchet MS";

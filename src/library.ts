@@ -1,6 +1,8 @@
 
-// NOTE: it is possible 
-export function isTransitivelyComplete(comparisons, names) {
+export function isTransitivelyComplete(dataset: { comparisons: any, names: string[] }) {
+  const names = Object.keys(dataset.names); // a, b, c, d, e
+  const comparisons = dataset.comparisons;
+
   const messages = [];
 
   for (let a of names) {
@@ -24,12 +26,12 @@ export function isTransitivelyComplete(comparisons, names) {
   };
 }
 
-export function isPair(comparisons) { 
+export function isPair(comparisons: any) { 
   // 5 * 4 pairs, opposite sides of the diagonal, a vs b and b vs a
   return comparisons.length == 20
 }
 
-export function isQuad(comparisons) {
+export function isQuad(comparisons: any) {
   // 5 quads, with 3 direct comparisons for each unique pair
   // abcd, abce, abde, acde, bcde (exclude one bean on every tasting)
 

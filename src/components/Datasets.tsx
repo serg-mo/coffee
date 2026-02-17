@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import Dataset from "./Dataset";
 
 export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
-  const [datasets, setDatasets] = useState(null);
+  const [datasets, setDatasets] = useState<{ dataset: any; name: string }[]>([]);
   const [year, setYear] = useState(2025);
+
+  const years = [2025, 2024];
 
   useEffect(() => {
     // must be relative path because the production is on /coffee/
@@ -14,24 +16,23 @@ export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
       `./data/${year}/south-america.json`,
     ];
 
-    const formatFileName = (url) =>
+    const formatFileName = (url: string) =>
       url.split("/").pop().split(".")[0].replace("-", " ");
 
     Promise.all(
-      urls.map((url) =>
+      urls.map((url: string) =>
         fetch(url)
           .then((response) => response.json())
-          .then((data) => ({ data, name: formatFileName(url) })),
+          .then((dataset) => ({
+            dataset,
+            name: formatFileName(url)
+          })),
       ),
     ).then(setDatasets);
   }, [year]);
 
-  if (!datasets) {
-    return <div>Loading...</div>;
-  }
-
   if (datasets.length === 0) {
-    return <div>No valid comparison data found</div>;
+    return <div>Loading...</div>;
   }
 
   return (
@@ -39,18 +40,19 @@ export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
       <div className="flex justify-center items-end">
         <select
           value={year}
-          onChange={(e) => setYear(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setYear(parseInt(e.target.value))}
           className="font-bold text-xl"
         >
-          <option value="2025">2025</option>
-          <option value="2024">2024</option>
+          {years.map((year: number) => (
+            <option key={year} value={year}>{year}</option>
+          ))}
         </select>
       </div>
       <div className="flex justify-center items-end">
-        {datasets.map(({ data, name }) => (
+        {datasets.map(({ dataset, name }) => (
           <Dataset
             name={name}
-            data={data}
+            dataset={dataset}
             key={name}
             beanNames={beanNames}
             onBeansClick={onBeansClick}
