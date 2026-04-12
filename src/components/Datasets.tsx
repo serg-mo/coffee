@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Dataset from "./Dataset";
 
-const years = [2025, 2024];
-
-const regions = ["africa", "indonesia", "central-america", "south-america"];
+const YEARS = [2025, 2024];
+const REGIONS = ["africa", "indonesia", "central-america", "south-america"]; // NOTE: 4 columns
 
 export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
   const [datasets, setDatasets] = useState<{ dataset: any; name: string }[]>(
@@ -12,8 +11,8 @@ export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
 
   useEffect(() => {
     // must be relative, see webpack.config.js::publicPath
-    const urls = years.flatMap((year) =>
-      regions.map((region) => `./data/${year}/${region}.json`),
+    const urls = YEARS.flatMap((year) =>
+      REGIONS.map((region) => `./data/${year}/${region}.json`),
     );
 
     const getDatasetName = (url: string) => {
@@ -41,7 +40,7 @@ export default function Datasets({ beanNames, onBeansClick, onDatasetClick }) {
   }
 
   return (
-    <div className={`grid grid-cols-${regions.length}`}>
+    <div className="grid grid-cols-4">
       {datasets.map(({ dataset, name }) => (
         <Dataset
           name={name}
