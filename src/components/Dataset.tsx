@@ -1,8 +1,9 @@
 import React from "react";
 import DatasetCheck from "./DatasetCheck";
 import DataShapeQuad from "../types/DataShapeQuad";
-import ComparisonsPair from "types/ComparisonsPair";
-import ComparisonsQuad from "types/ComparisonsQuad";
+import ComparisonsPair from "../types/ComparisonsPair";
+import ComparisonsQuad from "../types/ComparisonsQuad";
+import { useState } from "react";
 
 function mostCommonValue(array: string[]) {
   const counts: Record<string, number> = {};
@@ -41,15 +42,15 @@ function getWins(comparisons: Record<string, string>) {
 
 console.assert(
   JSON.stringify(getWins({ name: "ab" })) ===
-    JSON.stringify({ a: { b: ["a"] }, b: { a: ["a"] } }),
+  JSON.stringify({ a: { b: ["a"] }, b: { a: ["a"] } }),
 );
 console.assert(
   JSON.stringify(getWins({ name: "abc" })) ===
-    JSON.stringify({
-      a: { b: ["a"], c: ["a"] },
-      b: { a: ["a"], c: ["b"] },
-      c: { a: ["a"], b: ["b"] },
-    }),
+  JSON.stringify({
+    a: { b: ["a"], c: ["a"] },
+    b: { a: ["a"], c: ["b"] },
+    c: { a: ["a"], b: ["b"] },
+  }),
 );
 
 function convertQuadToPairwise(comparisons: Record<string, string>) {
@@ -76,6 +77,7 @@ export default function Dataset({
   onBeansClick,
   onDatasetClick,
 }) {
+  const [flipped, setFlipped] = useState(false);
   const names = Object.keys(dataset.names); // a, b, c, d, e
 
   // NOTE: DatasetCheck expects pairwise comparisons, convert quad to pair
@@ -89,76 +91,91 @@ export default function Dataset({
   const getTotalWins = (name: string) =>
     comparisonsFlat.filter((winner: string) => winner === name).length;
 
+  // SKU => total wins, desc
+  const totals = Object.fromEntries(
+    names.map((name) => [dataset.names[name], getTotalWins(name)])
+      .sort((a: [string, number], b: [string, number]) => b[1] - a[1])
+  );
+
   const cellClassName =
     "border border-gray-300 h-8 w-8 bg-gray-100 text-xl cursor-pointer";
 
   // TODO: bring back DatasetCheck
-  // TODO: clicking on a dataset should flip the table and show bean SKUs sorted by the number of wins
   return (
     <div className="p-6 w-64">
       <h2
         className="text-xl font-bold text-center capitalize cursor-pointer flex items-center gap-2 justify-center"
-        onClick={
-          () =>
-            onDatasetClick(
-              Object.values(dataset.names),
-            ) /* every bean in the dataset */
-        }
+        onClick={() => { onDatasetClick(Object.values(dataset.names)); setFlipped(!flipped); }}
       >
         <span>{name}</span>
       </h2>
-      <table className="m-auto border-collapse text-center">
-        <thead>
-          <tr>
-            <th key="transitively-complete" className={cellClassName}>
-              {/* <DatasetCheck {...dataset} /> */}
-            </th>
-            {names.map((col) => (
-              <th
-                key={col}
-                className={cellClassName}
-                onClick={() => onBeansClick(dataset.names[col])}
-                title={dataset.names[col]}
-              >
-                {col.toUpperCase()}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {names.map((row) => (
-            <tr key={row}>
-              <th
-                className={cellClassName}
-                onClick={() => onBeansClick(dataset.names[row])}
-                title={dataset.names[row]}
-              >
-                {row.toUpperCase()}
+      {flipped ? (
+        <div className="grid grid-cols-[1fr_auto] w-full">
+          {Object.entries(totals).map(([name, total]) => (
+            <>
+              <div className={`text-left w-full cursor-pointer ${beanNames.includes(name) ? "font-bold" : ""}`} onClick={() => onBeansClick(name)}>
+                {name.toUpperCase()}
+              </div>
+              <div className="text-center">
+                {total}
+              </div>
+            </>
+          ))}
+        </div>
+      ) : (
+        <table className="m-auto border-collapse text-center">
+          <thead>
+            <tr>
+              <th key="transitively-complete" className={cellClassName}>
+                {/* <DatasetCheck {...dataset} /> */}
               </th>
               {names.map((col) => (
-                <td
+                <th
                   key={col}
-                  className={`border border-gray-300 h-8 w-8 select-none ${row === col && beanNames.includes(dataset.names[row]) ? "font-bold text-xl" : ""} ${row === col ? "bg-gray-200 cursor-pointer" : "bg-white"}`}
-                  onClick={
-                    row === col
-                      ? () => onBeansClick(dataset.names[row])
-                      : () => {}
-                  }
-                  title={
-                    row === col
-                      ? dataset.names[row]
-                      : dataset.names[comparisons[row][col]]
-                  }
+                  className={cellClassName}
+                  onClick={() => onBeansClick(dataset.names[col])}
+                  title={dataset.names[col]}
                 >
-                  {row === col
-                    ? getTotalWins(row)
-                    : comparisons[row][col].toUpperCase()}
-                </td>
+                  {col.toUpperCase()}
+                </th>
               ))}
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {names.map((row) => (
+              <tr key={row}>
+                <th
+                  className={cellClassName}
+                  onClick={() => onBeansClick(dataset.names[row])}
+                  title={dataset.names[row]}
+                >
+                  {row.toUpperCase()}
+                </th>
+                {names.map((col) => (
+                  <td
+                    key={col}
+                    className={`border border-gray-300 h-8 w-8 select-none ${row === col && beanNames.includes(dataset.names[row]) ? "font-bold text-xl" : ""} ${row === col ? "bg-gray-200 cursor-pointer" : "bg-white"}`}
+                    onClick={
+                      row === col
+                        ? () => onBeansClick(dataset.names[row])
+                        : () => { }
+                    }
+                    title={
+                      row === col
+                        ? dataset.names[row]
+                        : dataset.names[comparisons[row][col]]
+                    }
+                  >
+                    {row === col
+                      ? getTotalWins(row)
+                      : comparisons[row][col].toUpperCase()}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </div>
   );
 }
