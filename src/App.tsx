@@ -83,10 +83,10 @@ export default function Comparisons() {
             completeness.
           </p>
           <p className="mt-2 leading-relaxed">
-            I can taste all beans in 10 groups of 3 or 5 groups of 4. Both ways
-            compare each pairing 3 times, so there is a definite winner, but
-            groups of 4 are easier to remember, i.e., exclude one bean at each
-            tasting. Groups of 5 would work too, but I only have 4 puck screens.
+            I can taste all pairings of 5 beans in 10 groups of 3 or 5 groups of 4.
+            Both ways compare each pairing 3 times, so there is a definite winner,
+            but groups of 4 are easier to remember, i.e., exclude one bean at each tasting.
+            Groups of 5 would work too, but I only have 4 puck screens.
           </p>
         </div>
       )}

@@ -1,0 +1,16 @@
+{
+  "names": {
+    "a": "TANZPB",
+    "b": "ETHORGLIMU",
+    "c": "UGANMTELGON",
+    "d": "KENYAPBPLUS",
+    "e": "UGANDORG"
+  },
+  "comparisons": {
+    "exclude-a": "bedc",
+    "exclude-b": "deca",
+    "exclude-c": "deba",
+    "exclude-d": "baec",
+    "exclude-e": "cbda"
+  }
+}
