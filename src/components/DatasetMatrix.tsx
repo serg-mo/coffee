@@ -27,8 +27,9 @@ export default function DatasetMatrix({
 
   // SKU => total wins, desc
   const totals = Object.fromEntries(
-    names.map((name) => [dataset.names[name], getTotalWins(name)])
-      .sort((a: [string, number], b: [string, number]) => b[1] - a[1])
+    names
+      .map((name) => [dataset.names[name], getTotalWins(name)])
+      .sort((a: [string, number], b: [string, number]) => b[1] - a[1]),
   );
 
   const cellClassName =
@@ -70,7 +71,7 @@ export default function DatasetMatrix({
                 onClick={
                   row === col
                     ? () => onBeansClick(dataset.names[row])
-                    : () => { }
+                    : () => {}
                 }
                 title={
                   row === col

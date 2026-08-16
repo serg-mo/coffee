@@ -10,7 +10,6 @@ console.assert(mostCommonValue(["a", "a", "a"]) === "a");
 console.assert(mostCommonValue(["a", "a", "b"]) === "a");
 console.assert(mostCommonValue(["a", "b", "b"]) === "b");
 
-
 function getWins(comparisons: Record<string, string>) {
   const wins: Record<string, Record<string, string[]>> = {};
   for (const comparison of Object.values(comparisons)) {
@@ -36,28 +35,20 @@ function getWins(comparisons: Record<string, string>) {
 
 console.assert(
   JSON.stringify(getWins({ name: "ab" })) ===
-  JSON.stringify({ a: { b: ["a"] }, b: { a: ["a"] } }),
+    JSON.stringify({ a: { b: ["a"] }, b: { a: ["a"] } }),
 );
 
 console.assert(
   JSON.stringify(getWins({ name: "abc" })) ===
-  JSON.stringify({
-    a: { b: ["a"], c: ["a"] },
-    b: { a: ["a"], c: ["b"] },
-    c: { a: ["a"], b: ["b"] },
-  }),
+    JSON.stringify({
+      a: { b: ["a"], c: ["a"] },
+      b: { a: ["a"], c: ["b"] },
+      c: { a: ["a"], b: ["b"] },
+    }),
 );
 
-
-
 export function convertQuadToPairwise(comparisons: Record<string, string>) {
-  const names = [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e"
-    ];
+  const names = ["a", "b", "c", "d", "e"];
   const wins = getWins(comparisons);
   // console.log({ comparisons , wins});
 
@@ -67,10 +58,7 @@ export function convertQuadToPairwise(comparisons: Record<string, string>) {
       Object.fromEntries(
         names
           .filter((b) => a !== b)
-          .map((b) => [b, mostCommonValue(wins[a
-            ][b
-            ]) as string
-        ]),
+          .map((b) => [b, mostCommonValue(wins[a][b]) as string]),
       ),
     ]),
   );

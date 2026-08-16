@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import DatasetHeader from "./DatasetHeader";
 import DataShapeQuad from "types/DataShapeQuad";
 import DataShapePair from "types/DataShapePair";
 import Slider from "./Slider";
@@ -21,46 +20,49 @@ export default function Dataset({
 }) {
   const [slide, setSlide] = useState(0);
 
-
   return (
-    <div className="p-6 w-64">
-
+    <div className="">
       <h2
         className="
         text-xl font-bold text-center capitalize
         cursor-pointer flex items-center gap-2 justify-center
       "
-        onClick={dataset ? () => onDatasetClick(Object.values(dataset.names)) : () => {}}
+        onClick={
+          dataset
+            ? () => onDatasetClick(Object.values(dataset.names))
+            : () => {}
+        }
       >
         {name}
       </h2>
 
-      <Slider
-        slide={slide}
-        setSlide={setSlide}
-      >
+      <Slider slide={slide} setSlide={setSlide} direction="horizontal">
         {[
-          dataset ?<DatasetMatrix
-            dataset={dataset}
-            beanNames={beanNames}
-            onBeansClick={onBeansClick}
-          /> : <div className="h-48 flex items-center justify-center border border-dashed border-gray-300">
-            Comparisons
-          </div>
-          ,
+          dataset ? (
+            <DatasetMatrix
+              dataset={dataset}
+              beanNames={beanNames}
+              onBeansClick={onBeansClick}
+            />
+          ) : (
+            <div className="h-48 w-full flex items-center justify-center border border-dashed border-gray-300">
+              Comparisons
+            </div>
+          ),
 
-          dataset ?<DatasetTotals
-            dataset={dataset}
-            beanNames={beanNames}
-            onBeansClick={onBeansClick}
-          /> : <div className="h-48 flex items-center justify-center border border-dashed border-gray-300">
-            Rankings
-          </div>
-          ,
-
+          dataset ? (
+            <DatasetTotals
+              dataset={dataset}
+              beanNames={beanNames}
+              onBeansClick={onBeansClick}
+            />
+          ) : (
+            <div className="h-48 w-full flex items-center justify-center border border-dashed border-gray-300">
+              Rankings
+            </div>
+          ),
         ]}
       </Slider>
-
     </div>
   );
 }
