@@ -16,7 +16,14 @@ export default function BeanCard({
         <div className="w-1/2 mr-4">
           <div className="flex w-full m-auto justify-between">
             <span>SKU</span>
-            <a href={url} target="_blank" rel="noopener noreferrer" className="underline font-medium">{sku}</a>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline font-medium"
+            >
+              {sku}
+            </a>
           </div>
 
           {Object.entries(specifications).map(([key, value]) => (

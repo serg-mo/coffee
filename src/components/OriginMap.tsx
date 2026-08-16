@@ -1,9 +1,5 @@
 import React, { useMemo, useState } from "react";
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-} from "react-simple-maps";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import * as d3 from "d3-geo";
 
 const worldGeo =
@@ -39,7 +35,7 @@ export default function OriginMap({ country }: { country: string }) {
           {({ geographies }: { geographies: any }) =>
             geographies.map((geo: any) => {
               const name = geo.properties.name;
-              const isSelected = name.includes(country); 
+              const isSelected = name.includes(country);
 
               return (
                 <Geography
