@@ -38,29 +38,18 @@ export default function Dataset({
 
       <Slider slide={slide} setSlide={setSlide} direction="horizontal">
         {[
-          dataset ? (
-            <DatasetMatrix
-              dataset={dataset}
-              beanNames={beanNames}
-              onBeansClick={onBeansClick}
-            />
-          ) : (
-            <div className="h-48 w-full flex items-center justify-center border border-dashed border-gray-300">
-              Comparisons
-            </div>
-          ),
-
-          dataset ? (
-            <DatasetTotals
-              dataset={dataset}
-              beanNames={beanNames}
-              onBeansClick={onBeansClick}
-            />
-          ) : (
-            <div className="h-48 w-full flex items-center justify-center border border-dashed border-gray-300">
-              Rankings
-            </div>
-          ),
+          <DatasetMatrix
+            key="comparisons"
+            dataset={dataset}
+            beanNames={beanNames}
+            onBeansClick={onBeansClick}
+          />,
+          <DatasetTotals
+            key="rankings"
+            dataset={dataset}
+            beanNames={beanNames}
+            onBeansClick={onBeansClick}
+          />,
         ]}
       </Slider>
     </div>

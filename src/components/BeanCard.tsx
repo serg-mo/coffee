@@ -8,7 +8,6 @@ export default function BeanCard({
   description,
 }: BeanShape) {
   const url = `https://www.coffeebeancorral.com/product/${sku.toUpperCase()}.aspx`;
-  const country = specifications.Country as string;
 
   return (
     <div className="text-sm w-full space-y-6">
@@ -38,8 +37,6 @@ export default function BeanCard({
           <p className="text-sm leading-relaxed">{description}</p>
         </div>
       </div>
-
-      <OriginMap country={country} />
     </div>
   );
 }

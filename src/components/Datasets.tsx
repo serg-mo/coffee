@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Dataset from "./Dataset";
 import Slider from "./Slider";
+import { prev } from "cheerio/dist/commonjs/api/traversing";
 
 const YEARS = [2026, 2025, 2024];
 const REGIONS = ["africa", "indonesia", "central-america", "south-america"]; // NOTE: grid-cols-4 below
@@ -11,12 +12,10 @@ const datasetUrl = (year: number, region: string) =>
 
 export default function Datasets({
   beanNames,
-  onBeansClick,
-  onDatasetClick,
+  setBeanNames,
 }: {
   beanNames: string[];
-  onBeansClick: (name: string) => void;
-  onDatasetClick: (names: string[]) => void;
+  setBeanNames: (names: string[]) => void;
 }) {
   const [datasets, setDatasets] = useState<Record<string, any>>({});
   const [slide, setSlide] = useState(0);
@@ -35,6 +34,13 @@ export default function Datasets({
       ),
     ).then((results) => setDatasets(Object.fromEntries(results)));
   }, []);
+
+  const toggleBeans = (name: string) =>
+    setBeanNames((prev: string[]) =>
+      prev.includes(name)
+        ? prev.filter((v: string) => v !== name)
+        : [...prev, name],
+    );
 
   if (Object.keys(datasets).length === 0) {
     return <div>Loading...</div>;
@@ -58,8 +64,8 @@ export default function Datasets({
                   dataset={dataset}
                   key={key}
                   beanNames={beanNames}
-                  onBeansClick={onBeansClick}
-                  onDatasetClick={onDatasetClick}
+                  onBeansClick={toggleBeans}
+                  onDatasetClick={setBeanNames}
                 />
               );
             })}
