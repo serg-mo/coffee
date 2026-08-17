@@ -8,10 +8,18 @@ export default function DatasetMatrix({
   beanNames,
   onBeansClick,
 }: {
-  dataset: DataShapeQuad | DataShapePair;
+  dataset: DataShapeQuad | DataShapePair | null;
   beanNames: string[];
   onBeansClick: (bean: string) => void;
 }) {
+  if (!dataset) {
+    return (
+      <div className="h-48 w-full flex items-center justify-center border border-dashed border-gray-300">
+        Comparisons
+      </div>
+    );
+  }
+
   const names = Object.keys(dataset.names); // a, b, c, d, e
 
   // NOTE: DatasetCheck expects pairwise comparisons, convert quad to pair
