@@ -5,6 +5,7 @@ import RadarChart from "./components/RadarChart";
 import BeanShape from "types/BeanShape";
 import OriginMap from "./components/OriginMap";
 import About from "./components/About";
+import BeanChart from "./components/BeanChart";
 
 function getBeanData(name: string) {
   return fetch(`./data/beans/${name.toLocaleLowerCase()}.json`)
@@ -63,14 +64,7 @@ export default function App() {
 
       {beanNames.length > 0 ? (
         <div className="w-full flex flex-col">
-          <div className="w-full flex flex-row justify-between items-center m-auto">
-            <div className="w-1/2">
-              <RadarChart data={getChartData("attributes")} max={7} />
-            </div>
-            <div className="w-1/2">
-              <RadarChart data={getChartData("flavors")} max={4} />
-            </div>
-          </div>
+          <BeanChart beanData={beanData} />
 
           {beanNames.length === 1 && beanData[beanNames[0]] && (
             <BeanCard {...beanData[beanNames[0]]} />

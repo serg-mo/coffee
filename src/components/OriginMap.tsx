@@ -14,9 +14,7 @@ export default function OriginMap({ countries }: { countries: string[] }) {
   const width = 800;
   const height = 250;
 
-  useEffect(() => {
-    setHovered(countries.join(", "));
-  }, [countries]);
+  countries.sort();
 
   // default center is on the equator and scale size decide what's visible
   const projection = useMemo(
@@ -30,7 +28,7 @@ export default function OriginMap({ countries }: { countries: string[] }) {
 
   return (
     <div className="w-full user-select-none my-5">
-      <div className="h-5 text-center text-sm">{hovered}</div>
+      <div className="h-5 text-center text-sm">{countries.join(", ")}</div>
 
       <ComposableMap
         projection={projection}
@@ -41,20 +39,20 @@ export default function OriginMap({ countries }: { countries: string[] }) {
         <Geographies geography={worldGeo}>
           {({ geographies }: { geographies: any }) =>
             geographies.map((geo: any) => {
-              const name = geo.properties.name;
+              const name = geo.properties.name; // United Republic of Tanzania
+              const isSelected = countries.some((c) => name.includes(c)); // Tanzania
+              
               return (
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  onMouseEnter={() => setHovered(name)}
-                  onMouseLeave={() => setHovered(countries.join(", "))}
                   onClick={(e: any) => {
                     e.preventDefault();
                     e.stopPropagation();
                   }}
                   style={{
                     default: {
-                      fill: countries.includes(name) ? "#2b2b2b" : "#d9d9d9",
+                      fill: isSelected ? "#2b2b2b" : "#d9d9d9",
                       stroke: "#999",
                       strokeWidth: 0.4,
                       outline: "none",

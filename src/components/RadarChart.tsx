@@ -28,7 +28,7 @@ export default function RadarChart({ data, max }: { data: any; max: number }) {
         min: 0,
         max,
         ticks: {
-          display: false, // Hide labels on scale
+          display: false, // no labels on scale
         },
         pointLabels: {
           font: {
