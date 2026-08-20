@@ -41,7 +41,7 @@ export default function OriginMap({ countries }: { countries: string[] }) {
             geographies.map((geo: any) => {
               const name = geo.properties.name; // United Republic of Tanzania
               const isSelected = countries.some((c) => name.includes(c)); // Tanzania
-              
+
               return (
                 <Geography
                   key={geo.rsmKey}

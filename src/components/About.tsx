@@ -1,5 +1,21 @@
 import React from "react";
 
+// Q1 [Jan–Mar] Africa            Ethiopia / Kenya harvest Oct–Feb, fresh crop arriving Jan–May
+// Q2 [Apr–Jun] Central America   Guatemala / Costa Rica / Honduras harvest Nov–Mar, fresh crop arriving Jan–Apr
+// Q3 [Jul–Sep] South America     Brazil / Peru harvest Apr–Sep, fresh crop arriving Aug–Nov
+// Q4 [Oct–Dec] Indonesia         Various islands harvest roughly Apr–Oct, fresh crop arriving Dec
+
+// Demitasse Caffe Espresso blend is Costa Rica + Ethiopia
+
+// Roasting a half pound (226g) takes 3 batches of ~72g, so 15 roasts, which takes hours.
+// My roaster can handle 100g, so even after 20% shrinkage, it can yield 4 * 18 = 72g
+// One roast per bean, 5 roasts to produce 5 * 4 = 20 servings, which takes an hour.
+
+// coffeebeancorral.com vs sweetmarias.com
+// Africa          14 vs 23
+// Central America 23 vs 6
+// South America   10 vs 4
+
 export default function About() {
   return (
     <div className="mt-10 mx-5 px-6 py-5 rounded-2xl border border-amber-200 bg-amber-50/80 text-amber-900 shadow-sm">

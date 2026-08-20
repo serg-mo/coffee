@@ -33,17 +33,33 @@ function getWins(comparisons: Record<string, string>) {
   return wins;
 }
 
+// single pairwise comparison, symmetrical 2x1
 console.assert(
   JSON.stringify(getWins({ name: "ab" })) ===
-    JSON.stringify({ a: { b: ["a"] }, b: { a: ["a"] } }),
+    JSON.stringify({
+      a: { b: ["a"] },
+      b: { a: ["a"] },
+    }),
 );
 
+// 2 + 1 pairwise comparisons, symmetrical 3x2
 console.assert(
   JSON.stringify(getWins({ name: "abc" })) ===
     JSON.stringify({
       a: { b: ["a"], c: ["a"] },
       b: { a: ["a"], c: ["b"] },
       c: { a: ["a"], b: ["b"] },
+    }),
+);
+
+// 3 + 2 + 1 pairwise comparisons, symmertical 4x3
+console.assert(
+  JSON.stringify(getWins({ name: "abcd" })) ===
+    JSON.stringify({
+      a: { b: ["a"], c: ["a"], d: ["a"] },
+      b: { a: ["a"], c: ["b"], d: ["b"] },
+      c: { a: ["a"], b: ["b"], d: ["c"] },
+      d: { a: ["a"], b: ["b"], c: ["c"] },
     }),
 );
 
