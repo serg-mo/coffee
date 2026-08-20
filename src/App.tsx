@@ -7,6 +7,8 @@ import OriginMap from "./components/OriginMap";
 import About from "./components/About";
 import BeanChart from "./components/BeanChart";
 
+// TODO: rename Indonesia to just Asia
+
 function getBeanData(name: string) {
   return fetch(`./data/beans/${name.toLocaleLowerCase()}.json`)
     .then((res) => res.json())
