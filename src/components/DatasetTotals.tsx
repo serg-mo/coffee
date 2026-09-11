@@ -15,7 +15,7 @@ export default function DatasetTotals({
   if (!dataset) {
     return (
       <div className="h-48 w-full flex items-center justify-center border border-dashed border-gray-300">
-        Rankings
+        totals
       </div>
     );
   }

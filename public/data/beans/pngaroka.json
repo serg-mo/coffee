@@ -1,35 +1,39 @@
 {
-  "sku": "pngaroka",
+  "sku": "PNGAROKA",
+  "name": "Papua New Guinea: Arokara AA, Eastern Highlands",
+  "url": "https://coffeebeancorral.com/products/papua-new-guinea-aa-arokara",
+  "image": "https://coffeebeancorral.com/cdn/shop/files/IMG_0331.jpg?v=1782686453&width=1920",
   "attributes": {
-    "Brightness": 5,
-    "Body": 5,
-    "Aroma": 7,
-    "Complexity": 5,
-    "Balance": 7,
-    "Sweetness": 3
+    "brightness": 5,
+    "body": 5,
+    "aroma": 7,
+    "complexity": 5,
+    "balance": 7,
+    "sweetness": 3
   },
   "flavors": {
-    "Spicy": 1,
-    "Chocolaty": 4,
-    "Nutty": 1,
-    "Buttery": 1,
-    "Fruity": 4,
-    "Flowery": 3,
-    "Winey": 3,
-    "Earthy": 4
+    "spicy": 1,
+    "chocolaty": 4,
+    "nutty": 1,
+    "buttery": 1,
+    "fruity": 4,
+    "flowery": 3,
+    "winey": 3,
+    "earthy": 4
   },
   "specifications": {
-    "Category": "Conventional",
-    "Country": "Papua New Guinea",
-    "Local Region": "Eastern Highlands",
-    "Process": "Washed",
-    "Variety": "Typica, Bourbon, Arusha",
-    "Altitude (meters)": "1,300 – 1,600 masl",
-    "Harvest": "June - August",
-    "Organic Certification": "No",
-    "Fair Trade": "No",
-    "Rainforest Alliance Certified": "No",
-    "Decaffeinated": "No"
+    "bean category": "Conventional",
+    "country": "Papua New Guinea",
+    "local region": "Eastern Highlands",
+    "global region": "Indonesia",
+    "process": "Washed",
+    "variety": "Typica, Bourbon, Arusha",
+    "altitude": "1,300 – 1,600 masl",
+    "harvest": "June - August",
+    "organic": "No",
+    "fair trade": "No",
+    "rainforest alliance": "No",
+    "decaf": "No"
   },
-  "description": "Papua New Guinea coffees are known for their complex acidity and bountiful variety due to cultural and topographical diversity––few plantations are large, and most happen to be small plots. Processing methods are constantly being updated to ensure the best coffee year after year. This specific Arakara AA hails from the Arokara Cooperative, a partner of plantations in the Eastern Highlands of Papua, New Guinea. Recently, the plantations have been transferred to the original owners who believe in a chemical-free production process. The coffee’s cherry is hand-picked by the clan, immediately pulped, and fermented in cement vats for three days. Then, the coffee is washed with the Aru River’s water and sun-dried for seven to twelve days. The plantations hire up to 60 assistants to the clan cherry pickers––nearly 12,000 people depend on this process for income to support their families. Cupping notes: Fruit and sweet floral aroma, dark chocolate, plum, earthy; creamy body, winy acidity. Try before you stock up with a 1/2lb sample!! Learn more about PNG coffee beans with our dedicated guide."
+  "description": "Grown in the Eastern Highlands of Papua New Guinea, Arokara AA and AX coffees come from the Arokara Cooperative and its network of local plantations, including Tairora and Gadsup. Today, these farms are owned and managed by their original landowner groups, who cultivate coffee without chemical fertilizers or pesticides. Cherries are hand-picked by the local clans, pulped the same day, and fermented for approximately 36 hours before being washed with fresh mountain stream water from the Aru River. The coffee is then sun-dried for 7–12 days, developing the distinctive bluish appearance associated with coffees from the region.\nPapua New Guinea's rugged mountains and diverse coffee-growing communities create coffees known for vibrant acidity, complexity, and a distinctive character. Many local producers grow coffee in traditional “coffee gardens”—small plots often cultivated alongside subsistence crops. Arokara reflects this unique farming heritage while benefiting from careful, consistent processing.\nCupping Notes:  dark chocolate, ripe plum, and earthy tones, balanced by a creamy body and wine-like acidity\n \nLearn more about PNG coffee beans with our dedicated guide."
 }
