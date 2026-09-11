@@ -12,7 +12,7 @@ export default function DatasetMatrix({
   beanNames: string[];
   onBeansClick: (bean: string) => void;
 }) {
-  if (!dataset) {
+  if (!dataset || !dataset.comparisons) {
     return (
       <div className="h-48 w-full flex items-center justify-center border border-dashed border-gray-300">
         Comparisons
@@ -79,7 +79,7 @@ export default function DatasetMatrix({
                 onClick={
                   row === col
                     ? () => onBeansClick(dataset.names[row])
-                    : () => {}
+                    : () => { }
                 }
                 title={
                   row === col

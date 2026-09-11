@@ -2,46 +2,66 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 import fs from "fs/promises";
 
-async function fetchPage(url) {
+async function fetchPage(url: string) {
   const { data } = await axios.get(url);
   const $ = cheerio.load(data);
 
-  const sku = $('[itemprop="sku"]').first().text().trim().toLowerCase();
+  const product = $('script[type="application/ld+json"]').toArray()
+    .map(el => JSON.parse($(el).text()))
+    .find(json => json["@type"] === "Product");
+  // console.log(product);
 
-  const attributes = {};
-  $(".spd-matrix-attributes .d-flex").each((_, el) => {
-    const label = $(el).find("label").text().trim();
-    const value = $(el).find("span").attr("class").match(/\d+/)[0];
-    attributes[label] = parseInt(value, 10); // out of 7
+  let attributes: Record<string, number> = {};
+  let flavors: Record<string, number> = {};
+
+  // attributes and flavors
+  $(".pdp-fp-group").each((_, el) => {
+    const group = $(el).find(".pdp-fp-group-label").text().trim().toLowerCase();
+    const labels = $(el).find(".pdp-fp-label").toArray().map(el => $(el).text().trim().toLowerCase());
+    const values = $(el).find(".pdp-fp-val").toArray().map(el => $(el).text().trim());
+
+    if (group === "attributes") {
+      attributes = Object.fromEntries(labels.map((label, index) => [label, parseInt(values[index])])); // out of 7
+    } else if (group === "flavors") {
+      flavors = Object.fromEntries(labels.map((label, index) => [label, parseInt(values[index])])); // out of 4
+    }
   });
 
-  const flavors = {};
-  $(".spd-matrix-flavors .d-flex").each((_, el) => {
-    const label = $(el).find("label").text().trim();
-    const value = $(el).find("span").attr("class").match(/\d+/)[0];
-    flavors[label] = parseInt(value, 10); // out of 4
-  });
-
-  const specifications = {};
-  $(".producttypepanel li").each((_, el) => {
-    const label = $(el).find(".productpropertylabel").text().trim();
-    const value = $(el).find(".productpropertyvalue").text().trim();
+  const specifications: Record<string, string> = {};
+  $(".pdp-spec-list .pdp-spec-row").each((_, el) => {
+    const label = $(el).find(".pdp-spec-label").text().trim();
+    const value = $(el).find(".pdp-spec-value").text().trim();
     specifications[label] = value;
   });
 
-  const description = $('[itemprop="description"]').first().text().trim();
-
-  return { sku, attributes, flavors, specifications, description };
+  return {
+    sku: product.sku,
+    name: product.name,
+    url: product.url,
+    image: product.image,
+    attributes,
+    flavors,
+    specifications,
+    description: product.description.replace(/’/g, "'"),
+  };
 }
+
 
 // url to the bean page is the only argument
 const url = process.argv[2];
-const data = await fetchPage(url);
-// console.log({ url, data })
-
-if (!data.sku) {
-  throw new Error("URL must have the key in the path!");
+if (!url) {
+  console.error("Usage: npm run fetch-product <url>");
+  process.exit(1);
 }
 
-const path = `public/data/beans/${data.sku}.json`;
-await fs.writeFile(path, JSON.stringify(data, null, 2));
+const data = await fetchPage(url);
+// console.log(data)
+
+if (!data.sku) {
+  console.error(`Failed to fetch page, ${url}`);
+  process.exit(1);
+} else {
+  console.log(`Fetched ${data.sku}: ${data.name}`);
+  const path = `public/data/beans/${data.sku.toLowerCase()}.json`;
+  await fs.writeFile(path, JSON.stringify(data, null, 2));
+}
