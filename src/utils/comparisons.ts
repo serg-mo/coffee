@@ -8,12 +8,13 @@ function mostCommonValue(array: string[]) {
 
 console.assert(mostCommonValue(["a", "a", "a"]) === "a");
 console.assert(mostCommonValue(["a", "a", "b"]) === "a");
-console.assert(mostCommonValue(["a", "b", "b"]) === "b");
+console.assert(mostCommonValue(["a", "b", "a"]) === "a");
+console.assert(mostCommonValue(["b", "a", "a"]) === "a");
 
-function getWins(comparisons: Record<string, string>) {
+function getWins(comparisons: string[]) {
   const wins: Record<string, Record<string, string[]>> = {};
-  for (const comparison of Object.values(comparisons)) {
-    // NOTE: includes transitive wins, i.e., b > c, b > d, b > e
+  for (const comparison of comparisons) {
+    // NOTE: abc produces a > b, a > c, and b > c stored twice, e.g., A vs B = B vs A
     for (let i = 0; i < comparison.length; i++) {
       for (let j = i + 1; j < comparison.length; j++) {
         const winner = comparison[i];
@@ -24,7 +25,7 @@ function getWins(comparisons: Record<string, string>) {
         if (!wins[loser]) wins[loser] = {};
         if (!wins[loser][winner]) wins[loser][winner] = [];
 
-        // NOTE: derived pairwise comparisons will be symmetrical, e.g., ab = ba
+        // NOTE: derived pairwise comparisons will be symmetrical, e.g., A vs B = B vs A
         wins[winner][loser].push(winner);
         wins[loser][winner].push(winner);
       }
@@ -35,37 +36,37 @@ function getWins(comparisons: Record<string, string>) {
 
 // single pairwise comparison, symmetrical 2x1
 console.assert(
-  JSON.stringify(getWins({ name: "ab" })) ===
-    JSON.stringify({
-      a: { b: ["a"] },
-      b: { a: ["a"] },
-    }),
+  JSON.stringify(getWins(["ab"])) ===
+  JSON.stringify({
+    a: { b: ["a"] },
+    b: { a: ["a"] },
+  }),
 );
 
 // 2 + 1 pairwise comparisons, symmetrical 3x2
 console.assert(
-  JSON.stringify(getWins({ name: "abc" })) ===
-    JSON.stringify({
-      a: { b: ["a"], c: ["a"] },
-      b: { a: ["a"], c: ["b"] },
-      c: { a: ["a"], b: ["b"] },
-    }),
+  JSON.stringify(getWins(["abc"])) ===
+  JSON.stringify({
+    a: { b: ["a"], c: ["a"] },
+    b: { a: ["a"], c: ["b"] },
+    c: { a: ["a"], b: ["b"] },
+  }),
 );
 
 // 3 + 2 + 1 pairwise comparisons, symmertical 4x3
 console.assert(
-  JSON.stringify(getWins({ name: "abcd" })) ===
-    JSON.stringify({
-      a: { b: ["a"], c: ["a"], d: ["a"] },
-      b: { a: ["a"], c: ["b"], d: ["b"] },
-      c: { a: ["a"], b: ["b"], d: ["c"] },
-      d: { a: ["a"], b: ["b"], c: ["c"] },
-    }),
+  JSON.stringify(getWins(["abcd"])) ===
+  JSON.stringify({
+    a: { b: ["a"], c: ["a"], d: ["a"] },
+    b: { a: ["a"], c: ["b"], d: ["b"] },
+    c: { a: ["a"], b: ["b"], d: ["c"] },
+    d: { a: ["a"], b: ["b"], c: ["c"] },
+  }),
 );
 
 export function convertQuadToPairwise(comparisons: Record<string, string>) {
   const names = ["a", "b", "c", "d", "e"];
-  const wins = getWins(comparisons);
+  const wins = getWins(Object.values(comparisons));
   // console.log({ comparisons , wins});
 
   return Object.fromEntries(

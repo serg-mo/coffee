@@ -34,7 +34,9 @@ export default function BeanCard({
         </div>
 
         <div className="w-1/2 space-y-4">
-          <p className="text-sm leading-relaxed whitespace-pre-line">{description}</p>
+          <p className="text-sm leading-relaxed whitespace-pre-line">
+            {description}
+          </p>
         </div>
       </div>
     </div>

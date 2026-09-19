@@ -6,9 +6,10 @@ async function fetchPage(url: string) {
   const { data } = await axios.get(url);
   const $ = cheerio.load(data);
 
-  const product = $('script[type="application/ld+json"]').toArray()
-    .map(el => JSON.parse($(el).text()))
-    .find(json => json["@type"] === "Product");
+  const product = $('script[type="application/ld+json"]')
+    .toArray()
+    .map((el) => JSON.parse($(el).text()))
+    .find((json) => json["@type"] === "Product");
   // console.log(product);
 
   let attributes: Record<string, number> = {};
@@ -17,13 +18,23 @@ async function fetchPage(url: string) {
   // attributes and flavors
   $(".pdp-fp-group").each((_, el) => {
     const group = $(el).find(".pdp-fp-group-label").text().trim().toLowerCase();
-    const labels = $(el).find(".pdp-fp-label").toArray().map(el => $(el).text().trim().toLowerCase());
-    const values = $(el).find(".pdp-fp-val").toArray().map(el => $(el).text().trim());
+    const labels = $(el)
+      .find(".pdp-fp-label")
+      .toArray()
+      .map((el) => $(el).text().trim().toLowerCase());
+    const values = $(el)
+      .find(".pdp-fp-val")
+      .toArray()
+      .map((el) => $(el).text().trim());
 
     if (group === "attributes") {
-      attributes = Object.fromEntries(labels.map((label, index) => [label, parseInt(values[index])])); // out of 7
+      attributes = Object.fromEntries(
+        labels.map((label, index) => [label, parseInt(values[index])]),
+      ); // out of 7
     } else if (group === "flavors") {
-      flavors = Object.fromEntries(labels.map((label, index) => [label, parseInt(values[index])])); // out of 4
+      flavors = Object.fromEntries(
+        labels.map((label, index) => [label, parseInt(values[index])]),
+      ); // out of 4
     }
   });
 
@@ -45,7 +56,6 @@ async function fetchPage(url: string) {
     description: product.description.replace(/’/g, "'"),
   };
 }
-
 
 // url to the bean page is the only argument
 const url = process.argv[2];
