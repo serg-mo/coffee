@@ -24,7 +24,7 @@ export default function DatasetRankings({
   onBeansClick: (bean: string) => void;
   beanData: Record<string, BeanShape>;
 }) {
-  if (!dataset) {
+  if (!dataset || !dataset.comparisons) {
     return (
       <div className="h-48 w-48 m-auto flex items-center justify-center border border-dashed border-gray-300">
         rankings

@@ -1,7 +1,7 @@
-import { table } from "console";
 import React from "react";
 import DataShapePair from "types/DataShapePair";
 import DatasetCheck from "./DatasetCheck";
+import { title } from "process";
 
 export default function DatasetComparisonsPair({
   dataset,
@@ -27,12 +27,19 @@ export default function DatasetComparisonsPair({
 
   const cellClassName = "border border-gray-300 h-8 w-8 bg-gray-200";
 
+  const getBg = (row, col) => {
+    if (dataset.comparisons[row][col] != dataset.comparisons[col][row]) {
+      return "text-red-600 bg-white";
+    }
+    return `${row === col ? "bg-gray-200" : "bg-white"}`;
+  };
+
   return (
     <table className="h-48 m-auto border-collapse text-center text-l select-none">
       <thead>
         <tr>
           <th key="transitively-complete" className={cellClassName}>
-            <DatasetCheck {...dataset} />
+            {/* <DatasetCheck {...dataset} /> */}
           </th>
           {names.map((col) => (
             <th key={col} className={cellClassName} title={dataset.names[col]}>
@@ -50,15 +57,15 @@ export default function DatasetComparisonsPair({
             {names.map((col) => (
               <td
                 key={col}
-                className={`${cellClassName} ${row === col ? "bg-gray-200" : "bg-white"}`}
+                className={`${cellClassName} ${getBg(row, col)}`}
                 title={
                   row === col
                     ? [row.toUpperCase(), "won", getTotalWins(row)].join(" ")
                     : [
-                      row.toUpperCase(),
-                      row == dataset.comparisons[row][col] ? ">" : "<",
-                      col.toUpperCase(),
-                    ].join(" ")
+                        row.toUpperCase(),
+                        row == dataset.comparisons[row][col] ? ">" : "<",
+                        col.toUpperCase(),
+                      ].join(" ")
                 }
               >
                 {row === col
