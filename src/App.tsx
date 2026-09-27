@@ -51,7 +51,11 @@ export default function App() {
 
   return (
     <div className="flex flex-col m-auto w-3/5">
-      <Datasets beanNames={beanNames} setBeanNames={setBeanNames} beanData={beanData} />
+      <Datasets
+        beanNames={beanNames}
+        setBeanNames={setBeanNames}
+        beanData={beanData}
+      />
 
       {beanNames.length > 0 ? (
         <div className="w-full flex flex-col">

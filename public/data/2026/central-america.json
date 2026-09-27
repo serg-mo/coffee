@@ -7,10 +7,10 @@
     "e": "CRLAMAG"
   },
   "comparisons": {
-    "exclude-a": "cdea",
-    "exclude-b": "ecda",
-    "exclude-c": "edba",
-    "exclude-d": "aecb",
-    "exclude-e": "dabc"
+    "-a": "cdea",
+    "-b": "ecda",
+    "-c": "edba",
+    "-d": "aecb",
+    "-e": "dabc"
   }
 }

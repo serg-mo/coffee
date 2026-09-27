@@ -7,10 +7,10 @@
         "e": "TIMORGHERITAGE"
     },
     "comparisons": {
-        "exclude-a": "debc",
-        "exclude-b": "cdea",
-        "exclude-c": "aedb",
-        "exclude-d": "bace",
-        "exclude-e": "abcd"
+        "-a": "debc",
+        "-b": "cdea",
+        "-c": "aedb",
+        "-d": "bace",
+        "-e": "abcd"
     }
 }

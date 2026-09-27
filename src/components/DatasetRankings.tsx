@@ -1,19 +1,28 @@
 import React from "react";
 import DataShapePair from "types/DataShapePair";
 import DataShapeQuad from "types/DataShapeQuad";
-import { convertQuadToPairwise } from "../utils/comparisons";
 import BeanShape from "types/BeanShape";
+import { convertQuadToPairwise } from "../utils/comparisons";
+
+// TODO: duplicate
+function isQuad(dataset: DataShapeQuad | DataShapePair) {
+  return (
+    typeof (
+      dataset?.comparisons ? Object.values(dataset?.comparisons) : []
+    )[0] === "string"
+  );
+}
 
 export default function DatasetRankings({
   dataset,
   beanNames,
   onBeansClick,
-  beanData
+  beanData,
 }: {
   dataset: DataShapeQuad | DataShapePair | null;
   beanNames: string[];
-    onBeansClick: (bean: string) => void;
-    beanData: Record<string, BeanShape>
+  onBeansClick: (bean: string) => void;
+  beanData: Record<string, BeanShape>;
 }) {
   if (!dataset) {
     return (
@@ -26,10 +35,9 @@ export default function DatasetRankings({
   const names = Object.keys(dataset.names); // a, b, c, d, e
 
   // NOTE: DatasetCheck expects pairwise comparisons, convert quad to pair
-  const comparisons =
-    typeof Object.values(dataset.comparisons)[0] === "string"
-      ? convertQuadToPairwise(dataset.comparisons)
-      : dataset.comparisons;
+  const comparisons = isQuad(dataset)
+    ? convertQuadToPairwise(dataset.comparisons)
+    : dataset.comparisons;
 
   const comparisonsFlat = Object.values(comparisons).flatMap(Object.values);
 
@@ -37,26 +45,23 @@ export default function DatasetRankings({
     comparisonsFlat.filter((winner: string) => winner === name).length;
 
   // SKU => total wins, desc
-  const totals = Object.fromEntries(
-    names
-      .map((name) => [dataset.names[name], getTotalWins(name)])
-      .sort((a: [string, number], b: [string, number]) => b[1] - a[1]),
-  );
+  const totals = names.map((name) => [dataset.names[name], getTotalWins(name)]); // [name, wins]
+  totals.sort((a, b) => b[1] - a[1]); // wins desc
 
-  // TODO: beanData[name]?.specifications?.Country and fall back to name
+  // TODO: beanData[name]?.specifications?.Country || name
   return (
     <table className="h-48 w-48 m-auto border-collapse text-nowrap">
       <tbody>
-        {Object.entries(totals).map(([name, wins], index) => (
+        {totals.map(([name, wins], index) => (
           <tr
             key={name}
-            className={`cursor-pointer border border border-gray-300 ${beanNames.includes(name) ? "font-bold" : ""} ${index < 3 ? "bg-gray-100" : "bg-white"}`}
+            className={`cursor-pointer border border border-gray-300 ${beanNames.includes(name) ? "font-bold" : ""} ${index < 3 ? "bg-gray-200" : "bg-white"}`}
             onClick={() => onBeansClick(name)}
           >
-            <td className="w-full px-2 ">
-              {index + 1}. {(beanData[name]?.specifications?.Country || name).toUpperCase()}
+            <td className="w-full px-2">
+              {index + 1}. {name.toUpperCase()}
             </td>
-            <td className="text-right px-2">{wins}</td>
+            <td className="px-2 text-right">{wins}</td>
           </tr>
         ))}
       </tbody>
