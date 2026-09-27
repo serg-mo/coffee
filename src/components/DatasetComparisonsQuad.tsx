@@ -8,25 +8,17 @@ export default function DatasetComparisonsQuad({
 }) {
   if (!dataset || !dataset.comparisons) {
     return (
-      <div className="h-48 w-full flex items-center justify-center border border-dashed border-gray-300">
+      <div className="h-40 w-40 m-auto flex items-center justify-center border border-dashed border-gray-300">
         comparisons
       </div>
     );
   }
 
-  if (typeof Object.values(dataset.comparisons)[0] !== "string") {
-    return (
-      <div className="h-48 w-full flex items-center justify-center border border-dashed border-gray-300">
-        not supported
-      </div>
-    );
-  }
-
   const names = Object.keys(dataset.names); // a, b, c, d, e
-  const cellClassName = "border border-gray-300 h-8 w-8 bg-gray-200";
+  const cellClassName = "h-8 w-8 border border-gray-300 bg-gray-200";
 
   return (
-    <table className="h-48 w-48 m-auto border-collapse text-center text-l select-none">
+    <table className="h-40 w-40 m-auto border-collapse text-center text-l select-none">
       <thead>
         <tr>
           <th key="transitively-complete" className={cellClassName}>
@@ -49,7 +41,11 @@ export default function DatasetComparisonsQuad({
               {name.toUpperCase()}
             </th>
             {Array.from({ length: names.length - 1 }).map((_, index) => (
-              <td key={index} className={`${cellClassName} bg-white`}>
+              <td
+                key={index}
+                className={`${cellClassName} bg-white`}
+                title={dataset.names[comparison[index]]}
+              >
                 {comparison[index].toUpperCase()}
               </td>
             ))}
