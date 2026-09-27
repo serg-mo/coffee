@@ -1,15 +1,10 @@
 import React from "react";
-import DataShapePair from "types/DataShapePair";
 import DataShapeQuad from "types/DataShapeQuad";
 
 export default function DatasetComparisonsQuad({
   dataset,
-  beanNames,
-  onBeansClick,
 }: {
-  dataset: DataShapeQuad | DataShapePair | null;
-  beanNames: string[];
-  onBeansClick: (bean: string) => void;
+  dataset: DataShapeQuad | null;
 }) {
   if (!dataset || !dataset.comparisons) {
     return (
@@ -28,43 +23,38 @@ export default function DatasetComparisonsQuad({
   }
 
   const names = Object.keys(dataset.names); // a, b, c, d, e
+  const cellClassName = "border border-gray-300 h-8 w-8 bg-gray-200";
 
   return (
-    <table className="h-48 w-48 m-auto border-collapse text-center text-xl">
+    <table className="h-48 w-48 m-auto border-collapse text-center text-l select-none">
       <thead>
         <tr>
-          <th
-            key="transitively-complete"
-            className="border border-gray-300 h-8 w-8 bg-gray-100"
-          >
+          <th key="transitively-complete" className={cellClassName}>
+            {/*  DatasetCheck expects pairwise comparisons */}
             {/* <DatasetCheck {...dataset} /> */}
           </th>
-          {[1, 2, 3, 4].map((col) => (
-            <th
-              key={col}
-              className="border border-gray-300 h-8 w-8 bg-gray-100"
-            >
-              {String(col).toUpperCase()}
+          {Array.from({ length: names.length - 1 }).map((_, index) => (
+            <th key={index} className={cellClassName}>
+              {String(index + 1).toUpperCase()}
             </th>
           ))}
         </tr>
       </thead>
 
       <tbody>
-        {Object.entries(dataset.comparisons).map(
-          ([name, comparison], index) => (
-            <tr key={name}>
-              <th className="border border-gray-300 h-8 w-8 bg-gray-100">
-                -{names[index].toUpperCase()}
-              </th>
-              {[0, 1, 2, 3].map((index) => (
-                <th key={index} className="border border-gray-300 h-8 w-8 bg-white">
-                  {comparison[index].toUpperCase()}
-                </th>
-              ))}
-            </tr>
-          ),
-        )}
+        {Object.entries(dataset.comparisons).map(([name, comparison]) => (
+          <tr key={name}>
+            <th className={cellClassName}>
+              {/*TODO: make this square */}
+              {name.toUpperCase()}
+            </th>
+            {Array.from({ length: names.length - 1 }).map((_, index) => (
+              <td key={index} className={`${cellClassName} bg-white`}>
+                {comparison[index].toUpperCase()}
+              </td>
+            ))}
+          </tr>
+        ))}
       </tbody>
     </table>
   );

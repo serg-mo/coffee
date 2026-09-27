@@ -7,10 +7,10 @@
         "e": ""
     },
     "comparisons": {
-        "exclude-a": "",
-        "exclude-b": "",
-        "exclude-c": "",
-        "exclude-d": "",
-        "exclude-e": ""
+        "-a": "",
+        "-b": "",
+        "-c": "",
+        "-d": "",
+        "-e": ""
     }
 }

@@ -6,6 +6,18 @@ import DatasetComparisonsPair from "./DatasetComparisonsPair";
 import DatasetComparisonsQuad from "./DatasetComparisonsQuad";
 import DatasetRankings from "./DatasetRankings";
 import BeanShape from "types/BeanShape";
+import { useSlider } from "./Slider";
+
+export const maxX = 3; // must match with below
+
+// TODO: duplicate
+function isQuad(dataset: DataShapeQuad | DataShapePair) {
+  return (
+    typeof (
+      dataset?.comparisons ? Object.values(dataset?.comparisons) : []
+    )[0] === "string"
+  );
+}
 
 export default function Dataset({
   name,
@@ -13,7 +25,7 @@ export default function Dataset({
   beanNames,
   onBeansClick,
   onDatasetClick,
-  beanData
+  beanData,
 }: {
   name: string;
   dataset: DataShapeQuad | DataShapePair;
@@ -22,9 +34,9 @@ export default function Dataset({
   onDatasetClick: (names: string[]) => void;
   beanData: Record<string, BeanShape>;
 }) {
-  const [slide, setSlide] = useState(0);
+  const { x } = useSlider(); // horizontal NavDots index
 
-  // NOTE: slider children render a placeholder for empty datasets, which do exist
+  // NOTE: placeholder datasets exist, but are empty, slider cards know how to render a placeholder
   return (
     <div>
       <h2
@@ -32,43 +44,34 @@ export default function Dataset({
         text-xl font-bold text-center capitalize
         cursor-pointer flex items-center gap-2 justify-center
       "
-        onClick={
-          dataset
-            ? () => onDatasetClick(Object.values(dataset.names))
-            : () => { }
+        onClick={() =>
+          onDatasetClick(dataset ? Object.values(dataset.names) : [])
         }
       >
         {name}
       </h2>
 
-      <Slider slide={slide} setSlide={setSlide} direction="horizontal">
-        {[
-          <DatasetRankings
-            key="rankings"
-            dataset={dataset}
-            beanNames={beanNames}
-            beanData={beanData}
-            onBeansClick={onBeansClick}
-          />,
-          typeof (
-            dataset?.comparisons ? Object.values(dataset?.comparisons) : []
-          )[0] === "string" ? (
-            <DatasetComparisonsQuad
-              key="comparisonsV2"
-              dataset={dataset}
-              beanNames={beanNames}
-              onBeansClick={onBeansClick}
-            />
-          ) : (
-            <DatasetComparisonsPair
-              key="comparisons"
-              dataset={dataset}
-              beanNames={beanNames}
-              onBeansClick={onBeansClick}
-            />
-          ),
-        ]}
-      </Slider>
+      {x === 0 && (
+        <DatasetRankings
+          dataset={dataset}
+          beanNames={beanNames}
+          beanData={beanData}
+          onBeansClick={onBeansClick}
+        />
+      )}
+
+      {x === 1 &&
+        (isQuad(dataset) ? (
+          <DatasetComparisonsQuad dataset={dataset} />
+        ) : (
+          <DatasetComparisonsPair dataset={dataset} />
+        ))}
+
+      {x === 2 && dataset?.comparisons && (
+        <div className="text-xs whitespace-pre-wrap">
+          {JSON.stringify(dataset, null, 2)}
+        </div>
+      )}
     </div>
   );
 }

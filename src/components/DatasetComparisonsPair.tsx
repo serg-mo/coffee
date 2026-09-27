@@ -1,16 +1,12 @@
+import { table } from "console";
 import React from "react";
 import DataShapePair from "types/DataShapePair";
-import DataShapeQuad from "types/DataShapeQuad";
-import { convertQuadToPairwise } from "../utils/comparisons";
+import DatasetCheck from "./DatasetCheck";
 
 export default function DatasetComparisonsPair({
   dataset,
-  beanNames,
-  onBeansClick,
 }: {
-  dataset: DataShapeQuad | DataShapePair | null;
-  beanNames: string[];
-  onBeansClick: (bean: string) => void;
+  dataset: DataShapePair | null;
 }) {
   if (!dataset || !dataset.comparisons) {
     return (
@@ -19,44 +15,27 @@ export default function DatasetComparisonsPair({
       </div>
     );
   }
+  // console.log(dataset.comparisons);
 
   const names = Object.keys(dataset.names); // a, b, c, d, e
 
-  // NOTE: DatasetCheck expects pairwise comparisons, convert quad to pair
-  const comparisons =
-    typeof Object.values(dataset.comparisons)[0] === "string"
-      ? convertQuadToPairwise(dataset.comparisons)
-      : dataset.comparisons;
-
-  const comparisonsFlat = Object.values(comparisons).flatMap(Object.values);
-
+  const comparisonsFlat = Object.values(dataset.comparisons).flatMap(
+    Object.values,
+  );
   const getTotalWins = (name: string) =>
     comparisonsFlat.filter((winner: string) => winner === name).length;
 
-  // SKU => total wins, desc
-  const totals = Object.fromEntries(
-    names
-      .map((name) => [dataset.names[name], getTotalWins(name)])
-      .sort((a: [string, number], b: [string, number]) => b[1] - a[1]),
-  );
-
-  const cellClassName =
-    "border border-gray-300 h-8 w-8 bg-gray-100 text-xl cursor-pointer";
+  const cellClassName = "border border-gray-300 h-8 w-8 bg-gray-200";
 
   return (
-    <table className="h-48 m-auto border-collapse text-center">
+    <table className="h-48 m-auto border-collapse text-center text-l select-none">
       <thead>
         <tr>
           <th key="transitively-complete" className={cellClassName}>
-            {/* <DatasetCheck {...dataset} /> */}
+            <DatasetCheck {...dataset} />
           </th>
           {names.map((col) => (
-            <th
-              key={col}
-              className={cellClassName}
-              onClick={() => onBeansClick(dataset.names[col])}
-              title={dataset.names[col]}
-            >
+            <th key={col} className={cellClassName} title={dataset.names[col]}>
               {col.toUpperCase()}
             </th>
           ))}
@@ -65,31 +44,26 @@ export default function DatasetComparisonsPair({
       <tbody>
         {names.map((row) => (
           <tr key={row}>
-            <th
-              className={cellClassName}
-              onClick={() => onBeansClick(dataset.names[row])}
-              title={dataset.names[row]}
-            >
+            <th className={cellClassName} title={dataset.names[row]}>
               {row.toUpperCase()}
             </th>
             {names.map((col) => (
               <td
                 key={col}
-                className={`border border-gray-300 h-8 w-8 select-none ${row === col && beanNames.includes(dataset.names[row]) ? "font-bold text-xl" : ""} ${row === col ? "bg-gray-200 cursor-pointer" : "bg-white"}`}
-                onClick={
-                  row === col
-                    ? () => onBeansClick(dataset.names[row])
-                    : () => {}
-                }
+                className={`${cellClassName} ${row === col ? "bg-gray-200" : "bg-white"}`}
                 title={
                   row === col
-                    ? dataset.names[row]
-                    : dataset.names[comparisons[row][col]]
+                    ? [row.toUpperCase(), "won", getTotalWins(row)].join(" ")
+                    : [
+                      row.toUpperCase(),
+                      row == dataset.comparisons[row][col] ? ">" : "<",
+                      col.toUpperCase(),
+                    ].join(" ")
                 }
               >
                 {row === col
                   ? getTotalWins(row)
-                  : comparisons[row][col].toUpperCase()}
+                  : dataset.comparisons[row][col].toUpperCase()}
               </td>
             ))}
           </tr>

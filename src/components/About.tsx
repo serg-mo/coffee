@@ -26,13 +26,14 @@ export default function About() {
         Regional sample packs come in five 0.5lb (226g) bags and sometimes
         that's not enough to fill the whole 5x5 matrix of pairwise comparisons.
         Out of the 25 cells, 5 are self-comparisons on the diagonal and the
-        remaining 20 are duplicates, so 10 unique pairings. There are two
-        comparisons for every pairing, A vs B and B vs A. If the two comparisons
+        remaining 20 are duplicates. There are 2 comparisons for every pairing,
+        A vs B and B vs A, so 10 unique pairings. If the two comparisons
         disagree, there is no definite winner and no transitive completeness.
-        Therefore, tastings must compare more than two beans at a time.
+        This is why older matrices may not be symmetrical around the diagonal,
+        i.e., I picked a different bean both times.
       </p>
       <p className="mt-2 leading-relaxed">
-        I can taste everything in 10 groups of 3 or 5 groups of 4. Both ways
+        I can taste all beans in 10 groups of 3 or 5 groups of 4. Both ways
         compare each pairing 3 times, so there is a definite winner, but groups
         of 4 are easier to remember, i.e., exclude one bean at each tasting.
         Groups of 5 would work too, but I only have 4 puck screens.
@@ -41,9 +42,7 @@ export default function About() {
         A tasting is just a ranked list of four beans, e.g., ABCD. From this
         single tasting we can infer 3 + 2 + 1 = 6 pairwise comparisons. Five
         tastings produce 30 pairwise comparisons for 10 unique pairings. With 3
-        votes per pairing, there is a definite winner. This is why older
-        matrices may not be symmetrical around the diagonal, i.e., I picked a
-        different bean at both tastings.
+        votes per pairing, there is a definite winner.
       </p>
     </div>
   );

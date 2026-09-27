@@ -30,9 +30,9 @@ type PermExE =
     "dabc" | "dacb" | "dbac" | "dbca" | "dcab" | "dcba";
 
 export default interface ComparisonsQuad {
-    "exclude-a": PermExA;
-    "exclude-b": PermExB;
-    "exclude-c": PermExC;
-    "exclude-d": PermExD;
-    "exclude-e": PermExE;
+    "-a": PermExA;
+    "-b": PermExB;
+    "-c": PermExC;
+    "-d": PermExD;
+    "-e": PermExE;
 };

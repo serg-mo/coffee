@@ -21,7 +21,7 @@ export default function BeanCard({
               rel="noopener noreferrer"
               className="underline font-medium"
             >
-              {sku}
+              {sku.toUpperCase()}
             </a>
           </div>
 

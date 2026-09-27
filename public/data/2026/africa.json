@@ -7,10 +7,10 @@
     "e": "UGANDORG"
   },
   "comparisons": {
-    "exclude-a": "bedc",
-    "exclude-b": "deca",
-    "exclude-c": "deba",
-    "exclude-d": "baec",
-    "exclude-e": "cbda"
+    "-a": "bedc",
+    "-b": "deca",
+    "-c": "deba",
+    "-d": "baec",
+    "-e": "cbda"
   }
 }

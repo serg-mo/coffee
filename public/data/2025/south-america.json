@@ -7,10 +7,10 @@
     "e": "BRAVISTAWASH"
   },
   "comparisons": {
-    "exclude-a": "dbce",
-    "exclude-b": "acde",
-    "exclude-c": "bade",
-    "exclude-d": "acbe",
-    "exclude-e": "dcab"
+    "-a": "dbce",
+    "-b": "acde",
+    "-c": "bade",
+    "-d": "acbe",
+    "-e": "dcab"
   }
 }
