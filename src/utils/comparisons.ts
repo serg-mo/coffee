@@ -37,31 +37,31 @@ function getWins(comparisons: string[]) {
 // single pairwise comparison, symmetrical 2x1
 console.assert(
   JSON.stringify(getWins(["ab"])) ===
-  JSON.stringify({
-    a: { b: ["a"] },
-    b: { a: ["a"] },
-  }),
+    JSON.stringify({
+      a: { b: ["a"] },
+      b: { a: ["a"] },
+    }),
 );
 
 // 2 + 1 pairwise comparisons, symmetrical 3x2
 console.assert(
   JSON.stringify(getWins(["abc"])) ===
-  JSON.stringify({
-    a: { b: ["a"], c: ["a"] },
-    b: { a: ["a"], c: ["b"] },
-    c: { a: ["a"], b: ["b"] },
-  }),
+    JSON.stringify({
+      a: { b: ["a"], c: ["a"] },
+      b: { a: ["a"], c: ["b"] },
+      c: { a: ["a"], b: ["b"] },
+    }),
 );
 
 // 3 + 2 + 1 pairwise comparisons, symmertical 4x3
 console.assert(
   JSON.stringify(getWins(["abcd"])) ===
-  JSON.stringify({
-    a: { b: ["a"], c: ["a"], d: ["a"] },
-    b: { a: ["a"], c: ["b"], d: ["b"] },
-    c: { a: ["a"], b: ["b"], d: ["c"] },
-    d: { a: ["a"], b: ["b"], c: ["c"] },
-  }),
+    JSON.stringify({
+      a: { b: ["a"], c: ["a"], d: ["a"] },
+      b: { a: ["a"], c: ["b"], d: ["b"] },
+      c: { a: ["a"], b: ["b"], d: ["c"] },
+      d: { a: ["a"], b: ["b"], c: ["c"] },
+    }),
 );
 
 export function convertQuadToPairwise(comparisons: Record<string, string>) {

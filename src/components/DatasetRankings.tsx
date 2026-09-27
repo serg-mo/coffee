@@ -2,20 +2,23 @@ import React from "react";
 import DataShapePair from "types/DataShapePair";
 import DataShapeQuad from "types/DataShapeQuad";
 import { convertQuadToPairwise } from "../utils/comparisons";
+import BeanShape from "types/BeanShape";
 
-export default function DatasetTotals({
+export default function DatasetRankings({
   dataset,
   beanNames,
   onBeansClick,
+  beanData
 }: {
   dataset: DataShapeQuad | DataShapePair | null;
   beanNames: string[];
-  onBeansClick: (bean: string) => void;
+    onBeansClick: (bean: string) => void;
+    beanData: Record<string, BeanShape>
 }) {
   if (!dataset) {
     return (
-      <div className="h-48 w-full flex items-center justify-center border border-dashed border-gray-300">
-        totals
+      <div className="h-48 w-48 m-auto flex items-center justify-center border border-dashed border-gray-300">
+        rankings
       </div>
     );
   }
@@ -40,18 +43,23 @@ export default function DatasetTotals({
       .sort((a: [string, number], b: [string, number]) => b[1] - a[1]),
   );
 
+  // TODO: beanData[name]?.specifications?.Country and fall back to name
   return (
-    <div className="h-48 w-full flex flex-col items-center justify-center border border-dashed border-gray-300">
-      {Object.entries(totals).map(([name, wins]) => (
-        <div
-          key={name}
-          className={`w-full flex flex-row px-2 cursor-pointer ${beanNames.includes(name) ? "font-bold" : ""}`}
-          onClick={() => onBeansClick(name)}
-        >
-          <div className="w-full py-1">{name.toUpperCase()}</div>
-          <div className="text-right w-10">{wins}</div>
-        </div>
-      ))}
-    </div>
+    <table className="h-48 w-48 m-auto border-collapse text-nowrap">
+      <tbody>
+        {Object.entries(totals).map(([name, wins], index) => (
+          <tr
+            key={name}
+            className={`cursor-pointer border border border-gray-300 ${beanNames.includes(name) ? "font-bold" : ""} ${index < 3 ? "bg-gray-100" : "bg-white"}`}
+            onClick={() => onBeansClick(name)}
+          >
+            <td className="w-full px-2 ">
+              {index + 1}. {(beanData[name]?.specifications?.Country || name).toUpperCase()}
+            </td>
+            <td className="text-right px-2">{wins}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }

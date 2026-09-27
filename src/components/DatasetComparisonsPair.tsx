@@ -3,7 +3,7 @@ import DataShapePair from "types/DataShapePair";
 import DataShapeQuad from "types/DataShapeQuad";
 import { convertQuadToPairwise } from "../utils/comparisons";
 
-export default function DatasetMatrix({
+export default function DatasetComparisonsPair({
   dataset,
   beanNames,
   onBeansClick,

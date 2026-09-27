@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import DataShapeQuad from "types/DataShapeQuad";
 import DataShapePair from "types/DataShapePair";
 import Slider from "./Slider";
-import DatasetMatrix from "./DatasetMatrix";
-import DatasetTotals from "./DatasetTotals";
+import DatasetComparisonsPair from "./DatasetComparisonsPair";
+import DatasetComparisonsQuad from "./DatasetComparisonsQuad";
+import DatasetRankings from "./DatasetRankings";
+import BeanShape from "types/BeanShape";
 
 export default function Dataset({
   name,
@@ -11,17 +13,20 @@ export default function Dataset({
   beanNames,
   onBeansClick,
   onDatasetClick,
+  beanData
 }: {
   name: string;
-  dataset: DataShapeQuad | DataShapePair | null;
+  dataset: DataShapeQuad | DataShapePair;
   beanNames: string[];
   onBeansClick: (bean: string) => void;
   onDatasetClick: (names: string[]) => void;
+  beanData: Record<string, BeanShape>;
 }) {
   const [slide, setSlide] = useState(0);
 
+  // NOTE: slider children render a placeholder for empty datasets, which do exist
   return (
-    <div className="">
+    <div>
       <h2
         className="
         text-xl font-bold text-center capitalize
@@ -30,7 +35,7 @@ export default function Dataset({
         onClick={
           dataset
             ? () => onDatasetClick(Object.values(dataset.names))
-            : () => {}
+            : () => { }
         }
       >
         {name}
@@ -38,18 +43,30 @@ export default function Dataset({
 
       <Slider slide={slide} setSlide={setSlide} direction="horizontal">
         {[
-          <DatasetMatrix
-            key="comparisons"
-            dataset={dataset}
-            beanNames={beanNames}
-            onBeansClick={onBeansClick}
-          />,
-          <DatasetTotals
+          <DatasetRankings
             key="rankings"
             dataset={dataset}
             beanNames={beanNames}
+            beanData={beanData}
             onBeansClick={onBeansClick}
           />,
+          typeof (
+            dataset?.comparisons ? Object.values(dataset?.comparisons) : []
+          )[0] === "string" ? (
+            <DatasetComparisonsQuad
+              key="comparisonsV2"
+              dataset={dataset}
+              beanNames={beanNames}
+              onBeansClick={onBeansClick}
+            />
+          ) : (
+            <DatasetComparisonsPair
+              key="comparisons"
+              dataset={dataset}
+              beanNames={beanNames}
+              onBeansClick={onBeansClick}
+            />
+          ),
         ]}
       </Slider>
     </div>

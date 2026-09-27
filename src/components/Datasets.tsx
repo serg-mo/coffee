@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Dataset from "./Dataset";
 import Slider from "./Slider";
-import { prev } from "cheerio/dist/commonjs/api/traversing";
+import BeanShape from "types/BeanShape";
 
 const YEARS = [2026, 2025, 2024];
 const REGIONS = ["africa", "indonesia", "central-america", "south-america"]; // NOTE: grid-cols-4 below
@@ -13,9 +13,11 @@ const datasetUrl = (year: number, region: string) =>
 export default function Datasets({
   beanNames,
   setBeanNames,
+  beanData
 }: {
   beanNames: string[];
-  setBeanNames: (names: string[]) => void;
+    setBeanNames: (names: string[]) => void;
+    beanData: Record<string, BeanShape>
 }) {
   const [datasets, setDatasets] = useState<Record<string, any>>({});
   const [slide, setSlide] = useState(0);
@@ -64,6 +66,7 @@ export default function Datasets({
                   dataset={dataset}
                   key={key}
                   beanNames={beanNames}
+                  beanData={beanData}
                   onBeansClick={toggleBeans}
                   onDatasetClick={setBeanNames}
                 />
