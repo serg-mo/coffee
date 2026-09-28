@@ -1,53 +1,54 @@
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
+
 import BeanCard from "./components/BeanCard";
 import Datasets from "./components/Datasets";
-import RadarChart from "./components/RadarChart";
-import BeanShape from "types/BeanShape";
-import OriginMap from "./components/OriginMap";
 import About from "./components/About";
 import BeanChart from "./components/BeanChart";
+import BeanTable from "./components/BeanTable";
+import BeanShape from "types/BeanShape";
 
-// TODO: rename Indonesia to just Asia
+const beanCache = new Map<string, BeanShape>();
 
 function getBeanData(name: string) {
-  return fetch(`./data/beans/${name.toLocaleLowerCase()}.json`)
-    .then((res) => res.json())
-    .catch(() => null);
+  const url = `./data/beans/${name.toLowerCase()}.json`
+
+  if (beanCache.has(url)) {
+    return Promise.resolve(beanCache.get(url));
+  }
+
+  return fetch(url)
+    .then((res) => (res.ok ? res.json() : null))
+    .then((data) => {
+      if (data) beanCache.set(url, data);
+      return data;
+    })
+    .catch(() => null); // NOTE: silent fail for missing bean data
 }
 
 export default function App() {
+  // TODO: limit beanNames to 5 max
   // NOTE: names change, data stays
   const [beanNames, setBeanNames] = useState<string[]>([]); // 1 - show card, 2+ - show radar charts
   const [beanData, setBeanData] = useState<Record<string, BeanShape>>({});
 
   useEffect(() => {
-    if (!beanNames.length) {
-      return;
-    }
+    // NOTE: we re-try missing ones every time the list changes 
+    const missingNames = beanNames.filter((name) => !beanData[name]);
+    if (!missingNames.length) return;
 
-    // must be relative because production is on /coffee/
-    Promise.all(beanNames.map(getBeanData)).then((results) => {
-      setBeanData(
-        Object.fromEntries(
-          beanNames
-            .map((name, i) => [name, results[i]])
-            .filter(([, data]) => data), // no empties
-        ),
-      );
-    });
+    Promise.all(missingNames.map(getBeanData))
+      .then((results) => {
+        setBeanData((data) => ({
+          ...data,
+          ...Object.fromEntries(
+            missingNames.map((name, i) => [name, results[i]]).filter(([, value]) => value), // SKU => BeanShape
+          ),
+        }));
+      });
   }, [beanNames]);
 
-  const countries = useMemo(
-    () =>
-      Array.from(
-        new Set(
-          beanNames
-            .map((name) => beanData[name]?.specifications?.Country)
-            .filter((country: string) => country),
-        ),
-      ),
-    [beanNames, beanData],
-  );
+  const beans = beanNames.map((name) => beanData[name]).filter(Boolean)
+  // console.log({ beanNames, beanData, beans })
 
   return (
     <div className="flex flex-col m-auto w-3/5">
@@ -57,15 +58,13 @@ export default function App() {
         beanData={beanData}
       />
 
-      {beanNames.length > 0 ? (
+      {beans.length ? (
         <div className="w-full flex flex-col">
-          <BeanChart beanData={beanData} />
+          <BeanChart beans={beans} />
 
-          {beanNames.length === 1 && beanData[beanNames[0]] && (
-            <BeanCard {...beanData[beanNames[0]]} />
-          )}
+          {beans.length === 1 && beans[0] && (<BeanCard {...beans[0]} />)}
 
-          <OriginMap countries={countries} />
+          {beans.length > 1 && <BeanTable beans={beans} />}
         </div>
       ) : (
         <About />

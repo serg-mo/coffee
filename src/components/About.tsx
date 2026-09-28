@@ -51,7 +51,8 @@ export default function About() {
         single tasting we can infer 3 + 2 + 1 = 6 pairwise comparisons. Five
         tastings produce 30 pairwise comparisons for 10 unique pairings. With 3
         votes per pairing, there is a definite winner. Such "quad" dataset can
-        be converted to "pair" dataset by copying that winner across the diagonal.
+        be converted to "pair" dataset by copying that winner across the
+        diagonal.
       </p>
       <p className="mt-2 leading-relaxed">
         Bean rank is just a count of wins out of 4 vertical + 4 horizontal = 8

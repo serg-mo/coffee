@@ -1,35 +1,35 @@
 {
-  "sku": "braorgdutra",
+  "sku": "BRAORGDUTRA",
   "attributes": {
-    "Brightness": 4,
-    "Body": 4,
-    "Aroma": 4,
-    "Complexity": 5,
-    "Balance": 6,
-    "Sweetness": 5
+    "brightness": 4,
+    "body": 4,
+    "aroma": 4,
+    "complexity": 5,
+    "balance": 6,
+    "sweetness": 5
   },
   "flavors": {
-    "Spicy": 1,
-    "Chocolaty": 4,
-    "Nutty": 1,
-    "Buttery": 3,
-    "Fruity": 3,
-    "Flowery": 1,
-    "Winey": 1,
-    "Earthy": 1
+    "spicy": 1,
+    "chocolaty": 4,
+    "nutty": 1,
+    "buttery": 3,
+    "fruity": 3,
+    "flowery": 1,
+    "winey": 1,
+    "earthy": 1
   },
   "specifications": {
-    "Category": "Organic",
-    "Country": "Brazil",
-    "Local Region": "Matas de Minas",
-    "Process": "Natural",
-    "Certifications": "Organic",
-    "Variety": "Red and yellow Catuai, Mundo Novo, Bourbon, Catucai, yellow Pacamara, Icatu, Geisha, Catiguá MG3, Aramosa, Kent",
-    "Altitude (meters)": "650 - 1,400 masl",
-    "Organic Certification": "Yes",
-    "Fair Trade": "No",
-    "Rainforest Alliance Certified": "No",
-    "Decaffeinated": "No"
+    "category": "Organic",
+    "country": "Brazil",
+    "local region": "Matas de Minas",
+    "process": "Natural",
+    "certifications": "Organic",
+    "variety": "Red and yellow Catuai, Mundo Novo, Bourbon, Catucai, yellow Pacamara, Icatu, Geisha, Catiguá MG3, Aramosa, Kent",
+    "altitude": "650 - 1,400 masl",
+    "organic certification": "Yes",
+    "fair trade": "No",
+    "rainforest alliance certified": "No",
+    "decaffeinated": "No"
   },
   "description": "Brazil Organic Dutra Natural 14/16 comes from a family-owned coffee farm in Sao Joao do Manjuacu inland from the east coast of Brazil. This coffee has a delicate but citric acidity and a smooth body with notes of cherry, cocoa, and raisin\nCupping Notes: Sweet, medium brightness and body with notes of cherry, cocoa, and raisin."
 }

@@ -1,35 +1,35 @@
 {
-  "sku": "bolorgapolo",
+  "sku": "BOLORGAPOLO",
   "attributes": {
-    "Brightness": 6,
-    "Body": 5,
-    "Aroma": 6,
-    "Complexity": 7,
-    "Balance": 5,
-    "Sweetness": 5
+    "brightness": 6,
+    "body": 5,
+    "aroma": 6,
+    "complexity": 7,
+    "balance": 5,
+    "sweetness": 5
   },
   "flavors": {
-    "Spicy": 1,
-    "Chocolaty": 3,
-    "Nutty": 1,
-    "Buttery": 3,
-    "Fruity": 3,
-    "Flowery": 1,
-    "Winey": 1,
-    "Earthy": 2
+    "spicy": 1,
+    "chocolaty": 3,
+    "nutty": 1,
+    "buttery": 3,
+    "fruity": 3,
+    "flowery": 1,
+    "winey": 1,
+    "earthy": 2
   },
   "specifications": {
-    "Category": "Conventional",
-    "Country": "Bolivia",
-    "Local Region": "Apolo",
-    "Process": "Washed",
-    "Variety": "Typica, Castillo",
-    "Altitude (meters)": "1,700 masl",
-    "Harvest": "September - December",
-    "Organic Certification": "No",
-    "Fair Trade": "No",
-    "Rainforest Alliance Certified": "No",
-    "Decaffeinated": "No"
+    "category": "Conventional",
+    "country": "Bolivia",
+    "local region": "Apolo",
+    "process": "Washed",
+    "variety": "Typica, Castillo",
+    "altitude": "1,700 masl",
+    "harvest": "September - December",
+    "organic certification": "No",
+    "fair trade": "No",
+    "rainforest alliance certified": "No",
+    "decaffeinated": "No"
   },
-  "description": "Apolo is an indigenous region of Northern Bolivia that had never commercially grown or exported coffee, until they began working with Wildlife Conservation Society and Cafe Kreyol in order to create a model of ecological preservation, and economic sustainable income. Cafe Kreyol works directly with 5 indigenous communities of Apolo, that speak a form of Quechua that predates the Incas.\n\nThe coffee from this region, with a very defined orange acidity (when roasted light), chocolatey flavor, and sweet aroma, is quickly taking it’s place as one of the top coffees of Bolivia. Cupping notes:Transparent citrus and tangerine acidity. With remarkable clarity, complexity, and creaminess.  Try before you stock up with a 1/2lb sample!!"
+  "description": "Apolo is an indigenous region of Northern Bolivia that had never commercially grown or exported coffee, until they began working with Wildlife Conservation Society and Cafe Kreyol in order to create a model of ecological preservation, and economic sustainable income. Cafe Kreyol works directly with 5 indigenous communities of Apolo, that speak a form of Quechua that predates the Incas.\n\nThe coffee from this region, with a very defined orange acidity (when roasted light), chocolatey flavor, and sweet aroma, is quickly taking it’s place as one of the top coffees of Bolivia. Cupping notes:Transparent citrus and tangerine acidity. With remarkable clarity, complexity, and creaminess."
 }

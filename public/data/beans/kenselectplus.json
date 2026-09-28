@@ -1,35 +1,35 @@
 {
-  "sku": "kenselectplus",
+  "sku": "KENSELECTPLUS",
   "attributes": {
-    "Brightness": 6,
-    "Body": 5,
-    "Aroma": 5,
-    "Complexity": 4,
-    "Balance": 5,
-    "Sweetness": 7
+    "brightness": 6,
+    "body": 5,
+    "aroma": 5,
+    "complexity": 4,
+    "balance": 5,
+    "sweetness": 7
   },
   "flavors": {
-    "Spicy": 2,
-    "Chocolaty": 1,
-    "Nutty": 1,
-    "Buttery": 1,
-    "Fruity": 4,
-    "Flowery": 3,
-    "Winey": 1,
-    "Earthy": 1
+    "spicy": 2,
+    "chocolaty": 1,
+    "nutty": 1,
+    "buttery": 1,
+    "fruity": 4,
+    "flowery": 3,
+    "winey": 1,
+    "earthy": 1
   },
   "specifications": {
-    "Category": "Conventional",
-    "Country": "Kenya",
-    "Local Region": "Kiambu County",
-    "Process": "Washed",
-    "Variety": "Multiple Varietals",
-    "Altitude (meters)": "1,500 - 2,000 masl",
-    "Harvest": "February - March & November - December",
-    "Organic Certification": "No",
-    "Fair Trade": "No",
-    "Rainforest Alliance Certified": "No",
-    "Decaffeinated": "No"
+    "category": "Conventional",
+    "country": "Kenya",
+    "local region": "Kiambu County",
+    "process": "Washed",
+    "variety": "Multiple Varietals",
+    "altitude": "1,500 - 2,000 masl",
+    "harvest": "February - March & November - December",
+    "organic certification": "No",
+    "fair trade": "No",
+    "rainforest alliance certified": "No",
+    "decaffeinated": "No"
   },
-  "description": "Our Kenya AA Select Plus is produced by a number of small farmers in the central Kenyan farmlands that surround Mt. Kenya. It is a single-origin coffee from the Nairobi Coffee Exchange and is considered some of the best quality coffee in the world! The Kenyan Process is a double fermentation method where the puled cherries are soaked twice in fermentation tanks and are sun-dried on raised beds for 1-2 weeks. The lots are consolidated at a local mill and go through a double fermentation method before being sun-dried on raised beds. The Nairobi Coffee Exchange grades the beans, cups the coffee, and sells it at auction, where we buy it for you.  Cupping Notes: Clean well balanced intense flavor, smooth medium body, sweet lingering aftertaste, bright crisp acidity and sweet brown sugar aroma with  blueberry, raspberry and black tea notes. Try before you stock up with a 1/2 pound sample!"
+  "description": "Our Kenya AA Select Plus is produced by a number of small farmers in the central Kenyan farmlands that surround Mt. Kenya. It is a single-origin coffee from the Nairobi Coffee Exchange and is considered some of the best quality coffee in the world! The Kenyan Process is a double fermentation method where the puled cherries are soaked twice in fermentation tanks and are sun-dried on raised beds for 1-2 weeks. The lots are consolidated at a local mill and go through a double fermentation method before being sun-dried on raised beds. The Nairobi Coffee Exchange grades the beans, cups the coffee, and sells it at auction, where we buy it for you.  Cupping Notes: Clean well balanced intense flavor, smooth medium body, sweet lingering aftertaste, bright crisp acidity and sweet brown sugar aroma with  blueberry, raspberry and black tea notes."
 }
