@@ -1,35 +1,35 @@
 {
-  "sku": "burhafi",
+  "sku": "BURHAFI",
   "attributes": {
-    "Brightness": 7,
-    "Body": 5,
-    "Aroma": 6,
-    "Complexity": 5,
-    "Balance": 5,
-    "Sweetness": 6
+    "brightness": 7,
+    "body": 5,
+    "aroma": 6,
+    "complexity": 5,
+    "balance": 5,
+    "sweetness": 6
   },
   "flavors": {
-    "Spicy": 2,
-    "Chocolaty": 2,
-    "Nutty": 1,
-    "Buttery": 1,
-    "Fruity": 4,
-    "Flowery": 2,
-    "Winey": 3,
-    "Earthy": 2
+    "spicy": 2,
+    "chocolaty": 2,
+    "nutty": 1,
+    "buttery": 1,
+    "fruity": 4,
+    "flowery": 2,
+    "winey": 3,
+    "earthy": 2
   },
   "specifications": {
-    "Category": "Conventional",
-    "Country": "Burundi",
-    "Local Region": "Muyinga Province",
-    "Process": "Natural",
-    "Variety": "Natural Arabica – Bourbon",
-    "Altitude (meters)": "1,715 masl",
-    "Harvest": "April - June",
-    "Organic Certification": "No",
-    "Fair Trade": "No",
-    "Rainforest Alliance Certified": "No",
-    "Decaffeinated": "No"
+    "category": "Conventional",
+    "country": "Burundi",
+    "local region": "Muyinga Province",
+    "process": "Natural",
+    "variety": "Natural Arabica – Bourbon",
+    "altitude": "1,715 masl",
+    "harvest": "April - June",
+    "organic certification": "No",
+    "fair trade": "No",
+    "rainforest alliance certified": "No",
+    "decaffeinated": "No"
   },
   "description": "This coffee is called  Hafi, which means “close” in Kirundi. Before the washing station opened, small farmers in the area faced a 20km journey to deliver their freshly harvested cherry to the nearest wet mill. With the hilly terrain, that was too far to travel in one day. Quality standards require same-day processing for harvested cherry. A wet mill nearby makes it possible to grow this specialty coffee we treasure, which features silky smooth notes of sweet, dried cherries and blackberries."
 }

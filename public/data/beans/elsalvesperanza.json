@@ -1,35 +1,35 @@
 {
-  "sku": "elsalvesperanza",
+  "sku": "ELSALVESPERANZA",
   "attributes": {
-    "Brightness": 4,
-    "Body": 5,
-    "Aroma": 5,
-    "Complexity": 4,
-    "Balance": 5,
-    "Sweetness": 5
+    "brightness": 4,
+    "body": 5,
+    "aroma": 5,
+    "complexity": 4,
+    "balance": 5,
+    "sweetness": 5
   },
   "flavors": {
-    "Spicy": 2,
-    "Chocolaty": 4,
-    "Nutty": 1,
-    "Buttery": 3,
-    "Fruity": 2,
-    "Flowery": 1,
-    "Winey": 1,
-    "Earthy": 1
+    "spicy": 2,
+    "chocolaty": 4,
+    "nutty": 1,
+    "buttery": 3,
+    "fruity": 2,
+    "flowery": 1,
+    "winey": 1,
+    "earthy": 1
   },
   "specifications": {
-    "Category": "Conventional",
-    "Country": "El Salvador",
-    "Local Region": "Santa Ana",
-    "Process": "Washed",
-    "Variety": "Bourbon",
-    "Altitude (meters)": "1,180 - 1,385 masl",
-    "Harvest": "November - March",
-    "Organic Certification": "No",
-    "Fair Trade": "No",
-    "Rainforest Alliance Certified": "Yes",
-    "Decaffeinated": "No"
+    "category": "Conventional",
+    "country": "El Salvador",
+    "local region": "Santa Ana",
+    "process": "Washed",
+    "variety": "Bourbon",
+    "altitude": "1,180 - 1,385 masl",
+    "harvest": "November - March",
+    "organic certification": "No",
+    "fair trade": "No",
+    "rainforest alliance certified": "Yes",
+    "decaffeinated": "No"
   },
-  "description": "Grown in the western part of El Salvador within the Apaneca Ilamatepec mountain range where the fertile land is perfect for coffee beans, this new variety is grown on the Magana-Menendez family farm – 1,000 meters above sea level. With over 100 years of experience, the struggle for sustainability and social function has been the Magana-Menendez family’s main focus, and this attention to detail helps produce their high-quality coffees and preserve the coffee’s ecosystem with the Rainforest Alliance.\n \n\nCupping Notes: Milk chocolate, brown sugar, cherry, with medium acidity, a bold body, and above-average sweetness.\n \nTry before you buy with a 1/2lb sample!!"
+  "description": "Grown in the western part of El Salvador within the Apaneca Ilamatepec mountain range where the fertile land is perfect for coffee beans, this new variety is grown on the Magana-Menendez family farm – 1,000 meters above sea level. With over 100 years of experience, the struggle for sustainability and social function has been the Magana-Menendez family’s main focus, and this attention to detail helps produce their high-quality coffees and preserve the coffee’s ecosystem with the Rainforest Alliance.\n \n\nCupping Notes: Milk chocolate, brown sugar, cherry, with medium acidity, a bold body, and above-average sweetness."
 }

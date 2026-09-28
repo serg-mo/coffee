@@ -1,35 +1,35 @@
 {
-  "sku": "mexlajahoney",
+  "sku": "MEXLAJAHONEY",
   "attributes": {
-    "Brightness": 6,
-    "Body": 5,
-    "Aroma": 4,
-    "Complexity": 4,
-    "Balance": 5,
-    "Sweetness": 7
+    "brightness": 6,
+    "body": 5,
+    "aroma": 4,
+    "complexity": 4,
+    "balance": 5,
+    "sweetness": 7
   },
   "flavors": {
-    "Spicy": 1,
-    "Chocolaty": 2,
-    "Nutty": 2,
-    "Buttery": 3,
-    "Fruity": 3,
-    "Flowery": 2,
-    "Winey": 2,
-    "Earthy": 1
+    "spicy": 1,
+    "chocolaty": 2,
+    "nutty": 2,
+    "buttery": 3,
+    "fruity": 3,
+    "flowery": 2,
+    "winey": 2,
+    "earthy": 1
   },
   "specifications": {
-    "Category": "Conventional",
-    "Country": "Mexico",
-    "Local Region": "Tlaltetela, Veracruz",
-    "Process": "Honey",
-    "Variety": "Caturra, Garnica",
-    "Altitude (meters)": "1,130 - 1,250 masl",
-    "Harvest": "December - March",
-    "Organic Certification": "No",
-    "Fair Trade": "No",
-    "Rainforest Alliance Certified": "Yes",
-    "Decaffeinated": "No"
+    "category": "Conventional",
+    "country": "Mexico",
+    "local region": "Tlaltetela, Veracruz",
+    "process": "Honey",
+    "variety": "Caturra, Garnica",
+    "altitude": "1,130 - 1,250 masl",
+    "harvest": "December - March",
+    "organic certification": "No",
+    "fair trade": "No",
+    "rainforest alliance certified": "Yes",
+    "decaffeinated": "No"
   },
-  "description": "La Laja, a family farm and mining group in Veracruz, Mexico, began in 1920 when its founder, Hermilo Sampieri, bought his first coffee farm in Huatusco. His son joined in, and eventually, one farm became seven––Finca La Laja, Finca El Mirador, Finca Las Palmas, Finca La Veracruz, and three other farms in Puebla. \nLa Laja also purchases a wide variety of cherries from small farmers in Chiapas. They are experts in processing, and they own wet and dry mills. La Laja’s honey-processed bean has its skin removed, but the sugary pulp remains through fermentation to add a sweet flavor. After de-pulping, this coffee dries for up to 20 days on covered raised beds. \nCupping notes: This coffee is supremely sweet with a mild orange citric acidity and a smooth, creamy body. It is very clean and consistent.\nTry before you stock up with a 1/2 pound sample!"
+  "description": "La Laja, a family farm and mining group in Veracruz, Mexico, began in 1920 when its founder, Hermilo Sampieri, bought his first coffee farm in Huatusco. His son joined in, and eventually, one farm became seven––Finca La Laja, Finca El Mirador, Finca Las Palmas, Finca La Veracruz, and three other farms in Puebla. \nLa Laja also purchases a wide variety of cherries from small farmers in Chiapas. They are experts in processing, and they own wet and dry mills. La Laja’s honey-processed bean has its skin removed, but the sugary pulp remains through fermentation to add a sweet flavor. After de-pulping, this coffee dries for up to 20 days on covered raised beds. \nCupping notes: This coffee is supremely sweet with a mild orange citric acidity and a smooth, creamy body. It is very clean and consistent."
 }

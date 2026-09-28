@@ -1,35 +1,35 @@
 {
-  "sku": "colbuc",
+  "sku": "COLBUC",
   "attributes": {
-    "Brightness": 4,
-    "Body": 5,
-    "Aroma": 5,
-    "Complexity": 4,
-    "Balance": 6,
-    "Sweetness": 4
+    "brightness": 4,
+    "body": 5,
+    "aroma": 5,
+    "complexity": 4,
+    "balance": 6,
+    "sweetness": 4
   },
   "flavors": {
-    "Spicy": 2,
-    "Chocolaty": 2,
-    "Nutty": 1,
-    "Buttery": 2,
-    "Fruity": 4,
-    "Flowery": 2,
-    "Winey": 1,
-    "Earthy": 1
+    "spicy": 2,
+    "chocolaty": 2,
+    "nutty": 1,
+    "buttery": 2,
+    "fruity": 4,
+    "flowery": 2,
+    "winey": 1,
+    "earthy": 1
   },
   "specifications": {
-    "Category": "Conventional",
-    "Country": "Colombia",
-    "Local Region": "Bucaramanga",
-    "Process": "Washed",
-    "Variety": "Castillo, Colombia, Caturra, Typica",
-    "Altitude (meters)": "1,000 - 2,000 masl",
-    "Harvest": "October - December",
-    "Organic Certification": "No",
-    "Fair Trade": "No",
-    "Rainforest Alliance Certified": "No",
-    "Decaffeinated": "No"
+    "category": "Conventional",
+    "country": "Colombia",
+    "local region": "Bucaramanga",
+    "process": "Washed",
+    "variety": "Castillo, Colombia, Caturra, Typica",
+    "altitude": "1,000 - 2,000 masl",
+    "harvest": "October - December",
+    "organic certification": "No",
+    "fair trade": "No",
+    "rainforest alliance certified": "No",
+    "decaffeinated": "No"
   },
-  "description": "El Gato Supremo is grown through the Santander Department, which is widely known for its natural, shade-grown coffees. These beans are cultivated in rich forests where volcanic soils, idyllic microclimates, and average temperatures between 68 and 71 degrees Fahrenheit are ideal for growing specialty-grade arabica. A proper 17/18 screen Colombia Supremo green coffee, this bean is handpicked, washed, and milled by the Northeastern Colombian Coffee Cooperative (Cooperativa Cafetera Del Nororiente Colombiano). Cupping Notes: Good medium body, a silky, smooth mouthfeel, mild acidity, and notes of citrus, brown sugar, pecan, fig, red grape, and honey.Try before you stock up with a 1/2 pound sample!"
+  "description": "El Gato Supremo is grown through the Santander Department, which is widely known for its natural, shade-grown coffees. These beans are cultivated in rich forests where volcanic soils, idyllic microclimates, and average temperatures between 68 and 71 degrees Fahrenheit are ideal for growing specialty-grade arabica. A proper 17/18 screen Colombia Supremo green coffee, this bean is handpicked, washed, and milled by the Northeastern Colombian Coffee Cooperative (Cooperativa Cafetera Del Nororiente Colombiano). Cupping Notes: Good medium body, a silky, smooth mouthfeel, mild acidity, and notes of citrus, brown sugar, pecan, fig, red grape, and honey."
 }

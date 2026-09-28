@@ -1,35 +1,35 @@
 {
-  "sku": "braoberon",
+  "sku": "BRAOBERON",
   "attributes": {
-    "Brightness": 4,
-    "Body": 7,
-    "Aroma": 4,
-    "Complexity": 5,
-    "Balance": 5,
-    "Sweetness": 6
+    "brightness": 4,
+    "body": 7,
+    "aroma": 4,
+    "complexity": 5,
+    "balance": 5,
+    "sweetness": 6
   },
   "flavors": {
-    "Spicy": 2,
-    "Chocolaty": 4,
-    "Nutty": 4,
-    "Buttery": 1,
-    "Fruity": 3,
-    "Flowery": 1,
-    "Winey": 1,
-    "Earthy": 1
+    "spicy": 2,
+    "chocolaty": 4,
+    "nutty": 4,
+    "buttery": 1,
+    "fruity": 3,
+    "flowery": 1,
+    "winey": 1,
+    "earthy": 1
   },
   "specifications": {
-    "Category": "Conventional",
-    "Country": "Brazil",
-    "Local Region": "Cerrado",
-    "Process": "Natural",
-    "Variety": "Mundo Novo, Catuaí and Bourbon",
-    "Altitude (meters)": "900 - 1,250 masl",
-    "Harvest": "May - September",
-    "Organic Certification": "No",
-    "Fair Trade": "No",
-    "Rainforest Alliance Certified": "No",
-    "Decaffeinated": "No"
+    "category": "Conventional",
+    "country": "Brazil",
+    "local region": "Cerrado",
+    "process": "Natural",
+    "variety": "Mundo Novo, Catuaí and Bourbon",
+    "altitude": "900 - 1,250 masl",
+    "harvest": "May - September",
+    "organic certification": "No",
+    "fair trade": "No",
+    "rainforest alliance certified": "No",
+    "decaffeinated": "No"
   },
-  "description": "Brazil’s Oberon coffee is a pure Cerrado blend that perfectly captures what the region is known for in one sip––blissful temperatures averaging 68 degrees Fahrenheit, altitudes reaching just below 1,250, and an average rainfall of 1,600 millimeters ––a haven for healthy coffee trees. The Cerrado land houses just over 140,000 hectares of coffee production that vary in size from 100 hectares to 3,000––all dedicated to consistent cup quality. Cupping notes: Chocolate, nutty, fruity aftertaste; light acidity, sweet, full body. Clean and balanced. Try before you stock up with a 1/2lb sample!!"
+  "description": "Brazil’s Oberon coffee is a pure Cerrado blend that perfectly captures what the region is known for in one sip––blissful temperatures averaging 68 degrees Fahrenheit, altitudes reaching just below 1,250, and an average rainfall of 1,600 millimeters ––a haven for healthy coffee trees. The Cerrado land houses just over 140,000 hectares of coffee production that vary in size from 100 hectares to 3,000––all dedicated to consistent cup quality. Cupping notes: Chocolate, nutty, fruity aftertaste; light acidity, sweet, full body. Clean and balanced."
 }

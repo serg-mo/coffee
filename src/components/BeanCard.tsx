@@ -1,6 +1,5 @@
 import React from "react";
 import BeanShape from "types/BeanShape";
-import OriginMap from "./OriginMap";
 
 export default function BeanCard({
   sku,
