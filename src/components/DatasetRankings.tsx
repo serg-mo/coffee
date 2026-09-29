@@ -4,6 +4,8 @@ import DataShapeQuad from "types/DataShapeQuad";
 import BeanShape from "types/BeanShape";
 import { convertQuadToPairwise } from "../utils/comparisons";
 
+const MAX_WINS = 8;
+
 // TODO: duplicate
 function isQuad(dataset: DataShapeQuad | DataShapePair) {
   return (
@@ -52,15 +54,13 @@ export default function DatasetRankings({
   return (
     <table className="h-48 w-48 m-auto border-collapse text-nowrap">
       <tbody>
-        {totals.map(([name, wins], index) => (
+        {totals.map(([name, wins]) => (
           <tr
             key={name}
-            className={`cursor-pointer border border border-gray-300 ${beanNames.includes(name) ? "font-bold" : ""} ${index < 3 ? "bg-gray-200" : "bg-white"}`}
+            className={`cursor-pointer border border border-gray-300 ${beanNames.includes(name) ? "font-bold" : ""} ${wins === MAX_WINS ? "bg-gray-200" : "bg-white"}`}
             onClick={() => onBeansClick(name)}
           >
-            <td className="w-full px-2">
-              {index + 1}. {name.toUpperCase()}
-            </td>
+            <td className="w-full px-2">{name.toUpperCase()}</td>
             <td className="px-2 text-right">{wins}</td>
           </tr>
         ))}

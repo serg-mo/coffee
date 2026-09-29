@@ -52,7 +52,7 @@ export default function App() {
   // console.log({ beanNames, beanData, beans })
 
   return (
-    <div className="flex flex-col m-auto w-full lg:w-4xl max-w-4xl gap-2">
+    <div className="flex flex-col m-auto w-full lg:w-4xl max-w-4xl gap-2 text-gray-600">
       <Datasets
         beanNames={beanNames}
         setBeanNames={setBeanNames}
@@ -62,7 +62,7 @@ export default function App() {
       {beans.length ? (
         <div className="w-full flex flex-col">
           <BeanChart beans={beans} />
-          {beans.length === 1 && beans[0] && <BeanCard {...beans[0]} />}
+          {beans.length === 1 && beans[0].sku && <BeanCard bean={beans[0]} />}
           {beans.length > 1 && <BeanTable beans={beans} />}
         </div>
       ) : (

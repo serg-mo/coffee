@@ -37,10 +37,10 @@ export default function DatasetComparisonsPair({
     return row === col
       ? [row.toUpperCase(), "won", getTotalWins(row)].join(" ")
       : [
-        row.toUpperCase(),
-        row == dataset.comparisons[row][col] ? ">" : "<",
-        col.toUpperCase(),
-      ].join(" ");
+          row.toUpperCase(),
+          row == dataset.comparisons[row][col] ? ">" : "<",
+          col.toUpperCase(),
+        ].join(" ");
   };
 
   return (

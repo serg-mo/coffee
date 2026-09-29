@@ -7,7 +7,7 @@ import DatasetRankings from "./DatasetRankings";
 import BeanShape from "types/BeanShape";
 import { useSlider } from "./Slider";
 
-export const maxX = 3; // must match with below
+export const maxX = 2; // must match with below
 
 // TODO: duplicate
 function isQuad(dataset: DataShapeQuad | DataShapePair) {
@@ -81,12 +81,6 @@ export default function Dataset({
             ) : (
               <DatasetComparisonsPair dataset={dataset as DataShapePair} />
             ))}
-
-          {x === 2 && dataset && (
-            <div className="text-xs whitespace-pre-wrap">
-              {JSON.stringify(dataset, null, 2)}
-            </div>
-          )}
         </>
       )}
     </div>
