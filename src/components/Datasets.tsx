@@ -26,6 +26,7 @@ export default function Datasets({
   // TODO: clicking a year should summarize all 4 regions
   // TODO: visualize the ranking value on the radar chart (0..8) range
   // TODO: fetch which slide to show from DatasetContext
+  // TODO: maybe clicking the year only selected the beans with 8
   return (
     <Slider maxX={maxX}>
       {YEARS.map((year) => (
