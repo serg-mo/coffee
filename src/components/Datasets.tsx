@@ -32,11 +32,11 @@ export default function Datasets({
         <div key={year}>
           <h2
             onClick={() => setBeanNames([])}
-            className="text-xl font-bold text-center flex items-center justify-center cursor-pointer"
+            className="text-xl font-bold text-center cursor-pointer"
           >
             {year}
           </h2>
-          <div className="grid grid-cols-4 gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-2">
             {REGIONS.map((region) => (
               <Dataset
                 key={`${year} ${region}`}

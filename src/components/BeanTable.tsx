@@ -16,15 +16,15 @@ const BEAN_PROPS = [
 
 const getBeanProp = (bean: BeanShape, prop: string) => {
   // NOTE: bean props are all lowercase, normalize them last
-  if (prop.toLowerCase() === "sku") {
-    return <span className="font-bold">{bean.sku?.toUpperCase()}</span>
+  if (prop === "sku") {
+    return <span className="font-bold">{bean.sku?.toUpperCase()}</span>;
   } else {
     // console.log({ prop, specs: bean.specifications })
-    return bean.specifications?.[prop.toLowerCase()] || '-';
+    return bean.specifications?.[prop] || "-";
   }
-}
+};
 
-export default function BeanTable({ beans }: { beans: BeanShape[]; }) {
+export default function BeanTable({ beans }: { beans: BeanShape[] }) {
   return (
     <table className="w-full table-fixed text-sm text-gray-600">
       <tbody>
@@ -40,7 +40,7 @@ export default function BeanTable({ beans }: { beans: BeanShape[]; }) {
                 key={bean.sku}
                 className="max-w-1/6 truncate px-3 py-2 text-center"
               >
-                {getBeanProp(bean, prop)}
+                {getBeanProp(bean, prop.toLowerCase())}
               </td>
             ))}
           </tr>

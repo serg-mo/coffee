@@ -18,49 +18,48 @@ import React from "react";
 
 export default function About() {
   return (
-    <div className="mt-10 mx-5 px-6 py-5 rounded-2xl border border-amber-200 bg-amber-50/80 text-amber-900 shadow-sm">
+    <div className="p-5 rounded-2xl border border-amber-200 bg-amber-50/80 text-amber-900">
       <h2 className="text-center text-lg font-semibold tracking-tight text-amber-900">
         Single Origin Coffee Rankings
       </h2>
+
       <p className="mt-2 leading-relaxed">
-        Regional sample packs come in five 0.5lb bags and sometimes that's not
-        enough to fill the whole 5x5 matrix of pairwise comparisons. Out of the
-        25 cells, 5 are self-comparisons on the diagonal and the remaining 20
-        are duplicates. I taste each pairing twice, A vs B and B vs A, so 10
-        unique pairings. If the two tastings disagree, there is no definite
-        winner and no transitive completeness. This is why older matrices may
-        not be symmetrical around the diagonal, i.e., a different bean won both
-        times.
+        Regional sample packs come in five 1/2lb bags and sometimes that's not
+        enough for the whole 5x5 matrix. A sample bag yields only 10 doses per
+        bean. The old "pair" tastings required 8 doses, with only 2 attempts to
+        get the grind right. The new "quad" tastings only need 4 doses per bean.
       </p>
+
       <p className="mt-2 leading-relaxed">
-        Tasting every pair takes too long, especially if I want a definite
-        winner, i.e., odd number of tastings for every unique pairing. Both 10
-        groups of 3 and 5 groups of 4 compare each pairing 3 times, so there is
-        a definite winner, but groups of 4 are easier to remember, i.e., exclude
-        one bean at each tasting. Groups of 5 would work too, but I only have 4
-        puck screens.
+        Each cell lists the winner of the two beans, with 5 self-comparisons on
+        the diagonal showing total wins for that bean. The remaining 20 cells
+        cover each pairing twice, A vs B and B vs A. If I pick a different bean
+        both times, there is no definite winner and no transitive completeness.
+        This is why older matrices may not be symmetrical around the diagonal.
       </p>
+
       <p className="mt-2 leading-relaxed">
-        The sample bags are 226g green and ~180g roasted, so only 10 cups per
-        bean (18g dose). The old "pair" tastings required 8 cups, with only 2
-        attempts to get the grind right. The new "quad" tastings only need 4
-        cups, with 2.5x more room for error.
+        The old "pair" tastings take too long, especially if I want a definite
+        winner, i.e., odd number of comparisons for every unique pairing. Both
+        10 groups of 3 and 5 groups of 4 compare each unique pairing 3 times,
+        but groups of 4 are easier to remember, i.e., exclude one bean at each
+        tasting. Groups of 5 would work too, but I only have 4 puck screens.
       </p>
+
       <p className="mt-2 leading-relaxed">
-        A tasting is just a ranked list of four beans, e.g., ABCD. From this
-        single tasting we can infer 3 + 2 + 1 = 6 pairwise comparisons. Five
-        tastings produce 30 pairwise comparisons for 10 unique pairings. With 3
-        votes per pairing, there is a definite winner. Such "quad" dataset can
-        be converted to "pair" dataset by copying that winner across the
-        diagonal.
+        The new "quad" tasting is just a ranked list of four beans, e.g., ABCD.
+        From this single tasting we can infer 3 + 2 + 1 = 6 pairwise
+        comparisons. Five tastings produce 30 votes for 10 unique pairings, so
+        there is a definite winner. A "quad" dataset becomes a "pair" dataset by
+        copying that winner across the diagonal.
       </p>
+
       <p className="mt-2 leading-relaxed">
-        Bean rank is just a count of wins out of 4 vertical + 4 horizontal = 8
-        possible. When there is no definite winner, both beans claim 1 out of
-        the 2 available wins (20 total). This is why older matrices may have an
-        odd rank and newer dataset ranks are always even. Having 8 wins means
-        that I have compared this bean to every other bean, multiple times, and
-        it won every time. Those are my favorite beans.
+        Bean rank is just a count of wins out of the 4 vertical and 4 horizontal
+        cells. Older ranks may be odd, but newer ranks are always even. Either
+        one can sort the beans, even with conflicting evidence. A ranking of 8
+        means that I have compared this bean to every other bean, several times,
+        and it won every time.
       </p>
     </div>
   );
