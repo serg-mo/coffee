@@ -5,18 +5,8 @@ import DatasetComparisonsPair from "./DatasetComparisonsPair";
 import DatasetComparisonsQuad from "./DatasetComparisonsQuad";
 import DatasetRankings from "./DatasetRankings";
 import BeanShape from "types/BeanShape";
-import { useSlider } from "./Slider";
 
-export const maxX = 2; // must match with below
-
-// TODO: duplicate
-function isQuad(dataset: DataShapeQuad | DataShapePair) {
-  return (
-    typeof (
-      dataset?.comparisons ? Object.values(dataset.comparisons) : []
-    )[0] === "string"
-  );
-}
+export const TABS = ["rankings", "comparisons"]; // must match with below
 
 export default function Dataset({
   year,
@@ -24,16 +14,15 @@ export default function Dataset({
   beanNames,
   onBeansClick,
   onDatasetClick,
-  beanData,
+  tab,
 }: {
   year: number;
   region: string;
   beanNames: string[];
   onBeansClick: (bean: string) => void;
   onDatasetClick: (names: string[]) => void;
-  beanData: Record<string, BeanShape>;
+  tab: number;
 }) {
-  const { x } = useSlider(); // horizontal NavDots index
   const [dataset, setDataset] = useState<DataShapeQuad | DataShapePair | null>(
     null,
   );
@@ -52,7 +41,7 @@ export default function Dataset({
   // NOTE: placeholder datasets exist, but are empty, slider cards know how to render a placeholder
 
   return (
-    <div>
+    <div className="">
       <h2
         className="text-xl font-bold text-center capitalize cursor-pointer"
         onClick={() =>
@@ -66,21 +55,17 @@ export default function Dataset({
         <div className="text-center">loading...</div>
       ) : (
         <>
-          {x === 0 && (
+          {tab === 0 && (
             <DatasetRankings
               dataset={dataset}
               beanNames={beanNames}
-              beanData={beanData}
               onBeansClick={onBeansClick}
             />
           )}
 
-          {x === 1 &&
-            (isQuad(dataset) ? (
-              <DatasetComparisonsQuad dataset={dataset as DataShapeQuad} />
-            ) : (
-              <DatasetComparisonsPair dataset={dataset as DataShapePair} />
-            ))}
+          {tab === 1 && (
+            <DatasetComparisonsPair dataset={dataset as DataShapePair} />
+          )}
         </>
       )}
     </div>

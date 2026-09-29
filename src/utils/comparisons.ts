@@ -1,3 +1,6 @@
+import DataShapePair from "types/DataShapePair";
+import DataShapeQuad from "types/DataShapeQuad";
+
 function mostCommonValue(array: string[]) {
   const counts: Record<string, number> = {};
   for (const value of array) {
@@ -64,7 +67,7 @@ console.assert(
     }),
 );
 
-export function convertQuadToPairwise(comparisons: Record<string, string>) {
+export function convertQuadToPair(comparisons: Record<string, string>) {
   const names = ["a", "b", "c", "d", "e"];
   const wins = getWins(Object.values(comparisons));
   // console.log({ comparisons , wins});
@@ -78,5 +81,13 @@ export function convertQuadToPairwise(comparisons: Record<string, string>) {
           .map((b) => [b, mostCommonValue(wins[a][b]) as string]),
       ),
     ]),
+  );
+}
+
+export function isQuad(dataset: DataShapeQuad | DataShapePair) {
+  return (
+    typeof (
+      dataset?.comparisons ? Object.values(dataset.comparisons) : []
+    )[0] === "string"
   );
 }

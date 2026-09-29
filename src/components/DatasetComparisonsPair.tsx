@@ -1,11 +1,13 @@
 import React from "react";
 import DataShapePair from "types/DataShapePair";
 import DatasetCheck from "./DatasetCheck";
+import { convertQuadToPair, isQuad } from "../utils/comparisons";
+import DataShapeQuad from "types/DataShapeQuad";
 
 export default function DatasetComparisonsPair({
   dataset,
 }: {
-  dataset: DataShapePair | null;
+  dataset: DataShapePair | DataShapeQuad | null;
 }) {
   if (!dataset || !dataset.comparisons) {
     return (
@@ -18,16 +20,18 @@ export default function DatasetComparisonsPair({
 
   const names = Object.keys(dataset.names); // a, b, c, d, e
 
-  const comparisonsFlat = Object.values(dataset.comparisons).flatMap(
-    Object.values,
-  );
+  const comparisons = isQuad(dataset)
+    ? convertQuadToPair(dataset.comparisons)
+    : dataset.comparisons;
+
+  const comparisonsFlat = Object.values(comparisons).flatMap(Object.values);
   const getTotalWins = (name: string) =>
     comparisonsFlat.filter((winner: string) => winner === name).length;
 
-  const cellClassName = "border border-gray-300 h-8 w-8 bg-gray-200";
+  const cellClassName = "border border-gray-300 w-8 h-8 bg-gray-200";
 
   const getBg = (row, col) => {
-    if (dataset.comparisons[row][col] != dataset.comparisons[col][row]) {
+    if (comparisons[row][col] != comparisons[col][row]) {
       return "text-red-600 bg-white";
     }
     return `${row === col ? "bg-gray-200" : "bg-white"}`;
@@ -38,13 +42,13 @@ export default function DatasetComparisonsPair({
       ? [row.toUpperCase(), "won", getTotalWins(row)].join(" ")
       : [
           row.toUpperCase(),
-          row == dataset.comparisons[row][col] ? ">" : "<",
+          row == comparisons[row][col] ? ">" : "<",
           col.toUpperCase(),
         ].join(" ");
   };
 
   return (
-    <table className="h-48 w-48 border-collapse text-center text-l select-none">
+    <table className="border-collapse text-center select-none">
       <thead>
         <tr>
           <th key="transitively-complete" className={cellClassName}>
@@ -71,7 +75,7 @@ export default function DatasetComparisonsPair({
               >
                 {row === col
                   ? getTotalWins(row)
-                  : dataset.comparisons[row][col].toUpperCase()}
+                  : comparisons[row][col].toUpperCase()}
               </td>
             ))}
           </tr>
