@@ -1,5 +1,5 @@
 import { exit } from "process";
-import { fetchProductUrl } from "./include.ts"
+import { fetchProductUrl } from "./include.ts";
 
 const url = process.argv[2];
 if (!url) {
