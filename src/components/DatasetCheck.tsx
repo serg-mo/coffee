@@ -30,17 +30,17 @@ function getTransitiveErrors(dataset: { comparisons: any; names: string[] }) {
   return errors;
 }
 
-function isPair(comparisons: any) {
-  // 5 * 4 pairs, opposite sides of the diagonal, a vs b and b vs a
-  return comparisons.length == 20;
-}
+// function isPair(comparisons: any) {
+//   // 5 * 4 pairs, opposite sides of the diagonal, a vs b and b vs a
+//   return comparisons.length == 20;
+// }
 
-function isQuad(comparisons: any) {
-  // 5 quads, with 3 direct comparisons for each unique pair
-  // abcd, abce, abde, acde, bcde (exclude one bean on every tasting)
+// function isQuad(comparisons: any) {
+//   // 5 quads, with 3 direct comparisons for each unique pair
+//   // abcd, abce, abde, acde, bcde (exclude one bean on every tasting)
 
-  return comparisons.length == 5;
-}
+//   return comparisons.length == 5;
+// }
 
 export default function DatasetCheck(dataset: {
   comparisons: ComparisonsPair;

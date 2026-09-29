@@ -1,64 +1,58 @@
-import { prop } from "cheerio/dist/commonjs/api/attributes";
-import { table } from "console";
 import React from "react";
 import BeanShape from "types/BeanShape";
+import BeanLink from "./BeanLink";
 
-// NOTE: capitalized labels, props are all lowercase
-const BEAN_PROPS = [
-  "SKU",
-  "Category",
-  "Process",
-  // "Certifications", // TODO: sometimes they are broken down
-  "Variety",
-  "Altitude",
-  "Harvest",
+const COMPARISON_SPECS = [
+  "category",
+  "process",
+  // "certifications", // TODO: sometimes they are broken down
+  "variety",
+  "altitude",
+  "harvest",
 ];
 
-function BeanLink({ sku }: { sku: string }) {
-  // TODO: use beans.json lookup here
-  // TODO: have a single function for this
-  const url = `https://www.coffeebeancorral.com/search?q=${sku}`;
+// TODO: sometimes the "close" icon shrinks for really longs SKUs
+export default function BeanTable({
+  beans,
+  toggleBean,
+}: {
+  beans: BeanShape[];
+  toggleBean: (name: string) => void;
+}) {
+  const specs =
+    beans.length === 1
+      ? Object.keys(beans[0].specifications)
+      : COMPARISON_SPECS;
 
-  return (<a
-    href={url}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="underline"
-  >
-    {sku?.toUpperCase()}
-  </a>);
-}
+  const colStyle = beans.length === 1 ? "w-min" : "w-24 max-w-min";
 
-const getBeanProp = (bean: BeanShape, prop: string) => {
-  // NOTE: bean props are all lowercase, normalize them last
-  if (prop === "sku") {
-    return (<BeanLink sku={bean.sku} />)
-  } else {
-    // console.log({ prop, specs: bean.specifications })
-    return <span className="">{bean.specifications?.[prop] || "-"}</span>;
-  }
-};
-
-// TODO: add an x next to sku to unselect the bean
-export default function BeanTable({ beans }: { beans: BeanShape[] }) {
+  // I want a complete redraw every time the beans change, hence the key
   return (
-    <table className="w-full">
-      <tbody>
-        {BEAN_PROPS.map((prop) => (
-          <tr key={prop} className="border-b border-gray-300">
-            <th
-              className={`p-2 text-left w-40 ${prop.toLowerCase() == "sku" ? "bg-gray-200" : "bg-white"}`}
-            >
-              {prop}
-            </th>
+    <table className="w-full table-fixed" key={`bean-table-${beans.length}`}>
+      <thead>
+        <tr className="bg-gray-200">
+          <th className={`${colStyle} p-2 text-left font-bold`}>SKU</th>
+          {/* one column per bean */}
+          {beans.map((bean) => (
+            <td key={bean.sku} className="p-2 truncate">
+              <BeanLink bean={bean} toggleBean={toggleBean} />
+            </td>
+          ))}
+        </tr>
+      </thead>
 
+      <tbody>
+        {specs.map((spec) => (
+          <tr key={spec} className="border-b border-gray-300">
+            <td className="p-2 text-left font-bold text-nowrap capitalize">
+              {spec}
+            </td>
             {/* one column per bean */}
             {beans.map((bean) => (
-              <td
-                key={bean.sku}
-                className={`p-2 text-left min-w-1/2 max-w-0 truncate ${prop.toLowerCase() == "sku" ? "bg-gray-200" : "bg-white"}`}
-              >
-                {getBeanProp(bean, prop.toLowerCase())}
+              <td key={bean.sku} className="p-2">
+                <div className="truncate">
+                  {bean.specifications?.[spec] || "-"}
+                </div>
               </td>
             ))}
           </tr>

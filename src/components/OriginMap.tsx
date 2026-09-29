@@ -39,7 +39,7 @@
 //   );
 
 //   return (
-//     <div className="w-full user-select-none my-5">
+//     <div className="w-full select-none my-5">
 //       <div className="h-5 text-center text-sm">{countries.join(", ")}</div>
 
 //       <ComposableMap

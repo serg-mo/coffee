@@ -16,18 +16,19 @@ import React from "react";
 // Central America 23 vs 6
 // South America   10 vs 4
 
+// TODO: this goes in the readme with tailwind styling
 export default function About() {
   return (
-    <div className="p-5 rounded-2xl border border-amber-200 bg-amber-50/80 text-amber-900">
+    <div className="m-2 p-3 rounded-2xl border border-amber-200 bg-amber-50/80 text-amber-900">
       <h2 className="text-center text-lg font-semibold tracking-tight text-amber-900">
         Single Origin Coffee Rankings
       </h2>
 
       <p className="mt-2 leading-relaxed">
         Regional sample packs come in five 1/2lb bags and sometimes that's not
-        enough for the whole 5x5 matrix. A sample bag yields only 10 doses per
-        bean. The old "pair" tastings required 8 doses, with only 2 attempts to
-        get the grind right. The new "quad" tastings only need 4 doses per bean.
+        enough for the whole 5x5 matrix. A sample bag yields only ~10 doses and
+        the old "pair" tastings required 8 of them, with only 2 attempts to get
+        the grind right. The new "quad" tastings only need 4 doses per bean.
       </p>
 
       <p className="mt-2 leading-relaxed">
@@ -40,10 +41,10 @@ export default function About() {
 
       <p className="mt-2 leading-relaxed">
         The old "pair" tastings take too long, especially if I want a definite
-        winner, i.e., odd number of comparisons for every unique pairing. Both
-        10 groups of 3 and 5 groups of 4 compare each unique pairing 3 times,
-        but groups of 4 are easier to remember, i.e., exclude one bean at each
-        tasting. Groups of 5 would work too, but I only have 4 puck screens.
+        winner, i.e., odd number of comparisons for every unique pairing. I
+        could compare each unique pairing 3 times in 10x3 or 5x4, but groups of
+        4 are easier to remember, i.e., exclude one bean at each tasting.
+        Obviously groups of 5 work too, but I only have 4 puck screens.
       </p>
 
       <p className="mt-2 leading-relaxed">
@@ -51,15 +52,15 @@ export default function About() {
         From this single tasting we can infer 3 + 2 + 1 = 6 pairwise
         comparisons. Five tastings produce 30 votes for 10 unique pairings, so
         there is a definite winner. A "quad" dataset becomes a "pair" dataset by
-        copying that winner across the diagonal.
+        copying that winner across the diagonal. This is why older ranks may be
+        odd, but newer ranks are always even.
       </p>
 
       <p className="mt-2 leading-relaxed">
-        Bean rank is just a count of wins out of the 4 vertical and 4 horizontal
-        cells. Older ranks may be odd, but newer ranks are always even. Either
-        one can sort the beans, even with conflicting evidence. A ranking of 8
-        means that I have compared this bean to every other bean, several times,
-        and it won every time.
+        The sorting still works, even with conflicting evidence, because I only
+        care about the top of the list. The best bean wins 4
+        vertical and 4 horizontal cells. A rank of 8 means that I have compared
+        this bean to every other bean, several times, and it won every time.
       </p>
     </div>
   );
