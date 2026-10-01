@@ -4,6 +4,7 @@ import BeanLink from "./BeanLink";
 
 const COMPARISON_SPECS = [
   "category",
+  "country",
   "process",
   // "certifications", // TODO: sometimes they are broken down
   "variety",
