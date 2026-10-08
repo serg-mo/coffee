@@ -51,7 +51,7 @@ export default function BeanTable({
             {/* one column per bean */}
             {beans.map((bean) => (
               <td key={bean.sku} className="p-2">
-                <div className="truncate">
+                <div className="truncate" title={bean.specifications?.[spec] || "-"}>
                   {bean.specifications?.[spec] || "-"}
                 </div>
               </td>
