@@ -58,9 +58,9 @@ export default function About() {
 
       <p className="mt-2 leading-relaxed">
         The sorting still works, even with conflicting evidence, because I only
-        care about the top of the list. The best bean wins 4
-        vertical and 4 horizontal cells. A rank of 8 means that I have compared
-        this bean to every other bean, several times, and it won every time.
+        care about the top of the list. The best bean wins 4 vertical and 4
+        horizontal cells. A rank of 8 means that I have compared this bean to
+        every other bean, several times, and it won every time.
       </p>
     </div>
   );

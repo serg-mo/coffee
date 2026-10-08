@@ -23,6 +23,8 @@ ChartJS.register(
 
 export default function RadarChart({ data, max }: { data: any; max: number }) {
   const options = {
+    responsive: true,
+    maintainAspectRatio: true,
     scales: {
       r: {
         min: 0,
