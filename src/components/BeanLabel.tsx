@@ -1,6 +1,7 @@
 import React from "react";
 import BeanShape from "types/BeanShape";
 import BeanChart from "./BeanChart";
+import RoastShape from "types/RoastShape";
 
 const toSeconds = (time: string) => {
   const [minutes, seconds] = time.split(":").map(Number);
@@ -10,14 +11,8 @@ const toSeconds = (time: string) => {
 const fromSeconds = (seconds: number) =>
   `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")} `;
 
-export default function BeanLabel({ bean }: { bean: BeanShape }) {
-  // TODO: given a roast url, fetch all the numbers
-  // https://roast.world/outreach/roasts/MbJ_3pAl6Foe4LOzKWEOi
-
-  // grams
-  const inWeight = 500;
-  const outWeight = 436;
-  const yieldPercentage = outWeight / inWeight;
+function BeanRoast({ roast }: { roast: RoastShape }) {
+  const yieldPercentage = roast.weightRoasted / roast.weightGreen;
 
   // manually recorded events, celcius
   const yellow = { temp: 161.8, time: "3:15" };
@@ -37,7 +32,82 @@ export default function BeanLabel({ bean }: { bean: BeanShape }) {
   ).toFixed();
 
   return (
-    <div className="h-[6in] w-[4in] m-auto flex flex-col gap-2 overflow-hidden rounded border border-gray-200 p-2 text-black">
+    <div>
+      <div className="grid grid-cols-4 divide-x text-[7px] text-center uppercase mb-2">
+        <div className="">
+          <div className="font-bold">In</div>
+          <div className="font-black">{roast.weightGreen}g</div>
+        </div>
+
+        <div className="">
+          <div className="font-bold">Yield</div>
+          <div className="font-black">{(yieldPercentage * 100).toFixed()}%</div>
+        </div>
+
+        <div className="">
+          <div className="font-bold">Loss</div>
+          <div className="font-black">
+            {((1 - yieldPercentage) * 100).toFixed()}%
+          </div>
+        </div>
+
+        <div className="">
+          <div className="font-bold">Out</div>
+          <div className="font-black">{roast.weightRoasted}g</div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3 items-stretch border-t text-[7px] text-center font-bold uppercase">
+        <div className="relative">
+          <div className="font-bold pt-2">Drying</div>
+          <div className="font-black">
+            {fromSeconds(dryingSeconds)} · {dryingPercentage}%
+          </div>
+
+          <div className="absolute left-0 top-0 -translate-y-1/2 -translate-x-[2px] bg-white pr-1 ">
+            Green
+          </div>
+
+          <div className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 bg-white px-1 ">
+            Yellow
+          </div>
+        </div>
+
+        <div className="border-x">
+          <div className="font-bold pt-2">Browning</div>
+          <div className="font-black">
+            {fromSeconds(roastingSeconds)} · {roastingPercentage}%
+          </div>
+        </div>
+
+        <div className="relative">
+          <div className="font-bold pt-2">Development</div>
+          <div className="font-black">
+            {fromSeconds(developingSeconds)} · {developingPercentage}%
+          </div>
+
+          <div className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 bg-white px-1 ">
+            First Crack
+          </div>
+
+          <div className="absolute right-0 top-0 -translate-y-1/2 translate-x-[2px] bg-white pl-1 ">
+            Drop
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function BeanLabel({
+  bean,
+  roast,
+}: {
+  bean: BeanShape;
+  roast: RoastShape;
+}) {
+  return (
+    <div className="h-[6in] w-[4in] overflow-hidden flex flex-col gap-2 p-2 rounded border border-gray-200 text-black">
       <div className="">
         <div className="text-2xl font-black leading-none tracking-tight">
           {bean.specifications?.["country"]}
@@ -53,9 +123,8 @@ export default function BeanLabel({ bean }: { bean: BeanShape }) {
       <div className="border-y p-2 text-center text-xl font-black leading-none">
         WHOLE BEANS
         <br />
-        Roasted
-        {/* TODO: fetch date from url */}
-        {new Date().toLocaleDateString("en-US", {
+        Roasted{" "}
+        {roast.dateTime.toLocaleDateString("en-US", {
           year: "numeric",
           month: "short",
           day: "numeric",
@@ -64,72 +133,7 @@ export default function BeanLabel({ bean }: { bean: BeanShape }) {
 
       <BeanChart beans={[bean]} />
 
-      <div>
-        <div className="grid grid-cols-4 divide-x text-[7px] text-center uppercase mb-2">
-          <div className="">
-            <div className="font-bold">In</div>
-            <div className="font-black">{inWeight}g</div>
-          </div>
-
-          <div className="">
-            <div className="font-bold">Yield</div>
-            <div className="font-black">
-              {(yieldPercentage * 100).toFixed()}%
-            </div>
-          </div>
-
-          <div className="">
-            <div className="font-bold">Loss</div>
-            <div className="font-black">
-              {((1 - yieldPercentage) * 100).toFixed()}%
-            </div>
-          </div>
-
-          <div className="">
-            <div className="font-bold">Out</div>
-            <div className="font-black">{outWeight}g</div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-3 items-stretch border-t text-[7px] text-center font-bold uppercase">
-          <div className="relative">
-            <div className="font-bold pt-2">Drying</div>
-            <div className="font-black">
-              {fromSeconds(dryingSeconds)} · {dryingPercentage}%
-            </div>
-
-            <div className="absolute left-0 top-0 -translate-y-1/2 -translate-x-[2px] bg-white pr-1 ">
-              Green
-            </div>
-
-            <div className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 bg-white px-1 ">
-              Yellow
-            </div>
-          </div>
-
-          <div className="border-x">
-            <div className="font-bold pt-2">Browning</div>
-            <div className="font-black">
-              {fromSeconds(roastingSeconds)} · {roastingPercentage}%
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="font-bold pt-2">Development</div>
-            <div className="font-black">
-              {fromSeconds(developingSeconds)} · {developingPercentage}%
-            </div>
-
-            <div className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 bg-white px-1 ">
-              First Crack
-            </div>
-
-            <div className="absolute right-0 top-0 -translate-y-1/2 translate-x-[2px] bg-white pl-1 ">
-              Drop
-            </div>
-          </div>
-        </div>
-      </div>
+      <BeanRoast roast={roast} />
     </div>
   );
 }
