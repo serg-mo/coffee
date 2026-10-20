@@ -1,17 +1,24 @@
 export default interface RoastShape {
+    uid: string;
+    roastName: string;
+    dateTime: Date;
+    updatedAt: Date;
     weightGreen: number;
     weightRoasted: number;
-    yellow: {
-        temp: number;
-        time: string;
-    };
-    firstCrack: {
-        temp: number | null;
-        time: string | null;
-    };
-    drop: {
-        temp: number;
-        time: string;
-    };
-    dateTime: Date;
+    totalRoastTime: number;
+    preheatTemperature: number;
+    beanChargeTemperature: number;
+    drumChargeTemperature: number;
+    beanTemperature: number[];
+    ibtsTemperature: number[];
+    beanDerivative: number[];
+    ibtsDerivative: number[];
+    differentialAirPressure: number[];
+    actions: Object[]; // { type: 'Power', second: 5, setting: 6 },
+    humidity: number;
+    ambient: number;
+    ibtsAmbientTemp: number;
+    atmosphericPressure: number;
+    indexYellowingStart: number;
+    indexFirstCrackStart: number;
 }

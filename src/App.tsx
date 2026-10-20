@@ -5,7 +5,6 @@ import About from "./components/About";
 import BeanChart from "./components/BeanChart";
 import BeanTable from "./components/BeanTable";
 import BeanShape from "types/BeanShape";
-import BeanLabel from "./components/BeanLabel";
 
 const MAX_COMPARISON_BEANS = 6;
 const beanCache = new Map<string, BeanShape>();
@@ -56,10 +55,6 @@ export default function App() {
 
   const beans = beanNames.map((name) => beanData[name]).filter(Boolean);
   // console.log({ beanNames, beanData, beans });
-
-  // if (beans.length === 1) {
-  //   return <BeanLabel bean={beans[0]} />;
-  // }
 
   // TODO: some old descriptions have literal '\n', not newlines
   // TODO: this is where you set the context for beanData, setBeanNames, and toggleBean
