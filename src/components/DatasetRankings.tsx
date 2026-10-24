@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import DataShapePair from 'types/DataShapePair';
 import DataShapeQuad from 'types/DataShapeQuad';
-import { convertQuadToPair, isQuad } from '../utils/comparisons';
+import { getTotals } from '../utils/comparisons';
 import BeanContext from '../BeanContext';
 
 const MAX_WINS = 8;
@@ -20,24 +20,7 @@ export default function DatasetRankings({
     );
   }
 
-  const names = Object.keys(dataset.names); // a, b, c, d, e
-  let totals = names.map((name) => [dataset.names[name], 0]); // skus only
-
-  if (dataset.comparisons) {
-    // NOTE: DatasetCheck expects pairwise comparisons, convert quad to pair
-    const comparisons = isQuad(dataset)
-      ? convertQuadToPair(dataset.comparisons)
-      : dataset.comparisons;
-
-    const comparisonsFlat = Object.values(comparisons).flatMap(Object.values);
-
-    const getTotalWins = (name: string) =>
-      comparisonsFlat.filter((winner: string) => winner === name).length;
-
-    // SKU => total wins, desc
-    totals = names.map((name) => [dataset.names[name], getTotalWins(name)]); // [sku, wins]
-    totals.sort((a, b) => b[1] - a[1]); // wins desc
-  }
+  const totals = getTotals(dataset);
 
   return (
     <table className="w-48 border-collapse text-nowrap">

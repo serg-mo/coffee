@@ -85,3 +85,38 @@ export function convertQuadToPair(comparisons: Record<string, string>) {
 export function isQuad(dataset: DataShapeQuad | DataShapePair) {
   return typeof (dataset?.comparisons ? Object.values(dataset.comparisons) : [])[0] === 'string';
 }
+
+export function getTotals(dataset: DataShapeQuad | DataShapePair): [string, number][] {
+  const names = Object.keys(dataset.names); // a, b, c, d, e
+  let totals = names.map((name): [string, number] => [dataset.names[name], 0]); // skus only
+
+  if (dataset?.comparisons) {
+    // NOTE: DatasetCheck expects pairwise comparisons, convert quad to pair
+    const comparisons = isQuad(dataset)
+      ? convertQuadToPair(dataset.comparisons)
+      : dataset.comparisons;
+
+    const comparisonsFlat = Object.values(comparisons).flatMap(Object.values);
+
+    // NOTE: wins are based on keys, not values (sku)
+    const getTotalWins = (name: string) =>
+      comparisonsFlat.filter((winner: string) => winner === name).length;
+
+    // SKU => total wins, desc
+    totals = names.map((name): [string, number] => [dataset.names[name], getTotalWins(name)]); // [sku, wins]
+    totals.sort((a, b) => b[1] - a[1]); // wins desc
+  }
+
+  return totals;
+}
+
+console.assert(
+  JSON.stringify(getTotals({ names: { a: 'A', b: 'B', c: 'C', d: 'D', e: 'E' } })) ===
+    JSON.stringify([
+      ['A', 0],
+      ['B', 0],
+      ['C', 0],
+      ['D', 0],
+      ['E', 0],
+    ]),
+);

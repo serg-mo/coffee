@@ -30,8 +30,6 @@ export default function Dataset({
       .then(setDataset);
   }, [year, region]);
 
-  // NOTE: placeholder datasets exist, but are empty, slider cards know how to render a placeholder
-
   if (!dataset) {
     return <div className="text-center">loading...</div>;
   }
@@ -45,6 +43,7 @@ export default function Dataset({
         {region.replace('-', ' ')}
       </h2>
 
+      {/* NOTE: empty and partial datasets will render placeholders */}
       {tab === 0 && <DatasetRankings dataset={dataset} />}
 
       {tab === 1 && <DatasetComparisonsPair dataset={dataset as DataShapePair} />}

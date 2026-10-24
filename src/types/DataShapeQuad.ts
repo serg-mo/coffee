@@ -8,5 +8,5 @@ export default interface DataShapeQuad {
     d: string;
     e: string;
   };
-  comparisons: ComparisonsQuad;
+  comparisons?: ComparisonsQuad;
 }

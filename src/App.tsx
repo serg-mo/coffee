@@ -27,6 +27,8 @@ function getBeanData(name: string) {
 }
 
 export default function App() {
+  // TODO: wins are only visible from the dataset, i.e., charts can't look it up
+  // TODO: rename/refactor beanNames to beanRanks, [name => wins]
   const [beanNames, setBeanNames] = useState<string[]>([]);
   const [beanData, setBeanData] = useState<Record<string, BeanShape>>({}); // NOTE: names change, data stays
 

@@ -8,6 +8,5 @@ export default interface DataShapePair {
     d: string;
     e: string;
   };
-  // 2 sets of 10 unique pairwise comparisons, e.g., ab / ba
-  comparisons: ComparisonsPair;
+  comparisons?: ComparisonsPair;
 }

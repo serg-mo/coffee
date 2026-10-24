@@ -3,7 +3,7 @@ import BeanLink from './BeanLink';
 import BeanContext from '../BeanContext';
 
 const COMPARISON_SPECS = [
-  'category',
+  'category', // conventional or organic
   'country',
   'process',
   // "certifications", // TODO: sometimes they are broken down
