@@ -79,8 +79,8 @@ async function fetchProductUrlInner(url: string) {
 function normalizeSpecifications(
   specifications: Record<string, string> = {},
 ): Record<string, string> {
-  // if the key contains this word, it becomes this word, e.g., "organic certification" => "organic"
-  const shortKeys = ['organic', 'decaf']; // must be lowercase
+  // if the key contains this word, it becomes that word, e.g., "bean category" => "category"
+  const shortKeys = ['organic', 'decaf', 'category']; // must be lowercase
 
   return Object.fromEntries(
     Object.entries(specifications).map(([key, value]) => {
