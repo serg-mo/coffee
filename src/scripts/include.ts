@@ -63,8 +63,6 @@ async function fetchProductUrlInner(url: string) {
     const value = $(el).find('.pdp-spec-value').text().trim();
     specifications[label] = value;
   });
-  // TODO: normalize specification labels, e.g., "organic" vs "organic certification", "decaf" vs "decaffeinated"
-
 
   return {
     sku: product.sku,
@@ -73,9 +71,24 @@ async function fetchProductUrlInner(url: string) {
     image: product.image,
     attributes,
     flavors,
-    specifications,
+    specifications: normalizeSpecifications(specifications),
     description: product.description.replace(/’/g, "'"),
   };
+}
+
+function normalizeSpecifications(
+  specifications: Record<string, string> = {},
+): Record<string, string> {
+  // if the key contains this word, it becomes this word, e.g., "organic certification" => "organic"
+  const shortKeys = ['organic', 'decaf']; // must be lowercase
+
+  return Object.fromEntries(
+    Object.entries(specifications).map(([key, value]) => {
+      const lowerKey = key.toLowerCase().trim();
+      const normalizedKey = shortKeys.find((short) => lowerKey.includes(short)) ?? lowerKey;
+      return [normalizedKey, value];
+    }),
+  );
 }
 
 async function fetchSkuUrls(url: string) {

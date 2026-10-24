@@ -2,6 +2,7 @@ import React from 'react';
 import { FiCheckCircle, FiXCircle } from 'react-icons/fi';
 import ComparisonsPair from 'types/ComparisonsPair';
 
+// NOTE: DatasetCheck expects pairwise comparisons, convert quad to pair
 function getTransitiveErrors(dataset: { comparisons: any; names: string[] }) {
   const names = Object.keys(dataset.names); // a, b, c, d, e
   const comparisons = dataset.comparisons;
