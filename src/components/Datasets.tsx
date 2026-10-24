@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
-import Dataset, { TABS } from "./Dataset";
-import BeanContext from "../BeanContext";
+import React, { useContext, useState } from 'react';
+import Dataset, { TABS } from './Dataset';
+import BeanContext from '../BeanContext';
 
 const YEARS = [2026, 2025, 2024];
-const REGIONS = ["africa", "indonesia", "central-america", "south-america"];
+const REGIONS = ['africa', 'indonesia', 'central-america', 'south-america'];
 
 export default function Datasets() {
   const { setBeanNames } = useContext(BeanContext);
@@ -36,12 +36,7 @@ export default function Datasets() {
         </header>
         <div className="flex flex-wrap items-start justify-between gap-1">
           {REGIONS.map((region) => (
-            <Dataset
-              key={`${year} ${region}`}
-              year={year}
-              region={region}
-              tab={tab}
-            />
+            <Dataset key={`${year} ${region}`} year={year} region={region} tab={tab} />
           ))}
         </div>
       </div>
@@ -51,7 +46,7 @@ export default function Datasets() {
           <button
             key={name}
             title={name}
-            className={`h-2 w-2 rounded-full transition-colors duration-800 ${tab === index ? "bg-gray-600" : "bg-gray-300"}`}
+            className={`h-2 w-2 rounded-full transition-colors duration-800 ${tab === index ? 'bg-gray-600' : 'bg-gray-300'}`}
             onClick={() => setTab(index)}
           />
         ))}

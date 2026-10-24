@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Chart as ChartJS,
   Filler,
@@ -7,19 +7,12 @@ import {
   PointElement,
   RadialLinearScale,
   Tooltip,
-} from "chart.js";
-import { Radar } from "react-chartjs-2";
+} from 'chart.js';
+import { Radar } from 'react-chartjs-2';
 
-ChartJS.defaults.font.family = "Trebuchet MS";
+ChartJS.defaults.font.family = 'Trebuchet MS';
 
-ChartJS.register(
-  RadialLinearScale,
-  PointElement,
-  LineElement,
-  Filler,
-  Tooltip,
-  Legend,
-);
+ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
 export default function RadarChart({ data, max }: { data: any; max: number }) {
   const options = {

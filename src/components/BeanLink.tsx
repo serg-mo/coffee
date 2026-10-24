@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import BeanShape from "types/BeanShape";
-import { IoMdCloseCircle } from "react-icons/io";
-import BeanContext from "../BeanContext";
+import React, { useContext } from 'react';
+import BeanShape from 'types/BeanShape';
+import { IoMdCloseCircle } from 'react-icons/io';
+import BeanContext from '../BeanContext';
 
 export default function BeanLink({ bean }: { bean: BeanShape }) {
   const { toggleBean } = useContext(BeanContext);
@@ -10,12 +10,7 @@ export default function BeanLink({ bean }: { bean: BeanShape }) {
   // NOTE: even a single bean can be removed
   return (
     <div className="flex flex-row items-center gap-1 cursor-pointer">
-      <a
-        href={url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hover:underline truncate"
-      >
+      <a href={url} target="_blank" rel="noopener noreferrer" className="hover:underline truncate">
         {bean.sku?.toUpperCase()}
       </a>
       <IoMdCloseCircle onClick={() => toggleBean(bean.sku)} />

@@ -1,11 +1,7 @@
-import React from "react";
-import DataShapeQuad from "types/DataShapeQuad";
+import React from 'react';
+import DataShapeQuad from 'types/DataShapeQuad';
 
-export default function DatasetComparisonsQuad({
-  dataset,
-}: {
-  dataset: DataShapeQuad | null;
-}) {
+export default function DatasetComparisonsQuad({ dataset }: { dataset: DataShapeQuad | null }) {
   if (!dataset || !dataset.comparisons) {
     return (
       <div className="h-40 w-40 m-auto flex items-center justify-center border border-dashed border-gray-300">
@@ -15,7 +11,7 @@ export default function DatasetComparisonsQuad({
   }
 
   const names = Object.keys(dataset.names); // a, b, c, d, e
-  const cellClassName = "h-8 w-8 border border-gray-300 bg-gray-200";
+  const cellClassName = 'h-8 w-8 border border-gray-300 bg-gray-200';
 
   return (
     <table className="h-40 w-40 m-auto border-collapse text-center text-l select-none">

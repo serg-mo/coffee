@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-import Datasets from "./components/Datasets";
-import About from "./components/About";
-import BeanChart from "./components/BeanChart";
-import BeanTable from "./components/BeanTable";
-import BeanContext from "./BeanContext";
-import BeanShape from "types/BeanShape";
+import Datasets from './components/Datasets';
+import About from './components/About';
+import BeanChart from './components/BeanChart';
+import BeanTable from './components/BeanTable';
+import BeanContext from './BeanContext';
+import BeanShape from 'types/BeanShape';
 
 const MAX_COMPARISON_BEANS = 6;
 const beanCache = new Map<string, BeanShape>();
@@ -39,9 +39,7 @@ export default function App() {
       setBeanData((prev) => ({
         ...prev,
         ...Object.fromEntries(
-          missingNames
-            .map((sku, i) => [sku, results[i]])
-            .filter(([, value]) => value), // SKU => BeanShape
+          missingNames.map((sku, i) => [sku, results[i]]).filter(([, value]) => value), // SKU => BeanShape
         ),
       }));
     });
@@ -59,9 +57,7 @@ export default function App() {
 
   // TODO: some old descriptions have literal '\n', not newlines
   return (
-    <BeanContext.Provider
-      value={{ beanData, beanNames, setBeanNames, toggleBean }}
-    >
+    <BeanContext.Provider value={{ beanData, beanNames, setBeanNames, toggleBean }}>
       <div className="flex flex-col m-auto w-full lg:w-4xl max-w-4xl text-gray-600">
         <Datasets />
 

@@ -1,6 +1,6 @@
-import React from "react";
-import { FiCheckCircle, FiXCircle } from "react-icons/fi";
-import ComparisonsPair from "types/ComparisonsPair";
+import React from 'react';
+import { FiCheckCircle, FiXCircle } from 'react-icons/fi';
+import ComparisonsPair from 'types/ComparisonsPair';
 
 function getTransitiveErrors(dataset: { comparisons: any; names: string[] }) {
   const names = Object.keys(dataset.names); // a, b, c, d, e
@@ -42,10 +42,7 @@ function getTransitiveErrors(dataset: { comparisons: any; names: string[] }) {
 //   return comparisons.length == 5;
 // }
 
-export default function DatasetCheck(dataset: {
-  comparisons: ComparisonsPair;
-  names: string[];
-}) {
+export default function DatasetCheck(dataset: { comparisons: ComparisonsPair; names: string[] }) {
   const errors = getTransitiveErrors(dataset);
 
   return (

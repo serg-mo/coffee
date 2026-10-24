@@ -1,5 +1,5 @@
-import { createContext } from "react";
-import BeanShape from "types/BeanShape";
+import { createContext } from 'react';
+import BeanShape from 'types/BeanShape';
 
 const BeanContext = createContext<{
   beanData: Record<string, BeanShape>;

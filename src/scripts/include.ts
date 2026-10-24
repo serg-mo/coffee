@@ -1,9 +1,9 @@
-import axios from "axios";
-import * as cheerio from "cheerio";
-import fs from "fs";
+import axios from 'axios';
+import * as cheerio from 'cheerio';
+import fs from 'fs';
 
-const BASE_URL = "https://www.coffeebeancorral.com";
-const BEANS_PATH = "./public/data/beans.json";
+const BASE_URL = 'https://www.coffeebeancorral.com';
+const BEANS_PATH = './public/data/beans.json';
 
 export function getSkuPath(sku: string) {
   return `./public/data/beans/${sku.toLowerCase()}.json`;
@@ -30,39 +30,37 @@ async function fetchProductUrlInner(url: string) {
   const product = $('script[type="application/ld+json"]')
     .toArray()
     .map((el) => JSON.parse($(el).text()))
-    .find((json) => json["@type"] === "Product");
+    .find((json) => json['@type'] === 'Product');
   // console.log(product);
 
   let attributes: Record<string, number> = {};
   let flavors: Record<string, number> = {};
 
   // attributes and flavors
-  $(".pdp-fp-group").each((_, el) => {
-    const group = $(el).find(".pdp-fp-group-label").text().trim().toLowerCase();
+  $('.pdp-fp-group').each((_, el) => {
+    const group = $(el).find('.pdp-fp-group-label').text().trim().toLowerCase();
     const labels = $(el)
-      .find(".pdp-fp-label")
+      .find('.pdp-fp-label')
       .toArray()
       .map((el) => $(el).text().trim().toLowerCase());
     const values = $(el)
-      .find(".pdp-fp-val")
+      .find('.pdp-fp-val')
       .toArray()
       .map((el) => $(el).text().trim());
 
-    if (group === "attributes") {
+    if (group === 'attributes') {
       attributes = Object.fromEntries(
         labels.map((label, index) => [label, parseInt(values[index])]),
       ); // out of 7
-    } else if (group === "flavors") {
-      flavors = Object.fromEntries(
-        labels.map((label, index) => [label, parseInt(values[index])]),
-      ); // out of 4
+    } else if (group === 'flavors') {
+      flavors = Object.fromEntries(labels.map((label, index) => [label, parseInt(values[index])])); // out of 4
     }
   });
 
   const specifications: Record<string, string> = {};
-  $(".pdp-spec-list .pdp-spec-row").each((_, el) => {
-    const label = $(el).find(".pdp-spec-label").text().trim();
-    const value = $(el).find(".pdp-spec-value").text().trim();
+  $('.pdp-spec-list .pdp-spec-row').each((_, el) => {
+    const label = $(el).find('.pdp-spec-label').text().trim();
+    const value = $(el).find('.pdp-spec-value').text().trim();
     specifications[label] = value;
   });
 
@@ -83,8 +81,8 @@ async function fetchSkuUrls(url: string) {
   const $ = cheerio.load(data);
   const urls = {};
 
-  $("script").each((_, el) => {
-    const text = $(el).html() || "";
+  $('script').each((_, el) => {
+    const text = $(el).html() || '';
     const match = text.match(/var\s+meta\s*=\s*(\{"products".*?\});/s);
     if (!match) return;
 
@@ -102,9 +100,7 @@ async function fetchSkuUrls(url: string) {
 }
 
 export async function searchBySku(sku: string) {
-  const beans = fs.existsSync(BEANS_PATH)
-    ? JSON.parse(fs.readFileSync(BEANS_PATH, "utf8"))
-    : {};
+  const beans = fs.existsSync(BEANS_PATH) ? JSON.parse(fs.readFileSync(BEANS_PATH, 'utf8')) : {};
 
   if (beans[sku]) {
     return beans[sku];

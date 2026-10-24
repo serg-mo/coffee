@@ -1,6 +1,6 @@
-import React from "react";
-import RadarChart from "./RadarChart";
-import BeanShape from "types/BeanShape";
+import React from 'react';
+import RadarChart from './RadarChart';
+import BeanShape from 'types/BeanShape';
 
 export default function BeanChart({ beans }: { beans: BeanShape[] }) {
   // this breaks if I try to make local variables
@@ -10,20 +10,20 @@ export default function BeanChart({ beans }: { beans: BeanShape[] }) {
   }
 
   const attributeData = {
-    labels: Object.keys(beans[0]["attributes"] || {}),
+    labels: Object.keys(beans[0]['attributes'] || {}),
     datasets: beans.map((bean: BeanShape) => ({
       label: bean.sku,
-      data: Object.values(bean["attributes"]),
+      data: Object.values(bean['attributes']),
       backgroundColor: `rgba(217, 119, 6, 0.30)`, // same opacity works best
       borderWidth: 0,
     })),
   };
 
   const flavorData = {
-    labels: Object.keys(beans[0]["flavors"] || {}),
+    labels: Object.keys(beans[0]['flavors'] || {}),
     datasets: beans.map((bean: BeanShape) => ({
       label: bean.sku,
-      data: Object.values(bean["flavors"]),
+      data: Object.values(bean['flavors']),
       backgroundColor: `rgba(217, 119, 6, 0.30)`, // same opacity works best
       borderWidth: 0,
     })),

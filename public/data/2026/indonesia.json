@@ -1,16 +1,16 @@
 {
-    "names": {
-        "a": "BALIKINTHIGH",
-        "b": "PNGAROKA",
-        "c": "PNGMILEHI",
-        "d": "SUMMAN",
-        "e": "TIMORGHERITAGE"
-    },
-    "comparisons": {
-        "-a": "debc",
-        "-b": "cdea",
-        "-c": "aedb",
-        "-d": "bace",
-        "-e": "abcd"
-    }
+  "names": {
+    "a": "BALIKINTHIGH",
+    "b": "PNGAROKA",
+    "c": "PNGMILEHI",
+    "d": "SUMMAN",
+    "e": "TIMORGHERITAGE"
+  },
+  "comparisons": {
+    "-a": "debc",
+    "-b": "cdea",
+    "-c": "aedb",
+    "-d": "bace",
+    "-e": "abcd"
+  }
 }

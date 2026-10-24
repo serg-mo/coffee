@@ -1,0 +1,39 @@
+{
+  "sku": "BOLAPOLOORG",
+  "name": "Bolivia: Organic Apolo, La Paz Department",
+  "url": "https://coffeebeancorral.com/products/bolivia-organic-apolo",
+  "image": "https://coffeebeancorral.com/cdn/shop/files/IMG_8267_20copy.jpg?v=1782686564&width=1920",
+  "attributes": {
+    "brightness": 6,
+    "body": 5,
+    "aroma": 6,
+    "complexity": 7,
+    "balance": 5,
+    "sweetness": 5
+  },
+  "flavors": {
+    "spicy": 1,
+    "chocolaty": 3,
+    "nutty": 1,
+    "buttery": 3,
+    "fruity": 3,
+    "flowery": 1,
+    "winey": 1,
+    "earthy": 2
+  },
+  "specifications": {
+    "bean category": "Organic",
+    "country": "Bolivia",
+    "local region": "Apolo",
+    "global region": "South America",
+    "process": "Washed",
+    "variety": "Typica, Castillo",
+    "altitude": "1,700 masl",
+    "harvest": "September - December",
+    "organic": "No",
+    "fair trade": "No",
+    "rainforest alliance": "No",
+    "decaf": "No"
+  },
+  "description": "Apolo is an indigenous region of Northern Bolivia that had never commercially grown or exported coffee, until they began working with Wildlife Conservation Society and Cafe Kreyol in order to create a model of ecological preservation, and economic sustainable income. Cafe Kreyol works directly with 5 indigenous communities of Apolo, that speak a form of Quechua that predates the Incas.The coffee from this region, with a very defined orange acidity (when roasted light), chocolatey flavor, and sweet aroma, is quickly taking it's place as one of the top coffees of Bolivia.\n \nCupping notes: Transparent citrus and tangerine acidity. With remarkable clarity, complexity, and creaminess.\n "
+}

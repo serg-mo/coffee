@@ -1,0 +1,39 @@
+{
+  "sku": "COLEXC",
+  "name": "Colombia: Cattleya,Excelso",
+  "url": "https://coffeebeancorral.com/products/colombia-cattleya-excelso",
+  "image": "https://coffeebeancorral.com/cdn/shop/files/53-Product.jpg?v=1782686407&width=1920",
+  "attributes": {
+    "brightness": 4,
+    "body": 4,
+    "aroma": 5,
+    "complexity": 4,
+    "balance": 6,
+    "sweetness": 5
+  },
+  "flavors": {
+    "spicy": 1,
+    "chocolaty": 4,
+    "nutty": 1,
+    "buttery": 1,
+    "fruity": 4,
+    "flowery": 1,
+    "winey": 4,
+    "earthy": 1
+  },
+  "specifications": {
+    "bean category": "Conventional",
+    "country": "Colombia",
+    "local region": "Huila",
+    "global region": "South America",
+    "process": "Washed",
+    "variety": "Caturra, Typica",
+    "altitude": "1,520 - 1,650 masl",
+    "harvest": "October - February",
+    "organic": "No",
+    "fair trade": "No",
+    "rainforest alliance": "Yes",
+    "decaf": "No"
+  },
+  "description": "Named after Colombia's national flower, Cattleya is a coffee that embodies the beauty, balance, and elegance of one of the world's most celebrated coffee origins. This carefully crafted offering highlights everything coffee lovers appreciate about Colombian coffees—bright acidity, smooth sweetness, and delicate floral complexity.\nCattleya is sourced from a network of dedicated smallholder farmers in the Tequendama region of Cundinamarca and the Lengupá province of Boyacá. By selecting coffees from multiple producers, each harvest is blended to maintain a dependable flavor profile while celebrating the unique character of Colombia's Eastern Andes.\n \nCupping Notes: Well balanced, bright, complex acidity, citrus, grapefruit, floral, roasted nut and cocoa, good body, clean finish\n "
+}

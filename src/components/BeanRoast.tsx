@@ -1,26 +1,22 @@
-import React from "react";
-import BeanShape from "types/BeanShape";
-import BeanChart from "./BeanChart";
-import RoastShape from "types/RoastShape";
-import moment from "moment";
+import React from 'react';
+import BeanShape from 'types/BeanShape';
+import BeanChart from './BeanChart';
+import RoastShape from 'types/RoastShape';
+import moment from 'moment';
 
 const formatSeconds = (seconds: number) =>
-  `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")} `;
+  `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')} `;
 
 export default function BeanRoast({ roast }: { roast: RoastShape }) {
   const yieldPercentage = roast.weightRoasted / roast.weightGreen;
 
-  const dryingPercentage =
-    roast.indexYellowingStart / (roast.beanTemperature.length - 1);
+  const dryingPercentage = roast.indexYellowingStart / (roast.beanTemperature.length - 1);
   const dryingSeconds = Math.round(dryingPercentage * roast.totalRoastTime);
 
-  const roastingPercentage =
-    roast.indexFirstCrackStart / (roast.beanTemperature.length - 1);
-  const roastingSeconds =
-    Math.round(roastingPercentage * roast.totalRoastTime) - dryingSeconds;
+  const roastingPercentage = roast.indexFirstCrackStart / (roast.beanTemperature.length - 1);
+  const roastingSeconds = Math.round(roastingPercentage * roast.totalRoastTime) - dryingSeconds;
 
-  const developingSeconds =
-    roast.totalRoastTime - dryingSeconds - roastingSeconds;
+  const developingSeconds = roast.totalRoastTime - dryingSeconds - roastingSeconds;
   const developingPercentage = developingSeconds / roast.totalRoastTime;
 
   return (
@@ -38,9 +34,7 @@ export default function BeanRoast({ roast }: { roast: RoastShape }) {
 
         <div className="">
           <div className="font-bold">Loss</div>
-          <div className="font-black">
-            {((1 - yieldPercentage) * 100).toFixed()}%
-          </div>
+          <div className="font-black">{((1 - yieldPercentage) * 100).toFixed()}%</div>
         </div>
 
         <div className="">
@@ -53,8 +47,7 @@ export default function BeanRoast({ roast }: { roast: RoastShape }) {
         <div className="relative">
           <div className="font-bold pt-2">Drying</div>
           <div className="font-black">
-            {formatSeconds(dryingSeconds)} ·{" "}
-            {(100 * dryingPercentage).toFixed()}%
+            {formatSeconds(dryingSeconds)} · {(100 * dryingPercentage).toFixed()}%
           </div>
 
           <div className="absolute left-0 top-0 -translate-y-1/2 -translate-x-[2px] bg-white pr-1 ">
@@ -69,16 +62,14 @@ export default function BeanRoast({ roast }: { roast: RoastShape }) {
         <div className="border-x">
           <div className="font-bold pt-2">Browning</div>
           <div className="font-black">
-            {formatSeconds(roastingSeconds)} ·{" "}
-            {(100 * roastingPercentage).toFixed()}%
+            {formatSeconds(roastingSeconds)} · {(100 * roastingPercentage).toFixed()}%
           </div>
         </div>
 
         <div className="relative">
           <div className="font-bold pt-2">Development</div>
           <div className="font-black">
-            {formatSeconds(developingSeconds)} ·{" "}
-            {(100 * developingPercentage).toFixed()}%
+            {formatSeconds(developingSeconds)} · {(100 * developingPercentage).toFixed()}%
           </div>
 
           <div className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 bg-white px-1 ">

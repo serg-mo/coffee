@@ -1,5 +1,5 @@
-import DataShapePair from "types/DataShapePair";
-import DataShapeQuad from "types/DataShapeQuad";
+import DataShapePair from 'types/DataShapePair';
+import DataShapeQuad from 'types/DataShapeQuad';
 
 function mostCommonValue(array: string[]) {
   const counts: Record<string, number> = {};
@@ -9,10 +9,10 @@ function mostCommonValue(array: string[]) {
   return Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
 }
 
-console.assert(mostCommonValue(["a", "a", "a"]) === "a");
-console.assert(mostCommonValue(["a", "a", "b"]) === "a");
-console.assert(mostCommonValue(["a", "b", "a"]) === "a");
-console.assert(mostCommonValue(["b", "a", "a"]) === "a");
+console.assert(mostCommonValue(['a', 'a', 'a']) === 'a');
+console.assert(mostCommonValue(['a', 'a', 'b']) === 'a');
+console.assert(mostCommonValue(['a', 'b', 'a']) === 'a');
+console.assert(mostCommonValue(['b', 'a', 'a']) === 'a');
 
 function getWins(comparisons: string[]) {
   const wins: Record<string, Record<string, string[]>> = {};
@@ -39,36 +39,36 @@ function getWins(comparisons: string[]) {
 
 // single pairwise comparison, symmetrical 2x1
 console.assert(
-  JSON.stringify(getWins(["ab"])) ===
+  JSON.stringify(getWins(['ab'])) ===
     JSON.stringify({
-      a: { b: ["a"] },
-      b: { a: ["a"] },
+      a: { b: ['a'] },
+      b: { a: ['a'] },
     }),
 );
 
 // 2 + 1 pairwise comparisons, symmetrical 3x2
 console.assert(
-  JSON.stringify(getWins(["abc"])) ===
+  JSON.stringify(getWins(['abc'])) ===
     JSON.stringify({
-      a: { b: ["a"], c: ["a"] },
-      b: { a: ["a"], c: ["b"] },
-      c: { a: ["a"], b: ["b"] },
+      a: { b: ['a'], c: ['a'] },
+      b: { a: ['a'], c: ['b'] },
+      c: { a: ['a'], b: ['b'] },
     }),
 );
 
 // 3 + 2 + 1 pairwise comparisons, symmertical 4x3
 console.assert(
-  JSON.stringify(getWins(["abcd"])) ===
+  JSON.stringify(getWins(['abcd'])) ===
     JSON.stringify({
-      a: { b: ["a"], c: ["a"], d: ["a"] },
-      b: { a: ["a"], c: ["b"], d: ["b"] },
-      c: { a: ["a"], b: ["b"], d: ["c"] },
-      d: { a: ["a"], b: ["b"], c: ["c"] },
+      a: { b: ['a'], c: ['a'], d: ['a'] },
+      b: { a: ['a'], c: ['b'], d: ['b'] },
+      c: { a: ['a'], b: ['b'], d: ['c'] },
+      d: { a: ['a'], b: ['b'], c: ['c'] },
     }),
 );
 
 export function convertQuadToPair(comparisons: Record<string, string>) {
-  const names = ["a", "b", "c", "d", "e"];
+  const names = ['a', 'b', 'c', 'd', 'e'];
   const wins = getWins(Object.values(comparisons));
   // console.log({ comparisons , wins});
 
@@ -76,18 +76,12 @@ export function convertQuadToPair(comparisons: Record<string, string>) {
     names.map((a) => [
       a,
       Object.fromEntries(
-        names
-          .filter((b) => a !== b)
-          .map((b) => [b, mostCommonValue(wins[a][b]) as string]),
+        names.filter((b) => a !== b).map((b) => [b, mostCommonValue(wins[a][b]) as string]),
       ),
     ]),
   );
 }
 
 export function isQuad(dataset: DataShapeQuad | DataShapePair) {
-  return (
-    typeof (
-      dataset?.comparisons ? Object.values(dataset.comparisons) : []
-    )[0] === "string"
-  );
+  return typeof (dataset?.comparisons ? Object.values(dataset.comparisons) : [])[0] === 'string';
 }
