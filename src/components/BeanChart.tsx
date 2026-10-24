@@ -9,6 +9,7 @@ export default function BeanChart({ beans }: { beans: BeanShape[] }) {
     return;
   }
 
+  // TODO: specify max out of 7 with whole number increment
   const attributeData = {
     labels: Object.keys(beans[0]['attributes'] || {}),
     datasets: beans.map((bean: BeanShape) => ({
@@ -19,6 +20,7 @@ export default function BeanChart({ beans }: { beans: BeanShape[] }) {
     })),
   };
 
+  // TODO: specify max out of 4 with whole number increment
   const flavorData = {
     labels: Object.keys(beans[0]['flavors'] || {}),
     datasets: beans.map((bean: BeanShape) => ({

@@ -63,6 +63,8 @@ async function fetchProductUrlInner(url: string) {
     const value = $(el).find('.pdp-spec-value').text().trim();
     specifications[label] = value;
   });
+  // TODO: normalize specification labels, e.g., "organic" vs "organic certification", "decaf" vs "decaffeinated"
+
 
   return {
     sku: product.sku,

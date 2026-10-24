@@ -31,10 +31,8 @@ export default function DatasetRankings({
             className={`cursor-pointer border border border-gray-300 ${beanNames.includes(name) ? 'font-bold' : ''} ${wins === MAX_WINS ? 'bg-gray-200' : 'bg-white'}`}
             onClick={() => toggleBean(name)}
           >
-            <td className="w-full p-2 truncate">
-              <span title={name.toUpperCase()}>
-                {beanData[name]?.specifications?.['country'] || name.toUpperCase()}
-              </span>
+            <td title={name.toUpperCase()} className="w-full p-2 truncate">
+              {beanData[name]?.specifications?.['country'] || name.toUpperCase()}
             </td>
             <td className="p-2 text-right">{wins}</td>
           </tr>
