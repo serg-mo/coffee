@@ -1,6 +1,6 @@
-import React from "react";
-import BeanShape from "types/BeanShape";
+import React, { useContext } from "react";
 import BeanLink from "./BeanLink";
+import BeanContext from "../BeanContext";
 
 const COMPARISON_SPECS = [
   "category",
@@ -13,13 +13,10 @@ const COMPARISON_SPECS = [
 ];
 
 // TODO: sometimes the "close" icon shrinks for really longs SKUs
-export default function BeanTable({
-  beans,
-  toggleBean,
-}: {
-  beans: BeanShape[];
-  toggleBean: (name: string) => void;
-}) {
+export default function BeanTable() {
+  const { beanNames, beanData } = useContext(BeanContext);
+  const beans = beanNames.map((name) => beanData[name]).filter(Boolean);
+
   const specs =
     beans.length === 1
       ? Object.keys(beans[0].specifications)
@@ -36,7 +33,7 @@ export default function BeanTable({
           {/* one column per bean */}
           {beans.map((bean) => (
             <td key={bean.sku} className="p-2 truncate">
-              <BeanLink bean={bean} toggleBean={toggleBean} />
+              <BeanLink bean={bean} />
             </td>
           ))}
         </tr>

@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Dataset, { TABS } from "./Dataset";
+import BeanContext from "../BeanContext";
 
 const YEARS = [2026, 2025, 2024];
 const REGIONS = ["africa", "indonesia", "central-america", "south-america"];
 
-export default function Datasets({
-  beanNames,
-  setBeanNames,
-  toggleBean,
-}: {
-  beanNames: string[];
-  setBeanNames: (names: string[]) => void;
-  toggleBean: (name: string) => void;
-}) {
+export default function Datasets() {
+  const { setBeanNames } = useContext(BeanContext);
   const [year, setYear] = useState(YEARS[0]);
   const [tab, setTab] = useState(0);
 
@@ -46,9 +40,6 @@ export default function Datasets({
               key={`${year} ${region}`}
               year={year}
               region={region}
-              beanNames={beanNames}
-              onBeansClick={toggleBean}
-              onDatasetClick={setBeanNames}
               tab={tab}
             />
           ))}

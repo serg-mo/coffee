@@ -4,6 +4,7 @@ import Datasets from "./components/Datasets";
 import About from "./components/About";
 import BeanChart from "./components/BeanChart";
 import BeanTable from "./components/BeanTable";
+import BeanContext from "./BeanContext";
 import BeanShape from "types/BeanShape";
 
 const MAX_COMPARISON_BEANS = 6;
@@ -57,31 +58,30 @@ export default function App() {
   // console.log({ beanNames, beanData, beans });
 
   // TODO: some old descriptions have literal '\n', not newlines
-  // TODO: this is where you set the context for beanData, setBeanNames, and toggleBean
   return (
-    <div className="flex flex-col m-auto w-full lg:w-4xl max-w-4xl text-gray-600">
-      <Datasets
-        beanNames={beanNames}
-        setBeanNames={setBeanNames}
-        toggleBean={toggleBean}
-      />
+    <BeanContext.Provider
+      value={{ beanData, beanNames, setBeanNames, toggleBean }}
+    >
+      <div className="flex flex-col m-auto w-full lg:w-4xl max-w-4xl text-gray-600">
+        <Datasets />
 
-      {beans.length > 0 ? <BeanChart beans={beans} /> : <About />}
+        {beans.length > 0 ? <BeanChart beans={beans} /> : <About />}
 
-      {beans.length > 0 &&
-        (beans.length === 1 ? (
-          <div className="flex flex-row w-full gap-4">
-            <div className="w-1/2">
-              <BeanTable beans={beans} toggleBean={toggleBean} />
+        {beans.length > 0 &&
+          (beans.length === 1 ? (
+            <div className="flex flex-row w-full gap-4">
+              <div className="w-1/2">
+                <BeanTable />
+              </div>
+
+              <div className="w-1/2 leading-relaxed whitespace-pre-line text-justify">
+                {beans[0].description}
+              </div>
             </div>
-
-            <div className="w-1/2 leading-relaxed whitespace-pre-line text-justify">
-              {beans[0].description}
-            </div>
-          </div>
-        ) : (
-          <BeanTable beans={beans} toggleBean={toggleBean} />
-        ))}
-    </div>
+          ) : (
+            <BeanTable />
+          ))}
+      </div>
+    </BeanContext.Provider>
   );
 }

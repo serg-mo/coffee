@@ -1,15 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import BeanShape from "types/BeanShape";
 import { IoMdCloseCircle } from "react-icons/io";
+import BeanContext from "../BeanContext";
 
-export default function BeanLink({
-  bean,
-  toggleBean,
-}: {
-  bean: BeanShape;
-  toggleBean: (name: string) => void;
-}) {
-  // TODO: fetch toggleBean from context
+export default function BeanLink({ bean }: { bean: BeanShape }) {
+  const { toggleBean } = useContext(BeanContext);
   const url = `https://www.coffeebeancorral.com/search?q=${bean.sku}`;
 
   // NOTE: even a single bean can be removed
