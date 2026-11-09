@@ -24,65 +24,87 @@ ChartJS.defaults.font.size = 6;
 // 7C/min   green
 // 4C/min   blue
 
-export default function LineChart({ roast }: { roast: RoastShape }) {
-  // beanTemperature, ibtsTemperature, beanDerivative, ibtsDerivative
-  const datasets = [
-    {
-      prop: 'ibtsTemperature',
-      label: 'IBTS Temp',
-      borderColor: '#374151',
-      yAxisID: 'temperature',
-    },
-    {
-      prop: 'ibtsDerivative',
-      label: 'IBTS RoR',
-      borderColor: '#374151',
-      borderDash: [1, 3],
-      yAxisID: 'ror',
-    },
-  ] as const;
+// TODO: have two line charts + power/fan values in between
+export default function LineChart({
+  roast,
+  temperature,
+  derivative,
+}: {
+  roast: RoastShape;
+  temperature: 'ibtsTemperature' | 'beanTemperature';
+  derivative: 'ibtsDerivative' | 'beanDerivative';
+}) {
+  const formatTimeIndex = (index: number) =>
+    formatSeconds(Math.round(roast.totalRoastTime * (index / (roast[temperature].length - 1))));
 
-  const formatIndex = (index: number) =>
-    formatSeconds(Math.round(roast.totalRoastTime * (index / (roast.ibtsTemperature.length - 1))));
+  const formatYIndex = (index: number) =>
+    `${Math.round(roast[temperature][index])}C at ${Math.round(roast[derivative][index])}C/m`;
 
-  const milestones = [
-    { prop: 'indexYellowingStart', label: 'Yellowing' },
-    { prop: 'indexFirstCrackStart', label: 'First Crack' },
+  const events = [
+    { index: roast.indexYellowingStart, label: 'Yellowing' },
+    { index: roast.indexFirstCrackStart, label: 'First Crack' },
+    {
+      index: roast[temperature].length - 1,
+      label: 'Drop',
+      position: 'end',
+      yAdjust: 10,
+      xAdjust: 5,
+    },
   ] as const;
 
   // TODO: I also have roast.actions, keys by timestamp, that tells me when P/F/D changed
   // TODO: manualy label the ROR value at yellowing and first crack
-  const annotations = Object.fromEntries(
-    milestones.map(({ prop, label, color }) => [
-      prop,
+  const annotations = Object.fromEntries([
+    ...events.map(({ index, label, ...props }) => [
+      label,
       {
         // TODO: https://www.chartjs.org/chartjs-plugin-annotation/latest/guide/types/box.html
         type: 'line' as const,
-        xMin: roast[prop],
-        xMax: roast[prop],
-        borderColor: color,
+        xMin: index,
+        xMax: index,
         borderWidth: 1,
         label: {
           display: true,
-          content: `${label} ${Math.round(roast.ibtsTemperature[roast[prop]])} at ${formatIndex(roast[prop])}`,
+          // NOTE: array makes this a multi-line label, string is one line
+          content: [
+            label, //  at ${formatTimeIndex(index)}
+            formatYIndex(index),
+          ],
           position: 'start' as const,
+          padding: 4,
+          yAdjust: 5, // move down
+          ...props,
         },
       },
     ]),
-  );
+  ]);
 
-  const data = {
-    datasets: datasets.map(({ prop, ...config }) => ({
-      ...config,
+  const datasets = [
+    {
+      borderColor: '#374151',
+      yAxisID: 'temperature',
       // NOTE: required shape for line charts
-      data: roast[prop].map((value, index) => ({
+      data: roast[temperature].map((value, index) => ({
         x: index,
         y: value,
       })),
       pointRadius: 0,
       borderWidth: 1,
-    })),
-  };
+    },
+    {
+      borderColor: '#374151',
+      borderDash: [1, 3],
+      yAxisID: 'ror',
+      // NOTE: required shape for line charts
+      data: roast[derivative].map((value, index) => ({
+        x: index,
+        y: value,
+      })),
+      pointRadius: 0,
+      borderWidth: 1,
+      // tension: 0.5, // smoothing
+    },
+  ];
 
   const options = {
     responsive: true,
@@ -93,20 +115,18 @@ export default function LineChart({ roast }: { roast: RoastShape }) {
         min: 0,
         ticks: {
           // NOTE: multiple measurements per second, so given an index, we compute/format seconds
-          callback: (index: number) =>
-            formatSeconds(
-              Math.round(roast.totalRoastTime * (index / roast.ibtsTemperature.length)),
-            ),
+          callback: formatTimeIndex,
           stepSize: 30,
           major: { enabled: true },
         },
       },
+      // two y axes
       temperature: {
         type: 'linear' as const,
         position: 'left' as const,
         title: {
           display: true,
-          text: 'Temperature',
+          text: `${temperature} (C)`,
         },
         ticks: {
           stepSize: 5,
@@ -116,22 +136,22 @@ export default function LineChart({ roast }: { roast: RoastShape }) {
       ror: {
         type: 'linear' as const,
         position: 'right' as const,
+        min: 0, // ignore negatives
         max: 20, // most aggressive RoR that we care about
-        grid: {
-          drawOnChartArea: false, // same grid for both scales
-        },
         title: {
           display: true,
-          text: 'Derivative',
+          text: `${derivative} (C/m)`,
+        },
+        ticks: {
+          stepSize: 2,
+          major: { enabled: true },
+        },
+        grid: {
+          drawOnChartArea: false, // one grid for both scales
         },
       },
     },
     animation: false,
-    elements: {
-      line: {
-        tension: 0.2,
-      },
-    },
     plugins: {
       annotation: {
         annotations,
@@ -144,7 +164,7 @@ export default function LineChart({ roast }: { roast: RoastShape }) {
 
   return (
     <div className="w-full">
-      <Line data={data} options={options} />
+      <Line data={{ datasets }} options={options} />
     </div>
   );
 }

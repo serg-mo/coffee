@@ -1,12 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
 import BeanShape from '../types/BeanShape';
 import BeanChart from './BeanChart';
-import RoastChart from './RoastChart';
+import LineChart from './LineChart';
 import RoastShape from '../types/RoastShape';
 import moment from 'moment';
 import { formatSeconds, getBeanData } from '../utils/beans';
 
-function getRoastLevel(temp: number): string {
+// TODO: this is bad, not properly preheated
+// "preheatTemperature": 230,
+// "beanChargeTemperature": 110.97,
+// "drumChargeTemperature": 163.99,
+
+function formatRoastLevel(temp: number): string {
   if (temp < 196) return 'Underdeveloped';
   if (temp < 210) return 'Light (City)';
   if (temp < 218) return 'Medium (City+ / Full City)';
@@ -44,7 +49,7 @@ export default function RoastLabel({ roast }: { roast: RoastShape }) {
   const dropTemp = roast.ibtsTemperature[roast.ibtsTemperature.length - 1];
 
   return (
-    <div className="h-[6in] w-[4in] overflow-hidden flex flex-col gap-2 p-2 rounded border border-gray-200 text-black mx-auto">
+    <div className="h-[6in] w-[4in] overflow-hidden flex flex-col gap-2 p-2 font-black mx-auto">
       <div className="">
         <div className="text-2xl font-black leading-none tracking-tight text-center">
           {bean.specifications?.['country']} ({bean.sku})
@@ -60,68 +65,47 @@ export default function RoastLabel({ roast }: { roast: RoastShape }) {
       <div className="border-y p-2 text-center text-xl font-black leading-none">
         WHOLE BEANS
         <br />
-        Roasted {moment(roast.dateTime).format('MMM D')}
+        {formatRoastLevel(dropTemp)} Roast
+        <br />
+        {moment(roast.dateTime).format('MMM D')}
       </div>
 
       <BeanChart beans={[bean]} fontSize={10} />
-      <RoastChart roast={roast} />
+      <LineChart roast={roast} temperature="ibtsTemperature" derivative="ibtsDerivative" />
 
-      <div className="grid grid-cols-5 divide-x text-[7px] text-center">
-        <div className="">
-          <div className="font-bold">In</div>
-          <div className="font-black">{roast.weightGreen}g</div>
-        </div>
+      {/* <div className="w-full">
+        <LineChart roast={roast} temperature="ibtsTemperature" derivative="ibtsDerivative" />
+      </div>
+      <div className="w-full">
+        <LineChart roast={roast} temperature="beanTemperature" derivative="beanDerivative" />
+      </div> */}
 
-        <div className="">
-          <div className="font-bold">Out</div>
-          <div className="font-black">{roast.weightRoasted}g</div>
-        </div>
-
-        <div className="">
-          <div className="font-bold">Yield</div>
-          <div className="font-black">{(yieldPercentage * 100).toFixed()}%</div>
-        </div>
-
-        <div className="">
-          <div className="font-bold">Loss</div>
-          <div className="font-black">{((1 - yieldPercentage) * 100).toFixed()}%</div>
-        </div>
-
-        <div className="">
-          <div className="font-bold">Level</div>
-          <div className="font-black">
-            {dropTemp}C {getRoastLevel(dropTemp)}
-          </div>
-        </div>
+      <div className="grid grid-cols-4 divide-x text-[7px] text-center font-black">
+        <div className="">{roast.weightGreen}g in</div>
+        <div className="">{roast.weightRoasted}g out</div>
+        <div className="">{(yieldPercentage * 100).toFixed()}% yield</div>
+        <div className="">{((1 - yieldPercentage) * 100).toFixed()}% loss</div>
       </div>
 
-      <div className="grid grid-cols-3 items-stretch border-t text-[7px] text-center font-bold uppercase">
+      <div className="grid grid-cols-3 items-stretch text-[7px] text-center font-bold uppercase">
         <div className="relative">
-          <div className="font-bold pt-2">Dry [30-40%]</div>
-          <div className="font-black">
+          <div className="">Dry [30-40%]</div>
+          <div className="">
             {formatSeconds(dryingSeconds)} ({(100 * dryingPercentage).toFixed()}%)
-          </div>
-
-          <div className="absolute right-0 top-0 translate-x-1/2 -translate-y-1/2 bg-white px-1 ">
-            Yellowing
           </div>
         </div>
 
         <div className="border-x">
-          <div className="font-bold pt-2">Roast [35-45%]</div>
-          <div className="font-black">
+          <div className="">Roast [35-45%]</div>
+          <div className="">
             {formatSeconds(roastingSeconds)} ({(100 * roastingPercentage).toFixed()}%)
           </div>
         </div>
 
         <div className="relative">
-          <div className="font-bold pt-2">Develop [15-25%]</div>
-          <div className="font-black">
+          <div className="">Develop [15-25%]</div>
+          <div className="">
             {formatSeconds(developingSeconds)} ({(100 * developingPercentage).toFixed()}%)
-          </div>
-
-          <div className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2 bg-white px-1 ">
-            First Crack
           </div>
         </div>
       </div>
