@@ -53,7 +53,7 @@ function formatHarvest(value: string) {
   )
 
   // NOTE: peak freshness at 3-6 months
-  return nums.join(', ');
+  return nums.join(',');
 }
 
 // TODO: sometimes the "close" icon shrinks for really longs SKUs
