@@ -14,7 +14,7 @@ const COMPARISON_SPECS = [
 
 function formatBeanSpec(bean: BeanShape, spec: string) {
   const value = bean.specifications?.[spec];
-  if (!value) return '-'
+  if (!value) return '-';
 
   if (spec === 'altitude') {
     return formatAltitude(value);
@@ -22,7 +22,7 @@ function formatBeanSpec(bean: BeanShape, spec: string) {
     return formatHarvest(value);
   }
 
-  return value
+  return value;
 }
 
 function formatAltitude(value: string) {
@@ -32,12 +32,24 @@ function formatAltitude(value: string) {
   }
 
   const avg = Math.round(numbers.reduce((a, b) => a + b, 0) / numbers.length);
-  return avg < 600 ? "Low" : avg < 1200 ? "Mid" : "High";
+  return avg < 600 ? 'Low' : avg < 1200 ? 'Mid' : 'High';
 }
 
 function formatHarvest(value: string) {
-  const months = ['january', 'february', 'march', 'april', 'may', 'june',
-    'july', 'august', 'september', 'october', 'november', 'december'];
+  const months = [
+    'january',
+    'february',
+    'march',
+    'april',
+    'may',
+    'june',
+    'july',
+    'august',
+    'september',
+    'october',
+    'november',
+    'december',
+  ];
 
   const [start, end = start] = value.toLowerCase().match(/[a-z]+/g) ?? [];
   if (!start || !end) return [];
@@ -46,11 +58,11 @@ function formatHarvest(value: string) {
   const to = months.findIndex((m) => end.startsWith(m));
   if (from < 0 || to < 0) return [];
 
-  // 'May - September' => [5, 6, 7, 8, 9] 
+  // 'May - September' => [5, 6, 7, 8, 9]
   const nums = Array.from(
-    { length: (to - from + 12) % 12 + 1 }, // inclusive
-    (_, i) => (from + i) % 12 + 1, // january is 1
-  )
+    { length: ((to - from + 12) % 12) + 1 }, // inclusive
+    (_, i) => ((from + i) % 12) + 1, // january is 1
+  );
 
   // NOTE: peak freshness at 3-6 months
   return nums.join(',');
@@ -85,7 +97,11 @@ export default function BeanTable() {
             <td className="p-2 text-left font-bold text-nowrap capitalize">{spec}</td>
             {/* one column per bean */}
             {beans.map((bean) => (
-              <td key={bean.sku} title={bean.specifications?.[spec] || '-'} className="truncate p-2">
+              <td
+                key={bean.sku}
+                title={bean.specifications?.[spec] || '-'}
+                className="truncate p-2"
+              >
                 {formatBeanSpec(bean, spec)}
               </td>
             ))}

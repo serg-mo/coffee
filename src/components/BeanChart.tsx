@@ -1,8 +1,14 @@
 import React from 'react';
 import RadarChart from './RadarChart';
-import BeanShape from 'types/BeanShape';
+import BeanShape from '../types/BeanShape';
 
-export default function BeanChart({ beans }: { beans: BeanShape[] }) {
+export default function BeanChart({
+  beans,
+  fontSize = 14,
+}: {
+  beans: BeanShape[];
+  fontSize: number;
+}) {
   // this breaks if I try to make local variables
   // TODO: refactor to just dump whole bunch of BeanShapes + dimension names
   if (!beans.length) {
@@ -34,10 +40,10 @@ export default function BeanChart({ beans }: { beans: BeanShape[] }) {
   return (
     <div className="w-full flex flex-row justify-between items-center m-auto">
       <div className="w-1/2">
-        <RadarChart data={attributeData} max={7} />
+        <RadarChart data={attributeData} max={7} fontSize={fontSize} />
       </div>
       <div className="w-1/2">
-        <RadarChart data={flavorData} max={4} />
+        <RadarChart data={flavorData} max={4} fontSize={fontSize} />
       </div>
     </div>
   );

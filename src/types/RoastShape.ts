@@ -1,5 +1,6 @@
 export default interface RoastShape {
     uid: string;
+    beanName: string; // NOTE: SKU on RoastWorld
     roastName: string;
     dateTime: Date;
     updatedAt: Date;

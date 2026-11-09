@@ -5,26 +5,10 @@ import About from './components/About';
 import BeanChart from './components/BeanChart';
 import BeanTable from './components/BeanTable';
 import BeanContext from './BeanContext';
-import BeanShape from 'types/BeanShape';
+import BeanShape from './types/BeanShape';
+import { getBeanData } from './utils/beans';
 
 const MAX_COMPARISON_BEANS = 6;
-const beanCache = new Map<string, BeanShape>();
-
-function getBeanData(name: string) {
-  const url = `./data/beans/${name.toLowerCase()}.json`;
-
-  if (beanCache.has(url)) {
-    return Promise.resolve(beanCache.get(url));
-  }
-
-  return fetch(url)
-    .then((res) => (res.ok ? res.json() : null))
-    .then((data) => {
-      if (data) beanCache.set(url, data);
-      return data;
-    })
-    .catch(() => null); // NOTE: silent fail for missing bean data
-}
 
 export default function App() {
   // TODO: wins are only visible from the dataset, i.e., charts can't look it up
