@@ -102,7 +102,7 @@ export default function LineChart({
       })),
       pointRadius: 0,
       borderWidth: 1,
-      // tension: 0.5, // smoothing
+      tension: 0.5,
     },
   ];
 

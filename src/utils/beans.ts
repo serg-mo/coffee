@@ -26,3 +26,11 @@ export function formatSeconds(seconds: number) {
 console.assert(formatSeconds(0) === '0:00 ');
 console.assert(formatSeconds(60) === '1:00 ');
 console.assert(formatSeconds(90) === '1:30 ');
+
+export function formatPercent(fraction: number) {
+  return `${(100 * fraction).toFixed()}%`;
+}
+
+console.assert(formatPercent(0) === '0%');
+console.assert(formatPercent(0.5) === '50%');
+console.assert(formatPercent(1) === '100%');
