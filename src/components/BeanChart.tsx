@@ -1,21 +1,14 @@
 import React from 'react';
 import RadarChart from './RadarChart';
-import BeanShape from '../types/BeanShape';
+import BeanShape, { MAX_FLAVOR, MAX_ATTRIBUTE } from '../types/BeanShape';
 
-export default function BeanChart({
-  beans,
-  fontSize = 14,
-}: {
-  beans: BeanShape[];
-  fontSize: number;
-}) {
+export default function BeanChart({ beans }: { beans: BeanShape[] }) {
   // this breaks if I try to make local variables
   // TODO: refactor to just dump whole bunch of BeanShapes + dimension names
   if (!beans.length) {
     return;
   }
 
-  // TODO: specify max out of 7 with whole number increment
   const attributeData = {
     labels: Object.keys(beans[0]['attributes'] || {}),
     datasets: beans.map((bean: BeanShape) => ({
@@ -26,7 +19,6 @@ export default function BeanChart({
     })),
   };
 
-  // TODO: specify max out of 4 with whole number increment
   const flavorData = {
     labels: Object.keys(beans[0]['flavors'] || {}),
     datasets: beans.map((bean: BeanShape) => ({
@@ -40,10 +32,10 @@ export default function BeanChart({
   return (
     <div className="w-full flex flex-row justify-between items-center m-auto">
       <div className="w-1/2">
-        <RadarChart data={attributeData} max={7} fontSize={fontSize} />
+        <RadarChart data={attributeData} max={MAX_ATTRIBUTE} fontSize={14} />
       </div>
       <div className="w-1/2">
-        <RadarChart data={flavorData} max={4} fontSize={fontSize} />
+        <RadarChart data={flavorData} max={MAX_FLAVOR} fontSize={14} />
       </div>
     </div>
   );

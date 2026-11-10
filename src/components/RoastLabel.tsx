@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import BeanShape from '../types/BeanShape';
+import BeanShape, { MAX_FLAVOR, MAX_ATTRIBUTE } from '../types/BeanShape';
 import BeanChart from './BeanChart';
 import LineChart from './LineChart';
 import RoastShape from '../types/RoastShape';
 import moment from 'moment';
 import { formatSeconds, formatPercent, getBeanData } from '../utils/beans';
+import RadarChart from './RadarChart';
 
 // TODO: this is bad, not properly preheated
 // "preheatTemperature": 230,
@@ -13,9 +14,9 @@ import { formatSeconds, formatPercent, getBeanData } from '../utils/beans';
 
 function formatRoastLevel(temp: number): string {
   if (temp < 196) return 'Underdeveloped';
-  if (temp < 210) return 'Light (City)';
-  if (temp < 218) return 'Medium (City+ / Full City)';
-  if (temp < 224) return 'Medium-Dark (Full City+)';
+  if (temp < 210) return 'Light'; // city
+  if (temp < 218) return 'Medium'; // City+ or Full City
+  if (temp < 224) return 'Medium-Dark'; // Full City+
   return 'Dark';
 }
 
@@ -47,7 +48,7 @@ function RoastLabelHeader({ roast, bean }: { roast: RoastShape; bean: BeanShape 
   );
 }
 
-function RoastLabelFooter({ roast }: { roast: RoastShape; }) {
+function RoastLabelFooter({ roast }: { roast: RoastShape }) {
   const yieldPercentage = roast.weightRoasted / roast.weightGreen;
 
   const dryingPercentage = roast.indexYellowingStart / (roast.ibtsTemperature.length - 1);
@@ -61,37 +62,37 @@ function RoastLabelFooter({ roast }: { roast: RoastShape; }) {
   const developingPercentage = developingSeconds / roast.totalRoastTime;
 
   return (
-    <>
-      <div className="grid grid-cols-4 divide-x text-[7px] text-center font-black">
+    <div className="text-[8px] text-center flex flex-col gap-2 font-bold">
+      <div className="grid grid-cols-4">
         <div>{roast.weightGreen}g in</div>
         <div>{roast.weightRoasted}g out</div>
         <div>{formatPercent(yieldPercentage)} yield</div>
         <div>{formatPercent(1 - yieldPercentage)} loss</div>
       </div>
 
-      <div className="grid grid-cols-3 items-stretch text-[7px] text-center font-bold uppercase">
-        <div className="relative">
-          <div>Dry [30-40%]</div>
+      <div className="grid grid-cols-3">
+        <div>
+          <div>DRY [30-40%]</div>
           <div>
             {formatSeconds(dryingSeconds)} ({formatPercent(dryingPercentage)})
           </div>
         </div>
 
-        <div className="border-x">
-          <div>Roast [35-45%]</div>
+        <div>
+          <div>ROAST [35-45%]</div>
           <div>
             {formatSeconds(roastingSeconds)} ({formatPercent(roastingPercentage)})
           </div>
         </div>
 
-        <div className="relative">
-          <div>Develop [15-25%]</div>
+        <div>
+          <div>DEVELOP [15-25%]</div>
           <div>
             {formatSeconds(developingSeconds)} ({formatPercent(developingPercentage)})
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -111,12 +112,45 @@ export default function RoastLabel({ roast }: { roast: RoastShape }) {
 
   if (!requested.current || !bean) return null;
 
+  const attributeData = {
+    labels: Object.keys(bean['attributes'] || {}),
+    datasets: [
+      {
+        label: bean.sku,
+        data: Object.values(bean['attributes']),
+        borderWidth: 1,
+        borderColor: '#374151',
+        pointRadius: 0,
+      },
+    ],
+  };
+
+  const flavorData = {
+    labels: Object.keys(bean['flavors'] || {}),
+    datasets: [
+      {
+        label: bean.sku,
+        data: Object.values(bean['flavors']),
+        borderWidth: 1,
+        borderColor: '#374151',
+        pointRadius: 0,
+      },
+    ],
+  };
+
   // TODO: maybe two two slots, top and bottom, where every click swaps between radar + 2 line charts
   return (
     <div className="h-[6in] w-[4in] overflow-hidden flex flex-col gap-2 p-2 font-black mx-auto">
       <RoastLabelHeader roast={roast} bean={bean} />
 
-      <BeanChart beans={[bean]} fontSize={10} />
+      <div className="w-full flex flex-row justify-between items-center m-auto">
+        <div className="w-1/2">
+          <RadarChart data={attributeData} max={MAX_ATTRIBUTE} fontSize={10} />
+        </div>
+        <div className="w-1/2">
+          <RadarChart data={flavorData} max={MAX_FLAVOR} fontSize={10} />
+        </div>
+      </div>
 
       <div className="cursor-pointer" onClick={() => setIsBts(!isBts)}>
         {isBts ? (

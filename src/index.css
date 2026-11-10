@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* NOTE: this matters when you change print options, e.g., darkness */
+@media print {
+  @page {
+    margin: 0;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}

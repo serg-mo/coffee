@@ -30,6 +30,7 @@ export default function RadarChart({
       r: {
         min: 0,
         max,
+        // TODO: whole number increment, I think step is 1 by default
         ticks: {
           display: false, // no labels on scale
         },
@@ -50,7 +51,17 @@ export default function RadarChart({
       legend: {
         display: false,
       },
-      tooltip: {},
+      tooltip: {
+        titleFont: {
+          size: fontSize,
+        },
+        bodyFont: {
+          size: fontSize,
+        },
+        footerFont: {
+          size: fontSize,
+        },
+      },
     },
   };
 
