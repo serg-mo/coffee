@@ -38,7 +38,7 @@ export default function Dataset({
   return (
     <div className="">
       <h2
-        className="text-xl font-bold text-center capitalize cursor-pointer"
+        className="text-xl font-bold text-center capitalize cursor-pointer select-none"
         onClick={() => setBeanNames(dataset?.names ? Object.values(dataset.names) : [])}
       >
         {region.replace('-', ' ')}

@@ -4,14 +4,23 @@
   "url": "https://coffeebeancorral.com/products/papua-new-guinea-a-mile-high",
   "image": "https://coffeebeancorral.com/cdn/shop/files/IMG_1275.jpg?v=1782686456&width=1920",
   "attributes": {
-    "brightness": 6,
-    "body": 1,
-    "aroma": 1,
-    "complexity": 1,
-    "balance": 1,
-    "sweetness": 1
+    "brightness": 5,
+    "body": 6,
+    "aroma": 4,
+    "complexity": 5,
+    "balance": 5,
+    "sweetness": 4
   },
-  "flavors": {},
+  "flavors": {
+    "spicy": 1,
+    "chocolaty": 2,
+    "nutty": 1,
+    "buttery": 3,
+    "fruity": 2,
+    "flowery": 1,
+    "winey": 1,
+    "earthy": 1
+  },
   "specifications": {
     "category": "Conventional",
     "country": "Papua New Guinea",
