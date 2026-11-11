@@ -4,7 +4,8 @@ import BeanShape from '../types/BeanShape';
 const beanCache = new Map<string, BeanShape>();
 
 export function getBeanData(name: string) {
-  const url = `/data/beans/${name.toLowerCase()}.json`;
+  // NOTE: must be relative, because production is on domain/folder/
+  const url = `data/beans/${name.toLowerCase()}.json`;
 
   if (beanCache.has(url)) {
     return Promise.resolve(beanCache.get(url));

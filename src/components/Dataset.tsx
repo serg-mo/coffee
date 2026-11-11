@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import DataShapeQuad from 'types/DataShapeQuad';
-import DataShapePair from 'types/DataShapePair';
+import DataShapeQuad from '../types/DataShapeQuad';
+import DataShapePair from '../types/DataShapePair';
 import DatasetComparisonsPair from './DatasetComparisonsPair';
 import DatasetRankings from './DatasetRankings';
 import BeanContext from '../BeanContext';
@@ -19,6 +19,7 @@ export default function Dataset({
   const { setBeanNames } = useContext(BeanContext);
   const [dataset, setDataset] = useState<DataShapeQuad | DataShapePair | null>(null);
 
+  // TODO: move this to utils/beans.ts and cache it too
   useEffect(() => {
     // TODO: this produces two calls for the same url
     // must be relative, see webpack.config.js::publicPath
