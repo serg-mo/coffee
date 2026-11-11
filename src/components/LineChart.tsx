@@ -55,7 +55,7 @@ export default function LineChart({
   ] as const;
 
   // TODO: I also have roast.actions, keys by timestamp, that tells me when P/F/D changed
-  // TODO: manualy label the ROR value at yellowing and first crack
+  // TODO: label background looks too dark when printed
   const annotations = Object.fromEntries([
     ...events.map(({ index, label, ...props }) => [
       label,
