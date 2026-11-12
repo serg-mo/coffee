@@ -5,7 +5,8 @@ const beanCache = new Map<string, BeanShape>();
 
 export function getBeanData(name: string) {
   // NOTE: must be relative, because production is on domain/folder/
-  const url = `data/beans/${name.toLowerCase()}.json`;
+  // NOTE: should work for github pages and locally for /label
+  const url = `${__webpack_public_path__}data/beans/${name.toLowerCase()}.json`;
 
   if (beanCache.has(url)) {
     return Promise.resolve(beanCache.get(url));

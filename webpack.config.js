@@ -10,7 +10,7 @@ export default (env, argv) => ({
   output: {
     path: path.resolve(__dirname, "docs"),
     publicPath:
-      argv.mode === "production" ? "https://serg-mo.github.io/coffee/" : "auto",
+      argv.mode === "production" ? "https://serg-mo.github.io/coffee/" : "/",
     filename: "bundle.js",
     clean: true,
   },
