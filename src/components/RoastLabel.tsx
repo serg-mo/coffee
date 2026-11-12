@@ -21,34 +21,6 @@ function formatRoastLevel(temp: number): string {
 }
 
 function RoastLabelHeader({ roast, bean }: { roast: RoastShape; bean: BeanShape }) {
-  const dropTemp = roast.ibtsTemperature[roast.ibtsTemperature.length - 1];
-
-  return (
-    <>
-      <div>
-        <div className="text-2xl font-black leading-none tracking-tight text-center">
-          {bean.specifications?.['country']} ({bean.sku})
-        </div>
-
-        <div className="mt-1 text-[9px] font-bold uppercase tracking-widest flex flex-row justify-between items-center">
-          <div>{bean.specifications?.['local region']}</div>
-          <div>{bean.specifications?.['process']}</div>
-          <div>{bean.specifications?.['altitude']}</div>
-        </div>
-      </div>
-
-      <div className="border-y p-2 text-center text-xl font-black leading-none">
-        WHOLE BEANS
-        <br />
-        {formatRoastLevel(dropTemp)} Roast
-        <br />
-        {moment(roast.dateTime).format('MMM D')}
-      </div>
-    </>
-  );
-}
-
-function RoastLabelFooter({ roast }: { roast: RoastShape }) {
   const yieldPercentage = roast.weightRoasted / roast.weightGreen;
 
   const dryingPercentage = roast.indexYellowingStart / (roast.ibtsTemperature.length - 1);
@@ -61,35 +33,51 @@ function RoastLabelFooter({ roast }: { roast: RoastShape }) {
   const developingSeconds = roast.totalRoastTime - dryingSeconds - roastingSeconds;
   const developingPercentage = developingSeconds / roast.totalRoastTime;
 
+  const dropTemp = roast.ibtsTemperature[roast.ibtsTemperature.length - 1];
+
   return (
-    <div className="text-[8px] text-center flex flex-col gap-2 font-bold">
-      <div className="grid grid-cols-4">
-        <div>{roast.weightGreen}g in</div>
-        <div>{roast.weightRoasted}g out</div>
-        <div>{formatPercent(yieldPercentage)} yield</div>
-        <div>{formatPercent(1 - yieldPercentage)} loss</div>
+    <div className="text-center flex flex-col gap-1 text-[10px] font-bold m-2">
+      <div className="text-[22px] text-center leading-tight">
+        {bean.specifications?.['country']}: {bean.specifications?.['local region']}
+      </div>
+
+      <div className="text-[16px] text-center leading-tight my-2">
+        <div>{formatRoastLevel(dropTemp)} Roast</div>
+        <div>{moment(roast.dateTime).format('MMM D')}</div>
       </div>
 
       <div className="grid grid-cols-3">
-        <div>
-          <div>DRY [30-40%]</div>
-          <div>
-            {formatSeconds(dryingSeconds)} ({formatPercent(dryingPercentage)})
-          </div>
+        <div className="text-left uppercase">{bean.sku}</div>
+        <div className="text-center">{bean.specifications?.['process']}</div>
+        <div className="text-right">{bean.specifications?.['altitude']}</div>
+      </div>
+
+      <div className="grid grid-cols-3">
+        <div className="text-left">
+          {roast.weightGreen}g in / {roast.weightRoasted}g out
+        </div>
+        <div className="text-center">
+          {formatPercent(yieldPercentage)} yield / {formatPercent(1 - yieldPercentage)} loss
+        </div>
+        <div className="text-right">
+          {roast.ambient}C at {roast.humidity}% ambient
+        </div>
+      </div>
+
+      <div className="grid grid-cols-3">
+        <div className="text-left">
+          DRY {formatPercent(dryingPercentage)}{' '}
+          {dryingPercentage >= 0.3 && dryingPercentage <= 0.4 ? '✓' : '×'}
         </div>
 
-        <div>
-          <div>ROAST [35-45%]</div>
-          <div>
-            {formatSeconds(roastingSeconds)} ({formatPercent(roastingPercentage)})
-          </div>
+        <div className="text-center">
+          ROAST {formatPercent(roastingPercentage)}{' '}
+          {roastingPercentage >= 0.35 && roastingPercentage <= 0.45 ? '✓' : '×'}
         </div>
 
-        <div>
-          <div>DEVELOP [15-25%]</div>
-          <div>
-            {formatSeconds(developingSeconds)} ({formatPercent(developingPercentage)})
-          </div>
+        <div className="text-right">
+          DEVELOP {formatPercent(developingPercentage)}{' '}
+          {developingPercentage >= 0.15 && developingPercentage <= 0.25 ? '✓' : '×'}
         </div>
       </div>
     </div>
@@ -140,7 +128,7 @@ export default function RoastLabel({ roast }: { roast: RoastShape }) {
 
   // TODO: maybe two two slots, top and bottom, where every click swaps between radar + 2 line charts
   return (
-    <div className="h-[6in] w-[4in] overflow-hidden flex flex-col gap-2 p-2 font-black mx-auto">
+    <div className="h-[6in] w-[4in] overflow-hidden flex flex-col gap-2 mx-auto">
       <RoastLabelHeader roast={roast} bean={bean} />
 
       <div className="w-full flex flex-row justify-between items-center m-auto">
@@ -159,8 +147,6 @@ export default function RoastLabel({ roast }: { roast: RoastShape }) {
           <LineChart roast={roast} temperature="beanTemperature" derivative="beanDerivative" />
         )}
       </div>
-
-      <RoastLabelFooter roast={roast} />
     </div>
   );
 }

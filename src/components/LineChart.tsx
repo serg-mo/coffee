@@ -40,24 +40,34 @@ export default function LineChart({
   const formatYIndex = (index: number) =>
     `${Math.round(roast[temperature][index])}C at ${Math.round(roast[derivative][index])}C/m`;
 
-  // TODO: add charge at ambient temp/humidity/drum temp vs preheat
   const events = [
+    {
+      index: 0,
+      label: 'Charge',
+      position: 'end',
+      yAdjust: -4,
+      xAdjust: -3,
+      content: [
+        `Preheat: ${roast.preheatTemperature}C`,
+        `Charge: ${Math.round(roast.drumChargeTemperature)}C`,
+      ],
+      textAlign: 'left',
+    },
     { index: roast.indexYellowingStart, label: 'Yellowing' },
     { index: roast.indexFirstCrackStart, label: 'First Crack' },
     {
       index: roast[temperature].length - 1,
       label: 'Drop',
-      // NOTE: custom props for this label only
       position: 'end',
       yAdjust: 10,
-      xAdjust: 5,
+      xAdjust: -3,
     },
   ] as const;
 
   // TODO: I also have roast.actions, keys by timestamp, that tells me when P/F/D changed
   // TODO: label background looks too dark when printed
   const annotations = Object.fromEntries([
-    ...events.map(({ index, label, ...props }) => [
+    ...events.map(({ index, label, ...customProps }) => [
       label,
       {
         // TODO: https://www.chartjs.org/chartjs-plugin-annotation/latest/guide/types/box.html
@@ -68,17 +78,16 @@ export default function LineChart({
         label: {
           display: true,
           // NOTE: array makes this a multi-line label, string is one line
-          content: [
-            label, //  at ${formatTimeIndex(index)}
-            formatYIndex(index),
-          ],
+          content: [label, formatYIndex(index)],
           font: {
             size: 8, // highter than default
           },
+          color: '#666666',
+          backgroundColor: '#FFFFFF',
           position: 'start' as const,
           padding: 4,
-          yAdjust: 5, // move down
-          ...props,
+          yAdjust: 3,
+          ...customProps, // must go last
         },
       },
     ]),
@@ -150,7 +159,6 @@ export default function LineChart({
         },
         ticks: {
           stepSize: 2,
-          major: { enabled: true },
         },
         grid: {
           drawOnChartArea: false, // one grid for both scales

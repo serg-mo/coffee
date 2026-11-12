@@ -1,3 +1,18 @@
+// const formatAction = (type: string, setting: number) => {
+//     if (type == 'Power') {
+//         return `P${setting}`;
+//     } else if (type == 'Blower') {
+//         return `F${setting}`;
+//     }
+//     return `D${setting}`; // drum never changes
+// };
+
+export interface ActionShape {
+    type: string;
+    second: number;
+    setting: number;
+}
+
 export default interface RoastShape {
     uid: string;
     beanName: string; // NOTE: SKU on RoastWorld
@@ -15,7 +30,7 @@ export default interface RoastShape {
     beanDerivative: number[];
     ibtsDerivative: number[];
     differentialAirPressure: number[];
-    actions: Object[]; // { type: 'Power', second: 5, setting: 6 },
+    actions: ActionShape[];
     humidity: number;
     ambient: number;
     ibtsAmbientTemp: number;
